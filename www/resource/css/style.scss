@@ -86,11 +86,23 @@
 	transform: translateY(-10px) rotate(35.5deg);
 }
 
+#container.sub {
+	padding:0 0 100px;
+}
+
 .inner {
 	width: 100%;
 	max-width: 1569px;
 	margin:0 auto;
 	padding:0 30px;
+	box-sizing: border-box;
+}
+
+.s-inner {
+	width: 100%;
+	max-width: 1360px;
+	margin: 0 auto;
+	padding: 0 30px;
 	box-sizing: border-box;
 }
 
@@ -634,6 +646,12 @@ footer {
 				border-radius: 30px;
 				background-color: #344aa0;
 				vertical-align: middle;
+				&.num {
+					max-width: 20px;
+					min-width: 20px;
+					color:#111;
+					background-color: #f1f1f1;
+				}
 			}
 			> a {
 				display: inline-block;
@@ -853,6 +871,7 @@ footer {
 		}//end ul
 	}//end #main-center-list
 }//end #main-center
+
 
 #main-prod {
 	padding:100px 0;
@@ -1190,6 +1209,573 @@ footer {
 
 
 
+/*
+	sub
+*/
+#location {
+	width: 100%;
+	margin-bottom: 70px;
+	border-bottom:1px solid #ddd;
+	p {
+		display: none;
+	}//end p
+	dl {
+		display: flex;
+		width: 100%;
+		max-width: 1300px;
+		margin:0 auto;
+		dd {
+			width: 100%;
+			a {
+				display: block;
+				color:#111;
+				font-size: 2.2rem;
+				font-weight: 400;
+				text-align: center;
+				line-height: 59px;
+			}
+
+			&.on a {
+				color:#fff;
+				background-color: #344aa0;
+			}
+		}
+	}//end dl
+}//end #location
+
+#sub-bnnr {
+	overflow: hidden;
+	position: relative;
+	.text {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		font-size: 3.5rem;
+		line-height: 1.74;
+		letter-spacing: -1px;
+		text-align: center;
+		color: #ffffff;
+		transform: translate(-50%,-50%);
+	}
+}//end #sub-bnnr
+
+#sub-notice {
+	padding-top: 0;
+	background-color: #fff;
+	#main-center-list {
+		ul {
+			flex-wrap: wrap;
+			li {
+				width: calc(25% - 15px);
+				&:nth-of-type(4n+4) {
+					margin-right: 0;
+				}
+			}//end li
+		}//end ul
+	}//end #main-center-list
+}//end #sub-notice
+
+
+/*
+	게시판
+*/
+/* button */
+#btn-box {
+	display: flex;
+	flex-wrap: wrap;
+	padding:20px 0;
+	.btn {
+		margin-right: 8px;
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+
+	&.center {
+		justify-content: center;
+	}
+	&.right {
+		justify-content: flex-end;
+	}
+}
+.btn {
+	display: inline-block;
+	height: 50px;
+	padding: 0 30px;
+	color: #333;
+	font-size: 2rem;
+	font-weight: 400;
+	border: 1px solid #ddd;
+	box-sizing: border-box;
+	outline: none;
+	cursor: pointer;
+	text-align: center;
+	text-indent: 0 !important;
+	text-decoration: none;
+	line-height: 48px;
+	white-space: nowrap;
+	vertical-align: middle;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	background-color: #fff;
+	transition: all 0.2s;
+	&:hover {
+		opacity: 0.85;
+	}
+	&.block {
+		width: 100%;
+	}
+	&.bg-deepblue {
+		color:#fff;
+		border-color:#093265;
+		background-color: #093265;
+	}//end .bg-blue
+	&.bg-green {
+		color:#fff;
+		border-color:#8cbf39;
+		background-color: #8cbf39;
+	}//end .bg-green
+	&.bg-red {
+		color:#fff;
+		border-color:#eb3447;
+		background-color: #eb3447;
+	}//end .bg-green
+	&.bg-orange {
+		color:#fff;
+		border-color:#ffa200;
+		background-color: #ffa200;
+	}
+
+	&.border-green {
+		border-color:#26b27c;
+	}//end .bg-green
+
+	img {
+		margin-top: -2px;
+		&.left {
+			margin-right: 10px;
+		}
+		&.right {
+			margin-left: 10px;
+		}
+	}//end img
+}//end .btn
+
+
+/* table */
+.tableType-01 {
+	margin-bottom: 30px;
+	border-top:1px solid #1795d0;
+	&.green {
+		border-top:2px solid #8cbf39;
+		th {
+			background-color: #fafafa;
+		}
+		td {
+			padding:15px;
+		}
+	}
+	&.no-border {
+		th {
+			// padding:10px;
+			font-size: 2rem;
+			border:none !important;
+			background-color: #fafafa;
+			&:first-of-type {
+				border:none !important;
+			}
+		}
+		td {
+			// padding: 10px 30px;
+			font-size: 2rem;
+			border:none;
+			text-align: center;
+			&.title {
+				text-align: left;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
+			> a {
+				color:#333;
+			}
+			.state {
+				padding: 0 1.5rem;
+				&.on {
+					background: url(https://nkhospital.net/resource/images/icon_chk2.png) no-repeat 0 50%;
+					background-size: 1.2rem;
+					color: #f0141e;
+				}
+			}
+			.viewLink {
+				a {
+					color:#666;
+					&:hover {
+						opacity: 0.5;
+					}
+				}
+			}
+			.viewFile {
+				img {
+					opacity: 0.6;
+				}
+				a {
+					color:#666;
+					&:hover {
+						opacity: 0.5;
+					}
+				}
+			}
+			.tit:after {
+				content:' :';
+			}
+		}
+	}
+	.text-center {
+		text-align: center !important;
+	}
+	table {
+		width: 100%;
+		table-layout: fixed;
+	}
+	tr {
+		border-bottom: 1px solid #ddd;
+	}//end tr
+	th {
+		padding:15px;
+		font-size: 2rem;
+		font-weight: 500;
+		border-right: 1px solid #ddd;
+		vertical-align: middle;
+		background-color: #f0f0f0;
+		&:first-of-type {
+			border-right: 1px solid #ddd !important;
+		}
+		&:last-of-type {
+			border: none;
+		}
+		&.lightGreen {
+			background-color: #e9f9f7;
+		}
+	}//end th
+	td {
+		padding:15px 40px;
+		font-size: 2rem;
+		word-break: keep-all;
+		border-right: 1px solid #ddd;
+		vertical-align: middle;
+		&:last-of-type {
+			border:none;
+		}
+		.dash-list dt,
+		.dash-list dd,
+		.middot-list li {
+			font-size: 1.6rem;
+			letter-spacing: -0.8px;
+		}
+	}//end td
+}//end .tableType-01
+
+/* 게시판 검색 */
+.search {
+	position: relative;
+	width: 400px;
+	margin:40px auto;
+	input {
+		width: 100%;
+		height: 50px;
+		padding:0 30px;
+		font-size: 2rem;
+		border:none;
+		border-radius: 30px;
+		outline: none;
+		box-shadow: none;
+		box-sizing: border-box;
+		border:1px solid #ddd;
+		background-color: #fff;
+		vertical-align: bottom;
+		&::placeholder {
+			color:#aaa;
+			font-weight: 400;
+		}
+	}//end input
+	button,
+	a {
+		position: absolute;
+		top: 50%;
+		right: 20px;
+		border:none;
+		outline: none;
+		box-shadow: none;
+		background-color: transparent;
+		transform: translateY(-50%);
+		cursor: pointer;
+		&:active {
+			right: 19px;
+			transform: translateY(-48%);
+		}
+	}//end button
+}
+
+
+/** 게시판 상세 댓글 영역 **/
+.viewComment {
+	margin-top: 40px;
+}
+.viewComment p {
+	margin: 0;
+}
+
+.viewComment>ul li {
+	padding: 15px 0;
+	border-top: 1px solid #e5e5e5;
+}
+
+.viewComment>ul>li>ul {
+	margin-top: 15px;
+	border-top: 1px solid #e5e5e5;
+}
+
+.viewComment>ul>li>ul>li {
+	min-height: 85px;
+	padding-bottom: 0;
+}
+
+.viewComment>ul>li:first-child {
+	padding-top: 0;
+}
+
+.viewComment>ul li:first-child {
+	border-top: none;
+}
+
+.viewComment li .name,
+.viewComment li .replyinput,
+.viewComment li .replyTxt,
+.viewComment li .btnReply,
+.viewComment li .btns {
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	vertical-align: top;
+	margin-right: -5px;
+}
+
+.viewComment li .name {
+	width: 16%;
+	margin-top: 5px;
+}
+
+.viewComment li .name span {
+	font-size: 0.857em;
+	display: block;
+	margin-top: 7px;
+}
+
+.viewComment li ul li .name {
+	width: 15.5%;
+	padding-left: 2.5%;
+	background: url('/images/common/icon-reply.gif') left top no-repeat;
+}
+
+.viewComment li .replyinput,
+.viewComment li .replyTxt {
+	width: 68%;
+}
+
+.viewComment li ul li .replyinput,
+.viewComment li ul li .replyTxt {
+	width: 66%;
+}
+
+.viewComment li .replyinput textarea {
+	width: 97.73584905660377%;
+	height: 98px;
+	padding: 0;
+	border: 1px solid #e1e1e1;
+	background: #fff;
+}
+
+.viewComment li .replyTxt {
+	min-height: 85px;
+	line-height: 24px;
+}
+
+.viewComment li .replyTxt span {
+	font-size: 0.857em;
+}
+
+.viewComment li .btnReply button {
+	width: 96.875%;
+	height: 100px;
+	color: #333;
+	font-size: 1.286em;
+	padding: 0;
+	margin: 0;
+	border: 2px solid #e1e1e1;
+	background: #e4e4e4;
+}
+
+.viewComment li .btnReply,
+.viewComment li .btns {
+	width: 16%;
+	text-align: right;
+}
+
+.viewComment li .btnReply a,
+.viewComment li .btns a {
+	font-size: 0.857em;
+	color: #262626;
+	display: inline-block;
+	padding: 0 7px;
+	line-height: 14px;
+	border-left: 1px solid #262626;
+}
+
+.viewComment li .btnReply a:first-child,
+.viewComment li .btns a:first-child {
+	border-left: 0;
+	padding-left: 0;
+}
+
+.viewComment li ul.replyBox {
+	padding-left: 20px;
+}
+
+.viewCont {
+	min-height:400px;
+}
+
+
+/** 게시판 글쓰기 영역 **/
+.writeType {
+	border-top: 1px solid #e5e5e5;
+}
+
+.writeType a {
+	color: #545454;
+	text-decoration: none;
+}
+
+.writeType tbody th,
+.writeType tbody td {
+	padding: 12px 0;
+	color: #545454;
+	border-bottom: 1px solid #e5e5e5;
+}
+
+.writeType tbody th:first-child,
+.writeType tbody td:first-child {
+	padding-left: 30px;
+}
+
+.writeType>tbody th {
+	font-size: 2.6rem;
+	text-align: left;
+}
+
+.writeType>tbody th.alignTop {
+	vertical-align: top;
+	padding-top: 20px;
+}
+
+.writeType>tbody .txtInput,
+.writeType>tbody textarea {
+	border: 1px solid #e1e1e1;
+}
+
+.writeType>tbody .txtInput {
+	height: 50px;
+	line-height: 50px;
+	padding: 0 10px;
+	box-sizing: border-box;
+}
+
+.writeType>tbody .fileInput {
+	height: 50px;
+	line-height: 50px;
+	padding: 0 10px;
+	box-sizing: border-box;
+}
+
+.writeType>tbody textarea {
+	padding: 10px;
+}
+
+
+
+/* 페이지네이션 */
+.pagination {
+	margin-top: 40px;
+	font-size: 0;
+	line-height: 0;
+	text-align: center;
+}
+
+.pagination .btn {
+	display: inline-block;
+	margin: 0 2px;
+	width: 4rem;
+	height: 4rem;
+	padding: 0 !important;
+	border: 1px solid #dfdfdf;
+	color: #666 !important;
+	font-family: 'area';
+	font-size: 2.2rem;
+	font-weight: 500;
+	line-height: 4rem;
+	// vertical-align: top;
+	img {
+		width: 100%;
+		margin-top: 0;
+		vertical-align: baseline;
+	}
+}
+
+.pagination .btn.current {
+	color: #fff !important;
+	border-color: #8cbf39;
+	background-color: #8cbf39;
+	cursor: default;
+}
+
+.pagination .btn.prev {
+	border-color:#fff;
+	vertical-align: middle !important;
+}
+
+.pagination .btn.next {
+	border-color:#fff;
+	vertical-align: middle !important;
+}
+
+.tabMenu {
+	margin-top: 50px;
+	margin-bottom: 30px;
+	ul {
+		display: flex;
+		li {
+			width: 100%;
+			margin:0 5px;
+			text-align: center;
+			border: 1px solid #ddd;
+			&.active {
+				border: 1px solid #344aa0;
+				a {
+					background-color: #fff;
+				}
+			}
+			a {
+				display: block;
+				width: 100%;
+				color: #333;
+				font-size: 2.0rem;
+				line-height: 60px;
+				background-color: #efefef;
+			}//end a
+		}//end li
+	}//end ul
+}//end .tabMenu
 
 
 
@@ -1500,6 +2086,23 @@ footer {
 			}//end .left
 		}//end .inner
 	}//end #main-health
+
+	/* sub */
+	#sub-notice {
+		#main-center-list {
+			ul {
+				li {
+					width: calc(33% - 19.5px);
+					&:nth-of-type(4n+4) {
+						margin-right: 20px;
+					}
+					&:nth-of-type(3n+3) {
+						margin-right: 0px !important;
+					}
+				}//end li
+			}//end ul
+		}//end #main-center-list
+	}//end #sub-notice
 }
 
 @media screen and (max-width:1024px){
@@ -1508,6 +2111,11 @@ footer {
 		p {
 			margin:10px 0;
 			font-size: 3.5rem;
+		}
+	}
+	#container.sub {
+		.cont-tit {
+			display: none; //임시 삭제
 		}
 	}
 
@@ -1603,9 +2211,11 @@ footer {
 				margin:10px 0;
 				font-size: 3.5rem;
 				.label {
+					min-width: 91px;
 					padding:10px 30px;
 					margin-right: 10px;
 					font-size: 2.8rem;
+					text-align: center;
 				}
 				> a {
 					overflow: hidden;
@@ -1636,6 +2246,203 @@ footer {
 			}//end ul
 		}//end #main-center-list
 	}//end #main-center
+
+	/* sub */
+	#sub-notice {
+		#main-center-list {
+			ul {
+				li {
+					width: calc(50% - 10px);
+					&:nth-of-type(4n+4) {
+						margin-right: 20px;
+					}
+					&:nth-of-type(3n+3) {
+						margin-right: 20px !important;
+					}
+					&:nth-of-type(2n+2) {
+						margin-right: 0px !important;
+					}
+				}//end li
+			}//end ul
+		}//end #main-center-list
+	}//end #sub-notice
+
+	#location {
+		position: relative;
+		p {
+			display: block;
+			a {
+				display: block;
+				position: relative;
+				padding:15px 0;
+				color: #fff;
+				font-size: 3.5rem;
+				line-height: 59px;
+				text-align: center;
+				background-color: #344aa0;
+				&:after {
+					position: absolute;
+					top: 50%;
+					right: 20px;
+					font-size: 2.5rem;
+					transform: translateY(-50%);
+					content:'▼';
+				}
+			}
+		}//end p
+		dl {
+			display: none;
+			position: absolute;
+			top: 100%;
+			left: 0;
+			border-bottom: 1px solid #ccc;
+			background-color: #fff;
+			z-index: 1000;
+			dd {
+				a {
+					padding: 15px 0;
+					font-size: 3.5rem;
+				}
+				&:hover a {
+					color: #fff;
+					background-color: #344aa0;
+				}
+			}//end dd
+		}//end dl
+	}//end #location
+
+
+	/*
+		게시판
+	*/
+	table {
+		* {
+			font-size: 3.2rem !important;
+		}
+		.mg-l10 {
+			display: block;
+		}
+		.tit {
+			font-size: 2.5rem !important;
+			&:after {
+				display: none;
+			}
+		}
+		.admin {
+			display: none;
+		}
+		th,
+		td {
+			padding:20px 10px !important;
+			line-height: 1.3;
+		}
+	}
+	.writeType {
+		display: block;
+		width: 100%;
+		border-top: none;
+		tbody {
+			display: block;
+			width: 100%;
+			.txtInput {
+				width: 100% !important;
+				font-size: 3.2rem;
+				height: 65px;
+				line-height: 65px;
+			}
+			tr {
+				display: block;
+				width: 100%;
+				margin-bottom: 30px;
+				border-bottom:none;
+			}
+			th {
+				display: block;
+				width: 100%;
+				padding: 12px 0;
+				font-size: 3.2rem;
+				box-sizing: border-box;
+				border: 1px solid #ddd !important;
+			}
+			td {
+				display: block;
+				width: 100%;
+				padding: 15px 0 !important;
+				box-sizing: border-box;
+			}
+		}
+		a {
+			display: inline-block;
+			margin-top: 10px;
+			font-size: 2.8rem;
+		}
+	}
+
+	/* button */
+	.btn {
+		height: 60px;
+		font-size: 3.2rem;
+		line-height: 58px;
+	}
+
+	/* pagination */
+	.pagination {
+		.btn {
+			width: 6rem;
+			height: 6rem;
+			font-size: 3.2rem;
+			line-height: 6rem;
+		}
+	}
+
+	/* tab */
+	.tabMenu {
+		margin-top: 50px;
+		margin-bottom: 30px;
+		p {
+			display: block;
+			a {
+				display: block;
+				position: relative;
+				width: 100%;
+				height: 80px;
+				color:#222;
+				font-size: 3rem;
+				line-height: 80px;
+				text-align: center;
+				background-color: #bbd1e3;
+				&:after {
+					position: absolute;
+					top: 50%;
+					right: 20px;
+					font-size: 2rem;
+					transform: translateY(-50%);
+					content: '▼';
+				}
+			}//end a
+		}
+		ul {
+			display: none;
+			li {
+				width: 100%;
+				margin:-1px 0 0;
+				text-align: center;
+				border: 1px solid #ddd;
+				box-sizing: border-box;
+				&.active {
+					border: 1px solid #ddd;
+					a {
+						background-color: #fff;
+					}
+				}
+				a {
+					font-size: 3.0rem;
+					line-height: 80px;
+					background-color: #fff;
+				}//end a
+			}//end li
+		}//end ul
+	}//end .tabMenu
 }
 
 @media screen and (max-width:768px) {

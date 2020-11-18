@@ -1,0 +1,79 @@
+<?php
+	include_once "../inc/head.php";
+?>
+
+<body>
+	<div id="wrap">
+		<?php include_once "../inc/header.php"?>
+		<section id="container" class="sub">
+			<div id="sub-bnnr">
+				<h2 class="text">소식·자료</h2>
+				<img data-index="4" data-index2="1" src="/resource/images/sub-bnnr04.png" alt="">
+			</div>
+			<!-- //end .sub-bnnr -->
+
+			<?php include_once "../inc/location.php"?>
+			<div class="cont-tit" style="opacity: 0;display: none;">
+				<h3>글읽기</h3>
+			</div>
+			<div class="s-inner" style="margin-top: 100px;">
+				<div class="tableType-01 green no-border">
+					<table width="100%" class="viewType">
+						<caption style="display:none;">공지사항 상세</caption>
+						<colgroup>
+							<col width="33.33%">
+							<col width="33.33%">
+							<col width="33.33%">
+						</colgroup>
+						<tbody>
+							<tr>
+								<th scope="row" colspan="3">귓볼 피지낭종 제거관련</th>
+							</tr>
+							<tr>
+								<td><span class="tit">작성자</span> <strong class="mg-l10">최재*</strong></td>
+								<td><span class="tit">조회수</span> <strong class="mg-l10">20</strong></td>
+								<td><span class="tit">작성일</span> <strong class="mg-l10">2020.01.22</strong></td>
+							</tr>
+							<tr>
+								<td style="text-align:left;" colspan="3">
+									<div class="viewCont">
+										현재 9살 남자아이 오른쪽 귀 뒷편 피지낭종이생겼습니다.
+										4년전 분당 모 대학병원에서 수술을했으나 다시 재발되어 재수술이 필요할것으로 생각되어 글을올립니다. 낭종 사이즈는 새끼손톱정도입니다. </div>
+								</td>
+							</tr>
+
+							<!--
+																		-->
+
+						</tbody>
+					</table>
+					<div id="btn-box" class="right">
+
+						<a href="notice.php?jb_code=40&amp;jb_mode=tdetail&amp;jb_idx=2320&amp;jb_group=436&amp;jb_step=0&amp;jb_depth=4360&amp;search_key=&amp;search_keyword=&amp;page=2&amp;dep1=2&amp;dep2=2-0"
+							class="btn bg-green">이전글</a>
+						<a href="notice.php?jb_code=40&amp;jb_mode=tdetail&amp;jb_idx=2322&amp;jb_group=436&amp;jb_step=0&amp;jb_depth=4360&amp;search_key=&amp;search_keyword=&amp;page=2&amp;dep1=2&amp;dep2=2-0"
+							class="btn bg-green">다음글</a>
+						<a href="#none"
+							onclick="javascript:location.href='notice.php?jb_code=40&amp;jb_idx=2321&amp;jb_group=436&amp;jb_step=0&amp;jb_depth=4360&amp;search_key=&amp;search_keyword=&amp;page=2&amp;dep1=2&amp;dep2=2-0&amp;jb_mode=tdelete'"
+							class="btn bg-red" title="삭제">삭제</a>
+						<a href="#\"
+							onclick="javascript:location.href='notice.php?jb_code=40&amp;jb_idx=2321&amp;jb_group=436&amp;jb_step=0&amp;jb_depth=4360&amp;search_key=&amp;search_keyword=&amp;page=2&amp;dep1=2&amp;dep2=2-0&amp;jb_mode=tmodify'"
+							class="btn bg-deepblue" title="수정">수정</a>
+						<a href="notice.php?jb_code=40&amp;search_key=&amp;search_keyword=&amp;page=2" class="btn bg-orange">목록</a>
+					</div>
+
+					<div class="viewComment">
+						<ul>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- //end #container -->
+
+		<?php include_once "../inc/footer.php"?>
+	</div>
+	<!-- //end #wrap -->
+</body>
+
+</html>

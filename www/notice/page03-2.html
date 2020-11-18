@@ -1,0 +1,108 @@
+<?php
+	include_once "../inc/head.php";
+?>
+
+<body>
+	<div id="wrap">
+		<?php include_once "../inc/header.php"?>
+		<section id="container" class="sub">
+			<div id="sub-bnnr">
+				<h2 class="text">소식·자료</h2>
+				<img data-index="4" data-index2="3" src="/resource/images/sub-bnnr04.png" alt="">
+			</div>
+			<!-- //end .sub-bnnr -->
+
+			<?php include_once "../inc/location.php"?>
+
+			<div class="cont-tit">
+				<h3>자료실</h3>
+			</div>
+			<div class="tabMenu s-inner">
+				<p class="mo-show"><a href="#none"></a></p>
+				<ul>
+					<li><a href="page03-1.html">영상자료</a></li>
+					<li class="active"><a href="page03-2.html">문서자료</a></li>
+				</ul>
+			</div>
+			<div class="search">
+				<form id="search_form" name="search_form" method="get" action="?">
+					<input type="hidden" name="jb_code" id="jb_code" value="40">
+					<input type="hidden" name="search_key" id="search_key" value="jb_all">
+					<input type="text" placeholder="검색어를 입력하세요." name="search_keyword" id="search_keyword" value="">
+					<button><img src="/resource/images/search-gray.png" alt="검색" id="search_submit"></button>
+				</form>
+			</div>
+			<div class="s-inner">
+				<div id="btn-box" class="right">
+					<!--a href="#" class="btn bg-deepblue">수정</a-->
+
+					<a class='btn bg-green' href="#" title='글쓰기'><span>글쓰기</span></a>
+				</div>
+				<!-- 게시판 목록 -->
+				<div class="tableType-01 green no-border">
+					<table>
+						<colgroup>
+							<col style="width:120px">
+							<col>
+							<col class="admin" style="width:180px">
+							<col style="width:180px">
+						</colgroup>
+						<thead>
+							<tr>
+								<th>No</th>
+								<th>제목</th>
+								<th class="admin">작성자</th>
+								<th>날짜</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><img src="/resource/images/notice_icon.png" alt=""></td>
+								<td class="title"><a href='#none'>출산여성장애인양육교실<a></td>
+								<td class="admin">관리자</td>
+								<td>2020.09.25</td>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td class="title"><a href='#none'>출산여성장애인양육교실<a></td>
+								<td class="admin">관리자</td>
+								<td>2020.09.25</td>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td class="title"><a href='#none'>출산여성장애인양육교실<a></td>
+								<td class="admin">관리자</td>
+								<td>2020.09.25</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<!-- //end tableType -->
+
+
+				<div class="pagination">
+					<a href="#" title="처음으로 이동하기" class="btn prev">
+						<span><img src="/resource/images/page-all-left.png" width="100%" alt=""></span>
+					</a>
+					<a href="#" title="이전으로 이동하기" class="btn prev">
+						<span><img src="/resource/images/page-left.png" width="100%" alt=""></span>
+					</a>
+					<strong class="btn current" title="현재 페이지">1</strong>
+					<a href="#" class="btn">2</a>
+					<a href="#" title="다음 페이지 이동하기" class="btn next">
+						<span><img src="/resource/images/page-right.png" width="100%" alt=""></span>
+					</a>
+					<a href="#" title="마지막 페이지 이동하기" class="btn next">
+						<span><img src="/resource/images/page-all-right.png" width="100%" alt=""></span>
+					</a>
+				</div>
+			</div>
+		</section>
+		<!-- //end #container -->
+
+		<?php include_once "../inc/footer.php"?>
+	</div>
+	<!-- //end #wrap -->
+</body>
+
+</html>

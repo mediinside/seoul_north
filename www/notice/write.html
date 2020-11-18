@@ -1,0 +1,118 @@
+<?php
+	include_once "../inc/head.php";
+?>
+
+<body>
+	<div id="wrap">
+		<?php include_once "../inc/header.php"?>
+		<section id="container" class="sub">
+			<div id="sub-bnnr">
+				<h2 class="text">소식·자료</h2>
+				<img data-index="4" data-index2="1" src="/resource/images/sub-bnnr04.png" alt="">
+			</div>
+			<!-- //end .sub-bnnr -->
+
+			<?php include_once "../inc/location.php"?>
+
+			<div class="cont-tit" style="opacity: 0;display: none;">
+				<h3>글쓰기</h3>
+			</div>
+			<div class="s-inner">
+				<form name="frm_Board" id="frm_Board" action="" method="post" enctype="multipart/form-data">
+
+					<div class="tableType-01 green">
+						<table width="100%" class="writeType">
+							<colgroup>
+								<col width="15%">
+								<col width="*">
+							</colgroup>
+							<tbody>
+								<tr>
+									<th scope="row">제 목</th>
+									<td><input type="text" class="txtInput" style="width:100%;" id="jb_title" name="jb_title"></td>
+								</tr>
+								<tr>
+									<th scope="row">구분</th>
+									<td>
+										<select name="jb_treat" id="jb_treat" class="txtInput">
+											<option value="">::선택::</option>
+										</select>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">작성자</th>
+									<td>
+										<input type="text" class="txtInput" style="width:100%;" id="jb_name" value="" name="jb_name">
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">이메일</th>
+									<td>
+										<input type="text" class="txtInput" id="jb_email" name="jb_email" value="" style="width:100%;">
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">비밀번호</th>
+									<td>
+										<input type="text" class="txtInput" title="비밀번호 입력" placeholder="비밀번호를 입력해 주세요."
+											id="jb_password" name="jb_password">
+									</td>
+								</tr>
+								<tr>
+									<th scope="row" class="viewLink">링크</th>
+									<td>
+										<input type="text" class="txtInput"  style="width:100%;" id="jb_homepage" name="jb_homepage">
+									</td>
+								</tr>
+								<tr>
+									<th scope="row" class="viewFile"><span class="icon">첨부파일</span></th>
+									<td>
+										<ul>
+											<li>
+												<input type="file" name="jb_file[]" class="fileInput txtInput">
+											</li>
+										</ul>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row" class="alignTop">본문</th>
+									<td>
+										<!-- Text Editor 영역 -->
+										<textarea name="jb_content" id="jb_content" style="display:none"></textarea>
+										<textarea name="ir1" id="ir1"
+											style="width:100%; height:300px; min-width:280px; display:none;"></textarea><iframe
+											frameborder="0" scrolling="no" style="width: 100%; height: 349px;"
+											src="/bbs/smarteditor/SmartEditor2Skin.html"></iframe>
+										<!-- // Text Editor 영역 끝 -->
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">자동입력방지</th>
+									<td>
+										<img src="/bbs/zmSpamFree/zmSpamFree.php?zsfimg=1603706232" id="zsfImg" alt="아래 새로고침을 클릭해 주세요.">
+										<input type="text" id="zsfCode" class="txtInput" name="zsfCode" maxlength="10" size="8">
+										<a title="새로고침" href="#"
+											onclick="document.getElementById('zsfImg').src='/bbs/zmSpamFree/zmSpamFree.php?re&amp;zsfimg=' + new Date().getTime(); return false;">[ 새로고침 ]</a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<div id="btn-box" class="center">
+							<a href="#none" class="btn bg-deepblue" id="img_submit">확인</a>
+							<a href="javascript:history.go(-1);" class="btn bg-red">취소</a>
+						</div>
+					</div>
+					<input type="hidden" name="jb_bruse_check" value="Y" checked="">
+					<input type="hidden" name="img_full_name" id="img_full_name">
+					<input type="hidden" name="upfolder" id="upfolder" value="jb_40">
+				</form>
+			</div>
+		</section>
+		<!-- //end #container -->
+
+		<?php include_once "../inc/footer.php"?>
+	</div>
+	<!-- //end #wrap -->
+</body>
+
+</html>

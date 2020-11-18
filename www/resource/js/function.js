@@ -105,7 +105,21 @@ $(document).ready(function(){
         $("nav").toggleClass('on')
     });
 
+	var dIdx = $("#sub-bnnr img").data('index');
+	var cTxt = $(".cont-tit h3").text();
+	$("#location dl").append(
+		$('#gnb-sub dl').eq(dIdx-1).find('dd').clone()
+	);
+	$("#location p a").text(cTxt);
+	$("#location p a").on("click",function(){
+		$("#location dl").slideToggle();
+	});
 
+	var tabTxt = $(".tabMenu li.active a").text();
+	$(".tabMenu p a").text(tabTxt);
+	$(".tabMenu p a").on("click",function(){
+		$(".tabMenu ul").slideToggle(250);
+	});
 
 });
 
@@ -136,9 +150,23 @@ $(window).on("load resize",function(){
 		});
 	}else{
 		$("#gnb-sub").show();
-
 		$("#gnb-sub dl dt a").on("click",function(){
-			$(this).parents('dl').toggleClass('on').siblings('dl').removeClass('on');
+			var $this = $(this).parents('dl');
+			if($this.prop('class')){
+				$this.removeClass('on');
+			}else{
+				$this.addClass('on').siblings().removeClass('on');
+			};
 		});
+	};
+
+		var sIdx = $("#sub-bnnr img").data('index2');
+	if(win_W > 1024){
+		//로캐이션
+		console.log(sIdx);
+		$("#location dl dd").eq(sIdx-1).on("click",function(){
+			$(this).addClass('on');
+		});
+		$("#location dl dd").eq(sIdx-1).trigger('click');
 	};
 });
