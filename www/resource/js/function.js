@@ -126,6 +126,8 @@ $(document).ready(function(){
 $(window).on("load resize",function(){
 	var win_W = $(window).width();
 	if(win_W >= 1201){
+		$("#gnb-sub").hide();
+
 		//메인메뉴 on/off
 		$("#gnb li a").mouseenter(function(){
 			$("#gnb-sub").slideDown();

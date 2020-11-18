@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=820">
+	<meta name="viewport" content="width=768">
 	<title>서울북부장애인보건의료센터</title>
 	<link rel="stylesheet" href="/resource/css/reset.css">
 	<link rel="stylesheet" href="/resource/css/style.css">

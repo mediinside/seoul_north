@@ -115,9 +115,9 @@
 								<dd><a href="/notice/page03-1.html">자료실</a></dd>
 							</dl>
 							<dl>
-								<dt><a href="#">상담/참여</a></dt>
+								<dt><a href="#">상담</a></dt>
 								<dd>
-									<a href="#">상담신청</a>
+									<a href="/consulting/page01-1.html">상담신청</a>
 									<!-- <ul>
 										<li><a href="#">- 온라인 상담</a></li>
 										<li><a href="#">- 전화 상담</a></li>
