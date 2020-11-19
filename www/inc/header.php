@@ -110,9 +110,9 @@
 							</dl>
 							<dl>
 								<dt><a href="#none">소식·자료</a></dt>
-								<dd><a href="/notice/page01.html">센터 소식</a></dd>
-								<dd><a href="/notice/page02.html">건강복지 소식</a></dd>
-								<dd><a href="/notice/page03-1.html">자료실</a></dd>
+								<dd><a href="/notice/notice.php?jb_code=10">센터 소식</a></dd>
+								<dd><a href="/notice/notice.php?jb_code=30">건강복지 소식</a></dd>
+								<dd><a href="/notice/notice.php?jb_code=40">자료실</a></dd>
 							</dl>
 							<dl>
 								<dt><a href="#">상담</a></dt>
