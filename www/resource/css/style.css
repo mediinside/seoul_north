@@ -1110,6 +1110,10 @@ footer {
     color: #fff;
     border-color: #ffa200;
     background-color: #ffa200; }
+  .btn.bg-brown {
+    color: #ffe400;
+    border-color: #3c1e1e;
+    background-color: #3c1e1e; }
   .btn.border-green {
     border-color: #26b27c; }
   .btn img {
@@ -1492,6 +1496,180 @@ footer {
         line-height: 60px;
         background-color: #efefef; }
 
+.consult-box {
+  padding: 65px 0;
+  background-image: url("/resource/images/now-consult.png");
+  background-repeat: no-repeat;
+  background-position: center; }
+  .consult-box .consult {
+    width: 100%;
+    max-width: 828px;
+    margin: 0 auto;
+    padding: 54px 0;
+    background-color: #ffe400;
+    text-align: center; }
+    .consult-box .consult p {
+      position: relative;
+      margin-bottom: 25px;
+      padding: 25px 0;
+      color: #3c1e1e;
+      font-size: 2rem; }
+      .consult-box .consult p:after {
+        display: block;
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        width: 30px;
+        height: 1px;
+        margin-left: -15px;
+        background-color: #3c1e1e;
+        content: ''; }
+
+/* -------------------------
+		FnQ Start
+---------------------------- */
+.accordion {
+  margin-top: 100px;
+  margin-bottom: 60px;
+  border-top: 2px solid #8cbf39; }
+
+.accordion .item {
+  border-bottom: 1px solid #ddd;
+  transition: all 0.1s; }
+
+.accordion .item.active .collapsed {
+  display: block; }
+
+.accordion .item.active .collapsed:after {
+  display: none; }
+
+.accordion .item.active .collapse {
+  display: block; }
+
+.accordion .item .collapsed {
+  display: block;
+  position: relative;
+  width: 100%;
+  padding: 25px 80px 25px 80px;
+  color: #333;
+  font-size: 2rem;
+  line-height: 1.3;
+  box-sizing: border-box;
+  word-break: keep-all; }
+
+.accordion .item .collapsed span {
+  position: relative; }
+
+.accordion .item .collapsed span:before {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: -40px;
+  width: 30px;
+  height: 30px;
+  margin-top: -15px;
+  color: #fff;
+  font-size: 2rem;
+  line-height: 28px;
+  text-align: center;
+  text-indent: -2px;
+  border-radius: 100%;
+  background-color: #6ec700;
+  content: 'Q'; }
+
+.accordion .item .collapsed span.mail:before {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: -40px;
+  width: 30px;
+  height: 30px;
+  margin-top: -15px;
+  color: #8cbf39;
+  font-size: 2rem;
+  line-height: 1.3;
+  text-align: center;
+  text-indent: -2px;
+  border-radius: 100%;
+  background-image: url(../images/sub/mail.png);
+  background-repeat: no-repeat;
+  background-size: 20px auto;
+  background-position: center;
+  /* background-color: #777052; */
+  content: ''; }
+
+.accordion .item .collapsed:before {
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: 30px;
+  width: 2px;
+  height: 20px;
+  margin-top: -10px;
+  background-color: #8cbf39;
+  transform: rotateZ(90deg);
+  content: ''; }
+
+.accordion .item .collapsed:after {
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: 30px;
+  width: 2px;
+  height: 20px;
+  margin-top: -10px;
+  background-color: #8cbf39;
+  content: ''; }
+
+.accordion .item .collapse {
+  display: none;
+  position: relative;
+  padding: 40px 50px 40px 80px;
+  box-sizing: border-box;
+  background-color: #f9f9f9; }
+
+.accordion .item .collapse:before {
+  display: none;
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  width: 30px;
+  height: 30px;
+  color: #8cbf39;
+  font-size: 2rem;
+  line-height: 1.3rem;
+  text-align: center;
+  border-radius: 100%;
+  background-color: #ccc;
+  content: 'A'; }
+
+.accordion .item.active .collapse {
+  border-top: 1px solid #ddd;
+  font-size: 2rem; }
+  .accordion .item.active .collapse *:not(.btn) {
+    color: #111;
+    font-size: 2rem;
+    font-family: 'Noto Sans KR';
+    letter-spacing: -0.75px; }
+  .accordion .item.active .collapse p {
+    margin-bottom: 10px;
+    font-weight: 400; }
+  .accordion .item.active .collapse b {
+    font-weight: 500; }
+  .accordion .item.active .collapse a.down {
+    color: #344aa0;
+    vertical-align: middle;
+    line-height: 1; }
+    .accordion .item.active .collapse a.down:hover {
+      opacity: 0.8; }
+    .accordion .item.active .collapse a.down img {
+      margin-top: -2px; }
+
+.accordion .item .collapse p {
+  color: #444;
+  font-size: 2rem;
+  line-height: 1.4; }
+
 /*
 	media
 */
@@ -1707,7 +1885,7 @@ footer {
 
   .input_box.list {
     width: 100%; } }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1023px) {
   .cont-tit {
     font-size: 5.5rem; }
     .cont-tit p {
@@ -1958,7 +2136,40 @@ footer {
         .tabMenu ul li a {
           font-size: 3.0rem;
           line-height: 80px;
-          background-color: #fff; } }
+          background-color: #fff; }
+
+  .consult-box {
+    padding: 65px;
+    background-size: cover; }
+    .consult-box .consult {
+      padding: 35px;
+      box-sizing: border-box; }
+      .consult-box .consult p {
+        margin-bottom: 25px;
+        padding: 25px 0;
+        font-size: 2.4rem; }
+
+  /* -------------------------
+  		FnQ Start
+  ---------------------------- */
+  .accordion .item .collapsed {
+    font-size: 3.2rem; }
+
+  .accordion .item .collapsed span:before {
+    left: -60px;
+    width: 40px;
+    height: 40px;
+    margin-top: -20px;
+    font-size: 3rem;
+    line-height: 38px; }
+
+  .accordion .item.active .collapse {
+    font-size: 3rem; }
+    .accordion .item.active .collapse *:not(.btn) {
+      font-size: 3rem; }
+
+  .accordion .item .collapse p {
+    font-size: 3rem; } }
 @media screen and (max-width: 768px) {
   #main-slide .swiper-pagination {
     top: auto;
@@ -1982,6 +2193,12 @@ footer {
         #main-health .inner .right > div p {
           font-size: 4rem; }
           #main-health .inner .right > div p small {
-            font-size: 3rem; } }
+            font-size: 3rem; }
+
+  .consult-box .consult p {
+    margin-bottom: 35px;
+    padding: 35px 0;
+    font-size: 3rem;
+    line-height: 1.3; } }
 
 /*# sourceMappingURL=style.css.map */

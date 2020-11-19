@@ -121,6 +121,17 @@ $(document).ready(function(){
 		$(".tabMenu ul").slideToggle(250);
 	});
 
+
+	//자주하는 질문
+	 $(".accordion .item .collapsed").on("click", function () {
+		if ($(this).parent('.item').hasClass("active")) {
+			$(this).parent('.item').removeClass("active").find('.collapsed').attr('title', '열기');
+		} else {
+			$(this).parent('.item').addClass("active").find('.collapsed').attr('title', '닫기');
+			$(this).parent('.item').siblings().removeClass("active")
+		}
+	});
+
 });
 
 $(window).on("load resize",function(){
@@ -130,10 +141,10 @@ $(window).on("load resize",function(){
 
 		//메인메뉴 on/off
 		$("#gnb li a").mouseenter(function(){
-			$("#gnb-sub").slideDown();
+			$("#gnb-sub").stop().slideDown();
 		});
 		$("nav").mouseleave(function(){
-			$("#gnb-sub").slideUp();
+			$("#gnb-sub").stop().slideUp();
 		});
 
 		//메인메뉴 hover이벤트

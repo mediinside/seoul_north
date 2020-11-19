@@ -124,7 +124,7 @@
 										<li><a href="#">- 실시간 상담</a></li>
 									</ul> -->
 								</dd>
-								<dd><a href="#">자주하는 질문</a></dd>
+								<dd><a href="/consulting/page02.html">자주하는 질문</a></dd>
 							</dl>
 						</div>
 					</div>
