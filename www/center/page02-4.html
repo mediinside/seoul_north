@@ -1,0 +1,89 @@
+<?php
+	include_once "../inc/head.php";
+?>
+<style>
+	.input_box.list span {
+		display: inline-block;
+		margin-top: 15px;
+	}
+	@media screen and (max-width:1023px){
+		.s-pad-box.flex {
+			display: block;
+		}
+		.s-pad-box.flex img {
+			display: block;
+			margin:0 auto !important;
+		}
+		.input_box.list {
+			text-align: center;
+		}
+	}
+	@media screen and (max-width:768px){
+		.s-pad-box.flex img {
+			width: 100%;
+		}
+	}
+</style>
+<body>
+	<div id="wrap">
+		<?php include_once "../inc/header.php"?>
+		<section id="container" class="sub">
+			<div id="sub-bnnr">
+				<h2 class="text">센터안내</h2>
+				<img data-index="1" data-index2="2" src="/resource/images/sub-bnnr01.png" alt="">
+			</div>
+			<!-- //end .sub-bnnr -->
+
+			<?php include_once "../inc/location.php"?>
+
+			<div class="cont-tit">
+				<h3>사업개요</h3>
+			</div>
+			<div class="s-inner">
+				<div class="tabMenu">
+					<p class="mo-show"><a href="#none"></a></p>
+					<ul>
+						<li><a href="page02-1.html">설립목적</a></li>
+						<li><a href="page02-2.html">설립근거</a></li>
+						<li><a href="page02-3.html">추진체계</a></li>
+						<li class="active"><a href="page02-4.html">CI</a></li>
+					</ul>
+				</div>
+				<!-- //end tab -->
+
+				<h3 class="cont-sub-tit">CI</h3>
+				<div class="cont-box">
+					<h4 class="cont-label">TYPE</h4>
+					<div class="cont">
+						<div class="s-pad-box flex" style="padding:0;">
+							<div class="input_box list">
+								<img src="/resource/images/ci-logo1.png" alt="" style="margin:0;max-width: 100%;">
+								<span>[국문 가로형]</span>
+							</div>
+							<div class="input_box list">
+								<img src="/resource/images/ci-logo2.png" alt="" style="margin:0;max-width: 100%;">
+								<span>[국문 세로형]</span>
+							</div>
+						</div>
+
+						<div id="btn-box" class="center file">
+							<a class="btn bg-deepblue" href="/resource/file/ai.zip">
+								<img src="/resource/images/down-01.png" alt=""> AI 다운로드
+							</a>
+							<a class="btn bg-deepblue" href="/resource/file/png.zip">
+								<img src="/resource/images/down-01.png" alt=""> PNG 다운로드
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- //end .s-inner -->
+		</section>
+		<!-- //end #container -->
+
+		<?php include_once "../inc/footer.php"?>
+	</div>
+	<!-- //end #wrap -->
+</body>
+
+</html>
