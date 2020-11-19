@@ -105,12 +105,15 @@ $(document).ready(function(){
         $("nav").toggleClass('on')
     });
 
+	//로캐이션
 	var dIdx = $("#sub-bnnr img").data('index');
-	var cTxt = $(".cont-tit h3").text();
+	// var cTxt = $(".cont-tit h3").text();
+	var sIdx = $("#sub-bnnr img").data('index2');
+	var nTxt = $("#gnb-sub dl").eq(dIdx-1).find('dd').eq(sIdx-1).find('a').text();
 	$("#location dl").append(
 		$('#gnb-sub dl').eq(dIdx-1).find('dd').clone()
 	);
-	$("#location p a").text(cTxt);
+	$("#location p a").text(nTxt);
 	$("#location p a").on("click",function(){
 		$("#location dl").slideToggle();
 	});
@@ -173,7 +176,7 @@ $(window).on("load resize",function(){
 		});
 	};
 
-		var sIdx = $("#sub-bnnr img").data('index2');
+	var sIdx = $("#sub-bnnr img").data('index2');
 	if(win_W > 1024){
 		//로캐이션
 		console.log(sIdx);
