@@ -38,8 +38,7 @@ if($data_list_cnt > 0) {
 			$jb_order					= $data_list[$i]['jb_order'];
 			$jb_idx						= $data_list[$i]['jb_idx'];
 			$jb_step					= $data_list[$i]['jb_step'];
-            //$jb_title 					= $C_Func->strcut_utf8($data_list[$i]['jb_title'], 100, true, "...");	//제목 (길이, HTML TAG제한여부 처리)
-            $jb_title 					= $data_list[$i]['jb_title'];
+			$jb_title 					= $C_Func->strcut_utf8($data_list[$i]['jb_title'], 100, true, "...");	//제목 (길이, HTML TAG제한여부 처리)
 			$jb_content					= $C_Func->dec_contents_edit($data_list[$i]['jb_content']);
            // $jb_content					= trim(strip_tags($jb_content));
 
@@ -111,26 +110,20 @@ if($data_list_cnt > 0) {
 
 
             if($check_level >= 9 || $check_id == $jb_mb_id)
-            $modify = "<a class='btn-sm bg-blue ft-c01 mt60' href=\"${get_par}\"  title=\"수정\">수정</a>";
+            $modify = "<a class='btn-sm ft-c01 ' href=\"${get_par}\"  title=\"수정\">수정</a>";
 
 		/*
 		*/
-                echo ("                   
-                     
+                echo ("
                         <div class='item'>
-                            <a href='#none' class='collapsed' title='열기'>
-                                <span>${jb_title}</span>
-                            </a>
-                            <div class='collapse'>
-                                <p></p>
-                                <div>
-                                <p>${jb_content}</p>    
-                                ${modify}
-                                </div>
-                               
-                                <p></p>
-                            </div>                            
-                        </div>
+							<a href='#none' class='collapsed' title='열기'>
+								<span>${jb_title}</span>
+							</a>
+							<div class='collapse'>
+								<p>${jb_content}</p>
+								${modify}
+                            </div>
+						</div>
                      ");
 
 			$dummy++;

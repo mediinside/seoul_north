@@ -1,23 +1,3 @@
-<?
-            if($jb_code == "20" ){$title = "센터 소식";}              
-            elseif($jb_code == "50" || $jb_code == "60"){$title = "자료실";}      
-            ?>
-            <div class="cont-tit">
-                <h3><?=$title?></h3>
-            </div>	
-            <?
-                if($jb_code == "50"){$class2 = "class='active'";
-                    
-            ?> 
-			<div class="tabMenu s-inner">
-				<p class="mo-show"><a href="#none"></a></p>
-				<ul>
-					<li><a href="/notice/notice.php?jb_code=40">문서자료</a></li>
-					<li class="active"><a href="/notice/notice.php?jb_code=50">영상자료</a></li>
-                    <li><a href="/notice/notice.php?jb_code=60">서식자료</a></li>
-				</ul>
-			</div>
-            <?}?>	
 <div class="cont-tit" style="opacity: 0;display: none;">
 				<h3>글읽기</h3>
 			</div>
@@ -54,7 +34,7 @@
 								</td>
 							</tr>
 													
-							<!--<?php if($file_cnt > 0) {?>
+							<?php if($file_cnt > 0) {?>
 							<tr>
                                 <td style="text-align:left;" colspan="3">
 									<div class="viewFile">
@@ -83,7 +63,7 @@
 									</div>
 								</td>
 							</tr>
-							<?}?>-->
+							<?}?>
 									
 
 						</tbody>
@@ -91,10 +71,8 @@
 					<div id="btn-box" class="right">
 						<a href="<?=$get_par1?>" class="btn bg-green">이전글</a>
 						<a href="<?=$get_par2?>" class="btn bg-green">다음글</a>
-						<?if($check_level >= $db_config_data['jba_write_level']) {?>
 						<a href="#none" onclick="javascript:location.href='<?=$get_par?>&jb_mode=tdelete'"  class="btn bg-red" title="삭제">삭제</a>
 						<a href="#\" onclick="javascript:location.href='<?=$get_par?>&jb_mode=tmodify'"  class="btn bg-deepblue" title="수정">수정</a>
-						<?}?>
 						<a href="<?=$index_page?>?jb_code=<?=$jb_code?>&<?=$search_key?>&search_keyword=<?=$search_keyword?>&page=<?=$page?>" class="btn bg-orange">목록</a>
 					</div>
 

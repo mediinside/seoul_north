@@ -62,7 +62,7 @@ if (!$jb_idx || $db_config_data['jba_list_use'] == "Y") {
 		if($_SESSION['suserlevel'] < 9){
 			$args['jb_etc3'] = 'A';	
 		}
-	}
+	}	
 	
 	$data = "";
 	$data = $C_JHBoard -> Board_List(array_merge($_GET,$_POST,$args));
@@ -72,8 +72,8 @@ if (!$jb_idx || $db_config_data['jba_list_use'] == "Y") {
 	$page_search 		= $data['page_info']['search'];
 	$totalcount 		= $data['page_info']['total'];
 	$totalpages 		= $data['page_info']['totalpages'];
-	$nowPage 				= $data['page_info']['page'];	
-	$num_idx				= $data['page_info']['start_num'];
+	$nowPage 			= $data['page_info']['page'];	
+	$num_idx			= $data['page_info']['start_num'];
 	
 	$totalcount_l 	= number_format($totalcount,0);
 	$data_list_cnt 	= count($data_list);
@@ -229,14 +229,9 @@ switch($jb_mode) {
 			");
 		}
 		break;
-		case("mix") :			
-			include $GP -> INC_PATH . "/skin/basic/board_list.php";	
-			include $GP -> INC_PATH . "/skin/gallery/board_list.php";	
-
-		break;
-        
+		        
         # Default(글 읽기와 글 리스트)
-	default :
+	default :	
     include $GP -> INC_PATH . "/${skin_dir}/board_list.php";	
 
 

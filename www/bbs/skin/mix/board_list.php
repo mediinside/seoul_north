@@ -30,8 +30,7 @@
         </form>
     </div>
     
-    <div class="s-inner">
-        
+    <div class="s-inner">      
         <?php
             if($_GET['search_key'] && $_GET['search_keyword']) {
                 echo "<a href=\"javascript:;\" class=\"btn0\" onclick=\"javascript:location.href='${index_page}?jb_code=${jb_code}'\" title='목록'><span>목록</span></a>";
@@ -42,8 +41,7 @@
             } else {
             //	echo "<a class='btn btn_middle' id='twrite_btn' title='글쓰기'><strong>글쓰기</strong></a>";
             }
-        ?>          
-        
+        ?>                 
         <!-- 게시판 목록 -->
         <div class="tableType-01 green no-border">
             <table>
@@ -62,7 +60,7 @@
                     </tr>
                 </thead>
                 <tbody>
-            <?php include $GP -> INC_PATH . "/${skin_dir}/board_list_inc.php";	?>
+            <?php include $GP -> INC_PATH . "/${skin_dir}/board_list_basic_inc.php";	?>
                  </tbody>
             </table>
         </div>
@@ -70,7 +68,30 @@
         <div class="pagination">
             <?=$page_link?>														
         </div>
-        </div>
+    </div>
+    <div id="sub-notice" style="margin-top: 60px;">               
+                <div class="s-inner" style="margin-top: -60px;">
+					<div id="main-center-list">
+						<ul>
+							<?php include $GP -> INC_PATH . "/${skin_dir}/board_list_gallery_inc.php";	?>
+                         </ul>
+					</div>
+					<!-- //end #main-center-list -->                   
+					<?php
+                        if($_GET['search_key'] && $_GET['search_keyword']) {
+                            echo "<a href=\"javascript:;\" class=\"btn0\" onclick=\"javascript:location.href='${index_page}?jb_code=${jb_code}'\" title='목록'><span>목록</span></a>";
+                        }       
+                        //쓰기권한
+                        if($check_level >= $db_config_data['jba_write_level']) {
+                            echo "<div id='btn-box' class='right'><a class='btn bg-green' href=\"#\" onclick=\"javascript:location.href='${index_page}?jb_code=${jb_code}&jb_mode=twrite'\" title='글쓰기'><span>글쓰기</span></a></div>";
+                        } else {
+                        //	echo "<a class='btn btn_middle' id='twrite_btn' title='글쓰기'><strong>글쓰기</strong></a>";
+                        }
+                    ?>                      
+                    <div class="pagination">
+                      <?=$page_link?>
+                    </div>
+            </div>
     </section>
     <!-- //end #container -->
 
