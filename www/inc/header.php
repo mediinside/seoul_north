@@ -86,13 +86,13 @@
 						</div>
 						<div class="inner">
 							<dl>
-								<dt><a href="#">센터안내</a></dt>
-								<dd><a href="#">인사말</a></dd>
-								<dd><a href="#">사업개요</a></dd>
-								<dd><a href="#">전국센터현황</a></dd>
-								<dd><a href="#">업무협력기관</a></dd>
-								<dd><a href="#">직원안내</a></dd>
-								<dd><a href="#">오시는 길</a></dd>
+								<dt><a href="#none">센터안내</a></dt>
+								<dd><a href="/center/page01.html">인사말</a></dd>
+								<dd><a href="/center/page02-1.html">사업개요</a></dd>
+								<dd><a href="/center/page03.html">전국센터현황</a></dd>
+								<dd><a href="/center/page04-1.html">업무협력기관</a></dd>
+								<dd><a href="/center/page05.html">직원안내</a></dd>
+								<dd><a href="/center/page06.html">오시는 길</a></dd>
 							</dl>
 							<dl>
 								<dt><a href="#">사업안내</a></dt>

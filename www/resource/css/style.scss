@@ -129,6 +129,143 @@
 	}
 }
 
+.help-text {
+	padding:8px 0;
+	font-size: 2rem;
+}
+
+.middot-list {
+	margin-bottom: 26px;
+
+	li {
+		position: relative;
+		margin: 3px 0;
+		padding-left: 15px;
+		font-size: 2rem;
+		font-weight: 400;
+
+		&:before {
+			position: absolute;
+			top: 11px;
+			left: 0;
+			width: 7px;
+			height: 7px;
+			border-radius: 100%;
+			background-color: #8cbf39;
+			content: '';
+		}
+	}
+}
+
+.dash-list {
+	margin-bottom: 26px;
+
+	&.inline {
+		display: inline-block;
+		min-width: 175px;
+		vertical-align: top;
+	}
+
+	dt {
+		font-size: 2.2rem;
+		font-weight: 500;
+	}
+
+	dd {
+		position: relative;
+		margin: 3px 0;
+		padding-left: 8px;
+		font-size: 2rem;
+		font-weight: 400;
+
+		&:before {
+			position: absolute;
+			top: 14px;
+			left: 0;
+			width: 4px;
+			height: 1px;
+			border-radius: 100%;
+			background-color: #222;
+			content: '';
+		}
+	}
+}//end .dash-list
+
+.s-pad-box {
+	display: block;
+	width: 100%;
+	margin: 45px auto;
+	padding: 20px 45px;
+	color:#444444 !important;
+	font-size: 2rem;
+	font-weight: 400;
+	line-height: 1.6;
+	text-align: center;
+	letter-spacing: -0.9px;
+	box-sizing: border-box;
+	&.flex {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		&.center {
+			align-items: flex-start;
+			justify-content: center;
+		}
+	}
+	&.text-left {
+		text-align: left;
+	}
+	&.gray {
+		background-color: #f3f3f3;
+	}
+	&.blue {
+		color:#fff !important;
+		background-color: #1795d0;
+	}
+	&.red {
+		color: #fff !important;
+		background-color: #eb3447;
+	}
+	&.orange {
+		color:#fff !important;
+		background-color: #ffa200;
+	}
+	img {
+		margin-right: 7px;
+		vertical-align: middle;
+	}
+	.tit {
+		position: relative;
+		margin-right: 20px;
+		flex-shrink: 0;
+		font-size: 2rem;
+		color:#344aa0;
+		&.bar {
+			padding-right: 20px;
+			&:after {
+				display: block;
+				position: absolute;
+				top: 50%;
+				left: 100%;
+				width: 1px;
+				height: 15px;
+				margin-top: -7px;
+				background-color: #aaa;
+				content:'';
+			}
+		}
+	}//end .tit
+	.txt {
+		display: inline-block;
+		font-size: 2rem;
+		word-break: keep-all;
+		text-align: left;
+	}//end .txt
+	&+.s-pad-box {
+		margin-top: -15px;
+	}
+}
+
 
 /* 퀵메뉴 */
 #quick {
@@ -294,7 +431,7 @@ header {
 				}//end p
 				small {
 					font-size: 2rem;
-					font-weight: 300;
+					font-weight: 400;
 					letter-spacing: -1.9px;
 				}//end small
 			}//end .bnnr
@@ -474,7 +611,7 @@ footer {
 			h2 {
 				margin-bottom: 30px;
 				font-size: 2rem;
-				font-weight: 300;
+				font-weight: 400;
 				line-height: 1;
 				letter-spacing: -1px;
 				color: #ffffff;
@@ -483,7 +620,7 @@ footer {
 				display: inline-block;
 				margin-right: 20px;
 				font-size: 2rem;
-				font-weight: 300;
+				font-weight: 400;
 				line-height: 1.6;
 				letter-spacing: -1px;
 				color: #838383;
@@ -509,7 +646,7 @@ footer {
 			padding:0 15px;
 			color:#fff;
 			font-size: 2rem;
-			font-weight: 300;
+			font-weight: 400;
 			&:after {
 				position: absolute;
 				top: 50%;
@@ -802,7 +939,7 @@ footer {
 							margin-top: 1rem;
 							color: #999;
 							font-size: 1.6rem;
-							font-weight: 300;
+							font-weight: 400;
 							line-height: 1.4;
 							letter-spacing: -0.9px;
 						}
@@ -820,7 +957,7 @@ footer {
 						padding:0 10px;
 						color:#a6a6a6;
 						font-size: 1.4rem;
-						font-weight: 300;
+						font-weight: 400;
 						vertical-align: middle;
 						&.label {
 							display: inline-block;
@@ -1025,7 +1162,7 @@ footer {
 						padding:0 10px;
 						color:#a6a6a6;
 						font-size: 1.4rem;
-						font-weight: 300;
+						font-weight: 400;
 						vertical-align: middle;
 						&.label {
 							display: inline-block;
@@ -1177,7 +1314,7 @@ footer {
 					width: 36px;
 					height: 36px;
 					font-size: 1.6rem;
-					font-weight: 300;
+					font-weight: 400;
 					letter-spacing: -0.8px;
 					color: #ffffff;
 					text-indent: 9999px;
@@ -1314,6 +1451,11 @@ footer {
 	&.right {
 		justify-content: flex-end;
 	}
+	&.file {
+		.btn {
+			width: 260px;
+		}
+	}
 }
 .btn {
 	display: inline-block;
@@ -1330,6 +1472,74 @@ footer {
 	text-indent: 0 !important;
 	text-decoration: none;
 	line-height: 48px;
+	white-space: nowrap;
+	vertical-align: middle;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	background-color: #fff;
+	transition: all 0.2s;
+	&:hover {
+		opacity: 0.85;
+	}
+	&.block {
+		width: 100%;
+	}
+	&.bg-deepblue {
+		color:#fff;
+		border-color:#344aa0;
+		background-color: #344aa0;
+	}//end .bg-blue
+	&.bg-green {
+		color:#fff;
+		border-color:#8cbf39;
+		background-color: #8cbf39;
+	}//end .bg-green
+	&.bg-red {
+		color:#fff;
+		border-color:#eb3447;
+		background-color: #eb3447;
+	}//end .bg-green
+	&.bg-orange {
+		color:#fff;
+		border-color:#ffa200;
+		background-color: #ffa200;
+	}
+	&.bg-brown {
+		color: #ffe400;
+		border-color: #3c1e1e;
+		background-color: #3c1e1e;
+	}
+
+	&.border-green {
+		border-color:#26b27c;
+	}//end .bg-green
+
+	img {
+		margin-top: -2px;
+		&.left {
+			margin-right: 10px;
+		}
+		&.right {
+			margin-left: 10px;
+		}
+	}//end img
+}//end .btn
+
+.btn-xs {
+	display: inline-block;
+	height: 35px;
+	padding: 0 15px;
+	color: #333;
+	font-size: 1.7rem;
+	font-weight: 400;
+	border: 1px solid #ddd;
+	box-sizing: border-box;
+	outline: none;
+	cursor: pointer;
+	text-align: center;
+	text-indent: 0 !important;
+	text-decoration: none;
+	line-height: 33px;
 	white-space: nowrap;
 	vertical-align: middle;
 	-ms-touch-action: manipulation;
@@ -1827,7 +2037,7 @@ footer {
 
 .tabMenu {
 	margin-top: 50px;
-	margin-bottom: 30px;
+	margin-bottom: 70px;
 	ul {
 		display: flex;
 		li {
@@ -1845,7 +2055,8 @@ footer {
 				display: block;
 				width: 100%;
 				color: #333;
-				font-size: 2.0rem;
+				font-size: 2.2rem;
+				font-weight: 500;
 				line-height: 60px;
 				background-color: #efefef;
 			}//end a
@@ -2054,6 +2265,360 @@ footer {
 	line-height: 1.4;
 }
 
+.cont-box {
+	position: relative;
+	display: flex;
+	padding:40px 0;
+	box-sizing: border-box;
+	&:before {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 2px;
+		background-color: #e3e3e3;
+		content:'';
+	}
+	&:after {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 170px;
+		height: 2px;
+		background-color: #344aa0;
+		content: '';
+	}
+
+	&.green:after {
+		background-color: #8cbf39;
+	}
+	.cont-label {
+		flex-shrink: 0;
+		width: 240px;
+		color: #333333;
+		font-size: 2.5rem;
+		font-weight: 500;
+		line-height: 1.4;
+		letter-spacing: -1.25px;
+	}//end .cont-label
+	.cont {
+		width: 100%;
+		> p {
+			font-size: 2rem;
+		}
+	}
+	.cont-step {
+		width: 100%;
+		li {
+			display: flex;
+			align-items: center;
+			justify-content: flex-start;
+			padding:16px;
+			border-bottom: 1px solid #eee;
+			box-sizing: border-box;
+			> * {
+				padding:0 10px;
+			}
+			> span {
+				width: 60px;
+				text-align: center;
+				flex-shrink: 0;
+				img {
+					max-width: 60px;
+				}
+			}
+			.step-tit {
+				width: 250px;
+				padding-left: 20px;
+				font-size: 1.8rem;
+				font-weight: 500;
+				flex-shrink: 0;
+			}//end .step-tit
+			.step-text {
+				font-size: 1.7rem;
+				font-weight: 400;
+				letter-spacing: -0.9px;
+			}//end .step-text
+		}//end li
+	}//end .cont-step
+}//end .cont-box
+
+.arrow-box {
+	display: flex;
+	justify-content: space-between;
+	margin: 40px auto;
+	>div {
+		display: flex;
+		align-items: center;
+		width: 48.5%;
+		padding:50px;
+		border-radius: 30px;
+		box-sizing: border-box;
+		&.left {
+			position: relative;
+			border:2px solid #ddd;
+			&:after {
+				position: absolute;
+				top: 50%;
+				left: 100%;
+				transform: translateY(-50%);
+				content:url('/resource/images/cont-arrow.png');
+			}
+		}//end .left
+		&.right {
+			background-color: #c6d8e8;
+			.middot-list {
+				li {
+					&:before {
+						background-color: #111;
+					}
+				}
+			}
+		}//end right
+		.middot-list {
+			margin-bottom: 0;
+		}
+	}
+}//end arrow-box
+
+
+/* 전국센터현황 */
+.sCont {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	padding:30px;
+	box-sizing: border-box;
+	background-color: #f6f6f6;
+}//end .sCont
+.koreaMap {
+	position: relative;
+	display: inline-block;
+	flex-shrink: 0;
+	width: 620px;
+	text-align: center;
+	padding-bottom: 50px;
+	.help-text {
+		font-size: 18px;
+	}
+	.pointBtn {
+		display: inline-block;
+		&.mapPoint01 {
+			position: absolute;
+			bottom: 206px;
+			left: 430px;
+		}
+
+		&.mapPoint02 {
+			position: absolute;
+			top: 155px;
+			left: 220px;
+		}
+
+		&.mapPoint03 {
+			position: absolute;
+			top: 140px;
+			left: 370px;
+		}
+
+		&.mapPoint04 {
+			position: absolute;
+			top: 325px;
+			left: 255px;
+		}
+
+		&.mapPoint05 {
+			position: absolute;
+			top: 380px;
+			left: 220px;
+		}
+
+		&.mapPoint06 {
+			position: absolute;
+			top: 205px;
+			left: 250px;
+		}
+
+		&.mapPoint07 {
+			position: absolute;
+			top: 140px;
+			left: 190px;
+		}
+
+		&.mapPoint08 {
+			position: absolute;
+			bottom: 164px;
+			left: 410px;
+		}
+
+		&.mapPoint09 {
+			position: absolute;
+			bottom: 70px;
+			left: 465px;
+		}
+
+		.numMap {
+			display: inline-block;
+			background: url(/resource/images/center-point.png)no-repeat 0 0;
+			width: 29px;
+			height: 39px;
+			line-height: 32px;
+			color: #FFF;
+			text-indent: -9999px;
+		}
+
+		.numArea {
+			display: none;
+			background: #ddd;
+			color: #555;
+			padding: 5px 10px 5px 10px;
+			border-radius: 5px;
+		}
+
+		&:hover {
+			min-width: 180px;
+			text-align: left;
+			.numArea {
+				display: inline-block;
+				vertical-align: middle;
+				font-size: 1.9rem !important;
+			}
+		}
+	}//end .pointMap
+}//end .koreaMap
+
+
+.areaList {
+	overflow: hidden;
+	overflow-y: auto;
+	width: 45%;
+	max-height:700px;
+	padding-top: 1px;
+}
+
+.centerBox {
+	display: block;
+	position: relative;
+	background: #fff;
+	padding: 35px;
+	border: 1px solid #ccc;
+	// border-radius: 5px;
+	margin-top: -1px;
+	&.on {
+		display: block;
+	}
+	h6 {
+		font-size: 2rem;
+		font-weight: 700;
+		margin-top: 0;
+		margin-bottom: 30px;
+		padding-left: 0;
+		small {
+			display: block;
+			color:#666;
+			font-size: 2rem;
+			font-weight: 300;
+			&:after {
+				content:' 소속';
+			}
+		}//end small
+	}
+	p {
+		color:#111;
+		font-size: 1.8rem;
+		line-height: 1.3;
+		margin: 8px 0;
+		&.addr:before {
+			display: inline-block;
+			width: 100px;
+			padding-left: 25px;
+			background-image: url('/resource/images/center-addr.png');
+			background-repeat: no-repeat;
+			background-position: 2px center;
+			content:'주소';
+		}
+		&.tel:before {
+			display: inline-block;
+			width: 100px;
+			padding-left: 25px;
+			background-image: url('/resource/images/center-tel.png');
+			background-repeat: no-repeat;
+			background-position: 0 center;
+			content: '대표전화';
+		}
+	}
+	.link {
+		clear: both;
+		position: absolute;
+		top: 35px;
+		right: 35px;
+		.btn {
+			height: 40px;
+			padding:0 15px;
+			font-size: 1.8rem;
+			line-height: 38px;
+		}
+	}//end .link
+}//end .centerBox
+
+.centerBoxPoint {
+	border: 2px solid #6595c4;
+	background: #ebf2fb;
+}
+
+
+/* 협력기관 */
+[id*="collaboCorp"] {
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-start;
+	flex-wrap: wrap;
+	// padding: 60px 0;
+	li {
+		width: calc(100%/4);
+		>a {
+			display: block;
+			border: 1px solid #ddd;
+			margin: 0 5px 10px;
+			&:hover {
+				border: 1px solid #65bb00;
+				outline: 1px solid #65bb00;
+			}
+
+			.logo {
+				display: block;
+				height: 110px;
+				line-height: 80px;
+				padding: 15px;
+				text-align: center;
+				box-sizing: border-box;
+				img {
+					max-width: 100%;
+					max-height: 100%;
+				}
+			}//end .logo
+			.name {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				height:100px;
+				padding: 22px 0;
+				color:#111;
+				font-size: 1.8rem;
+				text-align: center;
+				box-sizing: border-box;
+				background-color: #f8f8f8;
+			}//end .name
+		}//end a
+	}//end li
+}//end #collaboCorp
+
+
+/* map */
+.map-box {
+	margin-bottom: 50px;
+}
+
 
 /*
 	media
@@ -2166,6 +2731,43 @@ footer {
 		}//end .swiper-button-box
 	}//end #main-center
 
+}
+
+
+@media screen and (max-width:1275px) {
+	.sCont {
+		flex-flow: column;
+		align-items: center;
+	}
+	.areaList {
+		display: flex;
+		flex-wrap: wrap;
+		width: 100%;
+		max-height: none;
+		.centerBox {
+			width: calc(50% - 10px);
+			margin:5px;
+			box-sizing: border-box;
+			p {
+				margin-top: 15px;
+				padding-left: 25px;
+				&.addr:before {
+					display: block;
+					margin-bottom: 5px;
+					margin-left: -25px;
+				}
+				&.tel:before {
+					display: block;
+					margin-bottom: 5px;
+					margin-left: -25px;
+				}
+			}
+			.link {
+				top:auto;
+				bottom:35px;
+			}
+		}
+	}
 }
 
 
@@ -2385,9 +2987,96 @@ footer {
 			width: 100%;
 		}
 	}
+
+	.cont-box {
+		display: block;
+		.cont-label {
+			width: 100%;
+			margin-bottom: 15px;
+			font-size: 3rem;
+		}//end .cont-label
+	}//end .cont-box
 }
 
 @media screen and (max-width:1023px){
+
+	.help-text {
+		padding: 12px 0;
+		font-size: 2.8rem;
+	}
+
+	.middot-list {
+		li {
+			margin: 10px 0;
+			padding-left: 18px;
+			font-size: 3rem;
+			line-height: 1.3;
+			&:before {
+				top: 13px;
+				width: 10px;
+				height: 10px;
+			}
+		}
+	}
+
+	.dash-list {
+
+		dt {
+			font-size: 3.2rem;
+		}
+
+		dd {
+			margin: 10px 0;
+			padding-left: 12px;
+			font-size: 3rem;
+			line-height: 1.3;
+
+			&:before {
+				top: 16px;
+				width: 6px;
+				height: 1px;
+			}
+		}
+	}
+
+	.s-pad-box {
+		padding: 30px 45px;
+		font-size: 3rem;
+		line-height: 1.6;
+		&.flex {
+			&.center {
+				flex-flow: column;
+			}
+		}
+		.tit {
+			width: 100%;
+			margin-right: 0px;
+			margin-bottom: 20px;
+			font-size: 3rem;
+			&.bar {
+				padding-right: 0;
+				padding-bottom: 20px;
+				&:after {
+					width: 20px;
+					height: 1px;
+					top: 100%;
+					left: 50%;
+					margin-top: 0;
+					margin-left: -10px;
+					background-color: #333;
+				}
+			}
+		}//end .tit
+		.txt {
+			font-size: 3rem;
+			text-align: center;
+		}//end .txt
+		&+.s-pad-box {
+			margin-top: -15px;
+		}
+	}
+
+
 	.cont-tit {
 		font-size: 5.5rem;
 		p {
@@ -2472,7 +3161,7 @@ footer {
 					display: block;
 					margin-right: 20px;
 					font-size: 2rem;
-					font-weight: 300;
+					font-weight: 400;
 					line-height: 1.6;
 					letter-spacing: -1px;
 					color: #838383;
@@ -2678,6 +3367,15 @@ footer {
 	}
 
 	/* button */
+	#btn-box {
+		&.file {
+			display: block;
+			.btn {
+				width: 100%;
+				margin-bottom: 25px;
+			}
+		}
+	}
 	.btn {
 		height: 60px;
 		font-size: 3.2rem;
@@ -2760,11 +3458,9 @@ footer {
 	/* -------------------------
 			FnQ Start
 	---------------------------- */
-
 	.accordion .item .collapsed {
 		font-size: 3.2rem;
 	}
-
 	.accordion .item .collapsed span:before {
 		left: -60px;
 		width: 40px;
@@ -2773,17 +3469,88 @@ footer {
 		font-size: 3rem;
 		line-height: 38px;
 	}
-
 	.accordion .item.active .collapse {
 		font-size: 3rem;
 		*:not(.btn) {
 			font-size: 3rem;
 		}
 	}
-
 	.accordion .item .collapse p {
 		font-size: 3rem;
 	}
+
+	.cont-box {
+		margin-top: 35px;
+		.cont-label {
+			font-size: 3.6rem;
+		}//end .cont-label
+		.cont {
+			>p {
+				margin-bottom: 18px;
+				font-size: 3rem;
+				line-height: 1.3;
+			}
+		}
+	}//end .cont-box
+
+	.arrow-box {
+		flex-flow: column;
+		>div {
+			width: 100%;
+			padding:35px 50px;
+			&.left {
+				margin-bottom: 30px;
+				&:after {
+					width: 50px;
+					height: 81px;
+					top: 100%;
+					left: 50%;
+					transform: translate(-50%, -17px) rotate(90deg);
+					transform-origin: center;
+				}
+			}
+		}
+	}//end .arrow-box
+
+
+	.areaList {
+		.centerBox {
+			width: 100%;
+			h6 {
+				font-size: 3rem;
+				small {
+					margin-top: 10px;
+					font-size: 2.6rem;
+				}
+			}
+			p {
+				margin-top: 15px;
+				padding-left: 0;
+				font-size: 2.8rem;
+				&.addr:before {
+					display: inline-block;
+					margin-bottom: 0;
+					margin-left: 0;
+				}
+				&.tel:before {
+					display: inline-block;
+					margin-bottom: 0;
+					margin-left: 0;
+				}
+			}
+		}
+	}
+
+	/* 협력기관 */
+	[id*="collaboCorp"] {
+		// padding: 60px 0;
+		li {
+			width: calc(100%/3);
+			>a .name {
+				font-size: 2.4rem;
+			}
+		}//end li
+	}//end [id*="collaboCorp"]
 }
 
 @media screen and (max-width:768px) {
@@ -2842,4 +3609,51 @@ footer {
 			}//end p
 		}//end .consult
 	}//end .consult-box
+
+	.areaList {
+		.centerBox {
+			width: 100%;
+			h6 {
+				font-size: 3rem;
+				small {
+					margin-top: 10px;
+					font-size: 2.6rem;
+				}
+			}
+			p {
+				margin-top: 15px;
+				padding-left: 25px;
+				font-size: 2.8rem;
+				&.addr:before {
+					display: block;
+					margin-bottom: 6px;
+					margin-left: -25px;
+				}
+				&.tel:before {
+					display: block;
+					margin-bottom: 6px;
+					margin-left: -25px;
+				}
+			}
+			.link {
+				.btn {
+					height: 50px;
+					padding:0 25px;
+					font-size: 2.8rem;
+					line-height: 48px;
+				}
+			}
+		}
+	}
+
+	/* 협력기관 */
+	[id*="collaboCorp"] {
+		// padding: 60px 0;
+		li {
+			width: calc(100%/2);
+			>a .name {
+				font-size: 2.6rem;
+			}
+		}//end li
+	}//end [id*="collaboCorp"]
 }
