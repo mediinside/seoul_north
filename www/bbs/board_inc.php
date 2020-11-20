@@ -228,7 +228,12 @@ switch($jb_mode) {
 						</script>\n
 			");
 		}
-        break;
+		break;
+		case("mix") :			
+			include $GP -> INC_PATH . "/skin/basic/board_list.php";	
+			include $GP -> INC_PATH . "/skin/gallery/board_list.php";	
+
+		break;
         
         # Default(글 읽기와 글 리스트)
 	default :
