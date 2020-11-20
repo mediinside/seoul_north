@@ -273,7 +273,7 @@ CLASS ListClass
 	}
 	
 	function getPageLink()
-	{
+	{		
 		extract($this -> page_info);
 		extract($this -> conf_info);
 
@@ -283,8 +283,8 @@ CLASS ListClass
 
 		if($total > 0)
 		{			
-            $prev_page = $page - 1 ;
-            $next_page = $page + 1 ;
+			($page == 1)? $prev_page = $page : $prev_page = $page - 1 ;
+			($page == 1)? $next_page = $page : $next_page = $page + 1 ;			
 			$rst ='<a href="?page=1&' . $tail . '" title="처음으로 이동하기" class="btn prev"><span><img src="/resource/images/page-all-left.png" width="100%" alt=""></span></a> ';
 			$rst .='<a href="?page='  . $prev_page . '&' . $tail . '" title="이전으로 이동하기" class="btn prev"><span><img src="/resource/images/page-left.png" width="100%" alt=""></span></a> ';
 			for($i = $start ; $i <= $end ; $i++){
@@ -300,8 +300,13 @@ CLASS ListClass
 			$rst .= ' <a href="?page=' . $next_page . '&'. $tail . '" title="다음 페이지 이동하기" class="btn next"><span><img src="/resource/images/page-right.png" width="100%" alt=""</span></a>';
 			$rst .= ' <a href="?page=' . $this -> page_info['tpage'] . '&'. $tail . '" title="마지막 페이지 이동하기" class="btn next"><img src="/resource/images/page-all-right.png" width="100%" alt=""></a>';
 
-		} else {
-			//$rst = ($tqry)?  "<span><font color='red'><b>$tqry</b></font> 에 대한 검색 결과가 없습니다.</span>":"<span>등록된 데이터가 없습니다.</span>";
+		} else {			
+			$rst ='<a href="?page=1&' . $tail . '" title="처음으로 이동하기" class="btn prev"><span><img src="/resource/images/page-all-left.png" width="100%" alt=""></span></a> ';
+			$rst .='<a href="?page=1&'. $tail . '" title="이전으로 이동하기" class="btn prev"><span><img src="/resource/images/page-left.png" width="100%" alt=""></span></a> ';
+			$rst .='<a href="?page=1&'. $tail . '" class="btn current">1</a>';			
+			$rst .= ' <a href="?page=1&'. $tail . '" title="다음 페이지 이동하기" class="btn next"><span><img src="/resource/images/page-right.png" width="100%" alt=""</span></a>';
+			$rst .= ' <a href="?page=1&'. $tail . '" title="마지막 페이지 이동하기" class="btn next"><img src="/resource/images/page-all-right.png" width="100%" alt=""></a>';
+
 		}
 
 		$this -> page_info['link'] = $rst;
