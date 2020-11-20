@@ -1525,6 +1525,74 @@ footer {
 	}//end img
 }//end .btn
 
+.btn-xs {
+	display: inline-block;
+	height: 35px;
+	padding: 0 15px;
+	color: #333;
+	font-size: 1.7rem;
+	font-weight: 400;
+	border: 1px solid #ddd;
+	box-sizing: border-box;
+	outline: none;
+	cursor: pointer;
+	text-align: center;
+	text-indent: 0 !important;
+	text-decoration: none;
+	line-height: 33px;
+	white-space: nowrap;
+	vertical-align: middle;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	background-color: #fff;
+	transition: all 0.2s;
+	&:hover {
+		opacity: 0.85;
+	}
+	&.block {
+		width: 100%;
+	}
+	&.bg-deepblue {
+		color:#fff;
+		border-color:#344aa0;
+		background-color: #344aa0;
+	}//end .bg-blue
+	&.bg-green {
+		color:#fff;
+		border-color:#8cbf39;
+		background-color: #8cbf39;
+	}//end .bg-green
+	&.bg-red {
+		color:#fff;
+		border-color:#eb3447;
+		background-color: #eb3447;
+	}//end .bg-green
+	&.bg-orange {
+		color:#fff;
+		border-color:#ffa200;
+		background-color: #ffa200;
+	}
+	&.bg-brown {
+		color: #ffe400;
+		border-color: #3c1e1e;
+		background-color: #3c1e1e;
+	}
+
+	&.border-green {
+		border-color:#26b27c;
+	}//end .bg-green
+
+	img {
+		margin-top: -2px;
+		&.left {
+			margin-right: 10px;
+		}
+		&.right {
+			margin-left: 10px;
+		}
+	}//end img
+}//end .btn
+
 
 /* table */
 .tableType-01 {
@@ -2220,6 +2288,10 @@ footer {
 		background-color: #344aa0;
 		content: '';
 	}
+
+	&.green:after {
+		background-color: #8cbf39;
+	}
 	.cont-label {
 		flex-shrink: 0;
 		width: 240px;
@@ -2541,6 +2613,11 @@ footer {
 	}//end li
 }//end #collaboCorp
 
+
+/* map */
+.map-box {
+	margin-bottom: 50px;
+}
 
 
 /*

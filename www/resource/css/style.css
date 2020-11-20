@@ -1233,6 +1233,60 @@ footer {
     .btn img.right {
       margin-left: 10px; }
 
+.btn-xs {
+  display: inline-block;
+  height: 35px;
+  padding: 0 15px;
+  color: #333;
+  font-size: 1.7rem;
+  font-weight: 400;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  outline: none;
+  cursor: pointer;
+  text-align: center;
+  text-indent: 0 !important;
+  text-decoration: none;
+  line-height: 33px;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  background-color: #fff;
+  transition: all 0.2s; }
+  .btn-xs:hover {
+    opacity: 0.85; }
+  .btn-xs.block {
+    width: 100%; }
+  .btn-xs.bg-deepblue {
+    color: #fff;
+    border-color: #344aa0;
+    background-color: #344aa0; }
+  .btn-xs.bg-green {
+    color: #fff;
+    border-color: #8cbf39;
+    background-color: #8cbf39; }
+  .btn-xs.bg-red {
+    color: #fff;
+    border-color: #eb3447;
+    background-color: #eb3447; }
+  .btn-xs.bg-orange {
+    color: #fff;
+    border-color: #ffa200;
+    background-color: #ffa200; }
+  .btn-xs.bg-brown {
+    color: #ffe400;
+    border-color: #3c1e1e;
+    background-color: #3c1e1e; }
+  .btn-xs.border-green {
+    border-color: #26b27c; }
+  .btn-xs img {
+    margin-top: -2px; }
+    .btn-xs img.left {
+      margin-right: 10px; }
+    .btn-xs img.right {
+      margin-left: 10px; }
+
 /* table */
 .tableType-01 {
   margin-bottom: 30px;
@@ -1802,6 +1856,8 @@ footer {
     height: 2px;
     background-color: #344aa0;
     content: ''; }
+  .cont-box.green:after {
+    background-color: #8cbf39; }
   .cont-box .cont-label {
     flex-shrink: 0;
     width: 240px;
@@ -2048,6 +2104,10 @@ footer {
         text-align: center;
         box-sizing: border-box;
         background-color: #f8f8f8; }
+
+/* map */
+.map-box {
+  margin-bottom: 50px; }
 
 /*
 	media
