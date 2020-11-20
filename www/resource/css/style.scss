@@ -2322,200 +2322,172 @@ footer {
 .koreaMap {
 	position: relative;
 	display: inline-block;
-	width: 50%;
+	flex-shrink: 0;
+	width: 620px;
 	text-align: center;
 	padding-bottom: 50px;
-}
+	.help-text {
+		font-size: 18px;
+	}
+	.pointBtn {
+		display: inline-block;
+		&.mapPoint01 {
+			position: absolute;
+			bottom: 206px;
+			left: 430px;
+		}
 
-.mapPoint01 {
-	position: absolute;
-	bottom: 270px;
-	left: 330px;
-}
+		&.mapPoint02 {
+			position: absolute;
+			top: 155px;
+			left: 220px;
+		}
 
-.mapPoint02 {
-	position: absolute;
-	top: 105px;
-	left: 140px;
-}
+		&.mapPoint03 {
+			position: absolute;
+			top: 140px;
+			left: 370px;
+		}
 
-.mapPoint03 {
-	position: absolute;
-	top: 80px;
-	left: 210px;
-}
+		&.mapPoint04 {
+			position: absolute;
+			top: 325px;
+			left: 255px;
+		}
 
-.mapPoint04 {
-	position: absolute;
-	top: 245px;
-	left: 175px;
-}
+		&.mapPoint05 {
+			position: absolute;
+			top: 380px;
+			left: 220px;
+		}
 
-.mapPoint05 {
-	position: absolute;
-	top: 290px;
-	left: 140px;
-}
+		&.mapPoint06 {
+			position: absolute;
+			top: 205px;
+			left: 250px;
+		}
 
-.mapPoint06 {
-	position: absolute;
-	top: 135px;
-	left: 160px;
-}
+		&.mapPoint07 {
+			position: absolute;
+			top: 140px;
+			left: 190px;
+		}
 
-.mapPoint07 {
-	position: absolute;
-	top: 100px;
-	right: 320px;
-}
+		&.mapPoint08 {
+			position: absolute;
+			bottom: 164px;
+			left: 410px;
+		}
 
-.mapPoint08 {
-	position: absolute;
-	bottom: 234px;
-	left: 300px;
-}
+		&.mapPoint09 {
+			position: absolute;
+			bottom: 70px;
+			left: 465px;
+		}
 
-.mapPoint09 {
-	position: absolute;
-	bottom: 100px;
-	left: 100px;
-}
+		.numMap {
+			display: inline-block;
+			background: url(/resource/images/center-point.png)no-repeat 0 0;
+			width: 29px;
+			height: 39px;
+			line-height: 32px;
+			color: #FFF;
+			text-indent: -9999px;
+		}
 
-.icn_map {
-	display: inline-block;
-	background: url(/resource/images/center-point.png)no-repeat 0 0;
-	width: 29px;
-	height: 39px;
-	line-height: 32px;
-	color: #FFF;
-	text-indent: -9999px;
-}
+		.numArea {
+			display: none;
+			background: #ddd;
+			color: #555;
+			padding: 5px 10px 5px 10px;
+			border-radius: 5px;
+		}
 
-.icn_area {
-	display: none;
-	background: #ddd;
-	color: #555;
-	padding: 5px 10px 5px 10px;
-	border-radius: 5px;
-}
+		&:hover {
+			min-width: 180px;
+			text-align: left;
+			.numArea {
+				display: inline-block;
+				vertical-align: middle;
+				font-size: 1.9rem !important;
+			}
+		}
+	}//end .pointMap
+}//end .koreaMap
 
-.icn_map:hover + .icn_area {
-	display: inline-block;
-}
 
 .areaList {
 	overflow: hidden;
 	overflow-y: auto;
 	width: 45%;
 	max-height:700px;
+	padding-top: 1px;
 }
 
 .centerBox {
+	display: block;
 	position: relative;
 	background: #fff;
-	padding: 20px;
+	padding: 35px;
 	border: 1px solid #ccc;
 	// border-radius: 5px;
-	margin-top: 20px;
+	margin-top: -1px;
+	&.on {
+		display: block;
+	}
 	h6 {
-		font-size: 16px;
+		font-size: 2rem;
 		font-weight: 700;
 		margin-top: 0;
+		margin-bottom: 30px;
 		padding-left: 0;
+		small {
+			display: block;
+			color:#666;
+			font-size: 2rem;
+			font-weight: 300;
+			&:after {
+				content:' 소속';
+			}
+		}//end small
 	}
 	p {
-		line-height: 160%;
-		margin: 5px 0 0 30px;
+		color:#111;
+		font-size: 1.8rem;
+		line-height: 1.3;
+		margin: 8px 0;
+		&.addr:before {
+			display: inline-block;
+			width: 100px;
+			padding-left: 25px;
+			background-image: url('/resource/images/center-addr.png');
+			background-repeat: no-repeat;
+			background-position: 2px center;
+			content:'주소';
+		}
+		&.tel:before {
+			display: inline-block;
+			width: 100px;
+			padding-left: 25px;
+			background-image: url('/resource/images/center-tel.png');
+			background-repeat: no-repeat;
+			background-position: 0 center;
+			content: '대표전화';
+		}
 	}
 	.link {
 		clear: both;
 		position: absolute;
-		bottom: 20px;
-		right: 20px;
-		span {
-			&.icn {
-				background: #0b6fa9;
-				padding-top: 10px;
-				width: 30px;
-				height: 20px;
-				border-radius: 15px;
-				text-align: Center;
-				color: #FFF;
-				display: inline-block;
-			}
-			&.icnNo {
-				background: #d7d7d7;
-				padding-top: 10px;
-				width: 30px;
-				height: 20px;
-				border-radius: 15px;
-				text-align: Center;
-				color: #FFF;
-				display: inline-block;
-			}
+		top: 35px;
+		right: 35px;
+		.btn {
+			height: 40px;
+			padding:0 15px;
+			font-size: 1.8rem;
+			line-height: 38px;
 		}
 	}//end .link
-	.link2 {
-		clear: both;
-		position: absolute;
-		top: 60px;
-		right: 20px;
-		span {
-			&.icn {
-				background: #0b6fa9;
-				padding-top: 10px;
-				width: 30px;
-				height: 20px;
-				border-radius: 15px;
-				text-align: Center;
-				color: #FFF;
-				display: inline-block;
-			}//end .icn
-			&.icnNo {
-				background: #d7d7d7;
-				padding-top: 10px;
-				width: 30px;
-				height: 20px;
-				border-radius: 15px;
-				text-align: Center;
-				color: #FFF;
-				display: inline-block;
-			}//end icnNo
-		}//end span
-	}//end .link2
-	.link3 {
-		clear: both;
-		position: absolute;
-		top: 150px;
-		right: 20px;
-		span {
-			&.icn {
-				background: #0b6fa9;
-				padding-top: 10px;
-				width: 30px;
-				height: 20px;
-				border-radius: 15px;
-				text-align: Center;
-				color: #FFF;
-				display: inline-block;
-			}//end .icn
-			&.icnNo {
-				background: #d7d7d7;
-				padding-top: 10px;
-				width: 30px;
-				height: 20px;
-				border-radius: 15px;
-				text-align: Center;
-				color: #FFF;
-				display: inline-block;
-			}//end .icnNo
-		}//end span
-	}//end .link3
 }//end .centerBox
-
-.centerBox .link3
-
-.centerBox .link3 span
 
 .centerBoxPoint {
 	border: 2px solid #6595c4;
@@ -2634,6 +2606,43 @@ footer {
 		}//end .swiper-button-box
 	}//end #main-center
 
+}
+
+
+@media screen and (max-width:1275px) {
+	.sCont {
+		flex-flow: column;
+		align-items: center;
+	}
+	.areaList {
+		display: flex;
+		flex-wrap: wrap;
+		width: 100%;
+		max-height: none;
+		.centerBox {
+			width: calc(50% - 10px);
+			margin:5px;
+			box-sizing: border-box;
+			p {
+				margin-top: 15px;
+				padding-left: 25px;
+				&.addr:before {
+					display: block;
+					margin-bottom: 5px;
+					margin-left: -25px;
+				}
+				&.tel:before {
+					display: block;
+					margin-bottom: 5px;
+					margin-left: -25px;
+				}
+			}
+			.link {
+				top:auto;
+				bottom:35px;
+			}
+		}
+	}
 }
 
 
@@ -3377,6 +3386,35 @@ footer {
 			}
 		}
 	}//end .arrow-box
+
+
+	.areaList {
+		.centerBox {
+			width: 100%;
+			h6 {
+				font-size: 3rem;
+				small {
+					margin-top: 10px;
+					font-size: 2.6rem;
+				}
+			}
+			p {
+				margin-top: 15px;
+				padding-left: 0;
+				font-size: 2.8rem;
+				&.addr:before {
+					display: inline-block;
+					margin-bottom: 0;
+					margin-left: 0;
+				}
+				&.tel:before {
+					display: inline-block;
+					margin-bottom: 0;
+					margin-left: 0;
+				}
+			}
+		}
+	}
 }
 
 @media screen and (max-width:768px) {
@@ -3435,4 +3473,40 @@ footer {
 			}//end p
 		}//end .consult
 	}//end .consult-box
+
+	.areaList {
+		.centerBox {
+			width: 100%;
+			h6 {
+				font-size: 3rem;
+				small {
+					margin-top: 10px;
+					font-size: 2.6rem;
+				}
+			}
+			p {
+				margin-top: 15px;
+				padding-left: 25px;
+				font-size: 2.8rem;
+				&.addr:before {
+					display: block;
+					margin-bottom: 6px;
+					margin-left: -25px;
+				}
+				&.tel:before {
+					display: block;
+					margin-bottom: 6px;
+					margin-left: -25px;
+				}
+			}
+			.link {
+				.btn {
+					height: 50px;
+					padding:0 25px;
+					font-size: 2.8rem;
+					line-height: 48px;
+				}
+			}
+		}
+	}
 }
