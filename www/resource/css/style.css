@@ -2012,6 +2012,43 @@ footer {
   border: 2px solid #6595c4;
   background: #ebf2fb; }
 
+/* 협력기관 */
+[id*="collaboCorp"] {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap; }
+  [id*="collaboCorp"] li {
+    width: calc(100%/4); }
+    [id*="collaboCorp"] li > a {
+      display: block;
+      border: 1px solid #ddd;
+      margin: 0 5px 10px; }
+      [id*="collaboCorp"] li > a:hover {
+        border: 1px solid #65bb00;
+        outline: 1px solid #65bb00; }
+      [id*="collaboCorp"] li > a .logo {
+        display: block;
+        height: 110px;
+        line-height: 80px;
+        padding: 15px;
+        text-align: center;
+        box-sizing: border-box; }
+        [id*="collaboCorp"] li > a .logo img {
+          max-width: 100%;
+          max-height: 100%; }
+      [id*="collaboCorp"] li > a .name {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100px;
+        padding: 22px 0;
+        color: #111;
+        font-size: 1.8rem;
+        text-align: center;
+        box-sizing: border-box;
+        background-color: #f8f8f8; }
+
 /*
 	media
 */
@@ -2650,7 +2687,13 @@ footer {
       .areaList .centerBox p.tel:before {
         display: inline-block;
         margin-bottom: 0;
-        margin-left: 0; } }
+        margin-left: 0; }
+
+  /* 협력기관 */
+  [id*="collaboCorp"] li {
+    width: calc(100%/3); }
+    [id*="collaboCorp"] li > a .name {
+      font-size: 2.4rem; } }
 @media screen and (max-width: 768px) {
   #main-slide .swiper-pagination {
     top: auto;
@@ -2705,6 +2748,12 @@ footer {
       height: 50px;
       padding: 0 25px;
       font-size: 2.8rem;
-      line-height: 48px; } }
+      line-height: 48px; }
+
+  /* 협력기관 */
+  [id*="collaboCorp"] li {
+    width: calc(100%/2); }
+    [id*="collaboCorp"] li > a .name {
+      font-size: 2.6rem; } }
 
 /*# sourceMappingURL=style.css.map */

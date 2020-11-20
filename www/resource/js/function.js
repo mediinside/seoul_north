@@ -110,28 +110,31 @@ $(document).ready(function(){
 	// var cTxt = $(".cont-tit h3").text();
 	var sIdx = $("#sub-bnnr img").data('index2');
 	var nTxt = $("#gnb-sub dl").eq(dIdx-1).find('dd').eq(sIdx-1).find('a').text();
-	$("#location dl").append(
+	var tabTxt = $(".tabMenu li.active a").text();
+	var $locA = $("#location p a");
+	var $tabA = $(".tabMenu p a");
+	var $locDl = $("#location dl");
+	$locDl.append(
 		$('#gnb-sub dl').eq(dIdx-1).find('dd').clone()
 	);
-	$("#location p a").text(nTxt);
-	$("#location p a").on("click",function(){
-		$("#location dl").slideToggle();
+	$locA.text(nTxt);
+	$locA.on("click",function(){
+		$locDl.slideToggle();
 	});
-
-	var tabTxt = $(".tabMenu li.active a").text();
-	$(".tabMenu p a").text(tabTxt);
-	$(".tabMenu p a").on("click",function(){
+	$tabA.text(tabTxt);
+	$tabA.on("click",function(){
 		$(".tabMenu ul").slideToggle(250);
 	});
 
 
 	//자주하는 질문
 	 $(".accordion .item .collapsed").on("click", function () {
-		if ($(this).parent('.item').hasClass("active")) {
-			$(this).parent('.item').removeClass("active").find('.collapsed').attr('title', '열기');
+		var $item = $(this).parent('.item');
+		if ($item.hasClass("active")) {
+			$item.removeClass("active").find('.collapsed').attr('title', '열기');
 		} else {
-			$(this).parent('.item').addClass("active").find('.collapsed').attr('title', '닫기');
-			$(this).parent('.item').siblings().removeClass("active")
+			$item.addClass("active").find('.collapsed').attr('title', '닫기');
+			$item.siblings().removeClass("active")
 		}
 	});
 
@@ -144,10 +147,10 @@ $(window).on("load resize",function(){
 
 		//메인메뉴 on/off
 		$("#gnb li a").mouseenter(function(){
-			$("#gnb-sub").stop().slideDown();
+			$("#gnb-sub").stop().slideDown(250);
 		});
 		$("nav").mouseleave(function(){
-			$("#gnb-sub").stop().slideUp();
+			$("#gnb-sub").stop().slideUp(250);
 		});
 
 		//메인메뉴 hover이벤트
@@ -159,12 +162,16 @@ $(window).on("load resize",function(){
 			// 	backgroundColor:'#f0f0f0'
 			// });
 		});
+
+		//서브메뉴 hover 이벤트
 		$("#gnb-sub dl").hover(function(){
 			var idx = $(this).index();
 			$(this).toggleClass('bg');
 			$("#gnb li").eq(idx).toggleClass('on');
 		});
 	}else{
+
+		//모바일 메뉴 이벤트
 		$("#gnb-sub").show();
 		$("#gnb-sub dl dt a").on("click",function(){
 			var $this = $(this).parents('dl');
@@ -177,12 +184,13 @@ $(window).on("load resize",function(){
 	};
 
 	var sIdx = $("#sub-bnnr img").data('index2');
+	var $locDD = $("#location dl dd");
 	if(win_W > 1024){
 		//로캐이션
 		console.log(sIdx);
-		$("#location dl dd").eq(sIdx-1).on("click",function(){
+		$locDD.eq(sIdx-1).on("click",function(){
 			$(this).addClass('on');
 		});
-		$("#location dl dd").eq(sIdx-1).trigger('click');
+		$locDD.eq(sIdx-1).trigger('click');
 	};
 });
