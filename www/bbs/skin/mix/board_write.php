@@ -17,32 +17,65 @@
                     <col width="*">
                 </colgroup>
                 <tbody>
-				<tr>
-					<th scope="row">작성자</th>
-					<td><input type="text" class="txtInput" style="width:100%;" title="작성자 입력" placeholder="작성자를 입력해 주세요."id="jb_name" name="jb_name" value="<?=$check_name?>" /></td>
-				</tr>
-				<tr>
-					<th scope="row">질문</th>
-					<td><input type="text" class="txtInput" style="width:100%;"  title="제목 입력" placeholder="제목을 입력해 주세요." id="jb_title" name="jb_title" /></td>
-				</tr>				                    
-				<?php
-					//회원일 경우 비밀번호를 입력할 필요가 없다.
-					if(empty($check_id)) {
-					?>
-					<tr>
-					<th scope="row">비밀번호</th>
-					<td><input type="text" class="txtInput" title="비밀번호 입력" placeholder="비밀번호를 입력해 주세요." id="jb_password" name="jb_password" /></td>
-					</tr>
-					<?php
-					} else {
-					$password_key=md5($check_id);	
-					$tm=explode(" ",microtime());
-					$jb_password=$password_key . $tm[1];
-					echo ("<input type=\"hidden\" name=\"jb_password\" value=\"${jb_password}\">");
-					}
-				?>
-                  
+                    <tr>
+                        <th scope="row">제 목</th>
+                        <td><input type="text" class="txtInput" style="width:100%;" id="jb_title" name="jb_title"></td>
+                    </tr>
                     <!--tr>
+                        <th scope="row">구분</th>
+                        <td>
+                            <select name="jb_treat" id="jb_treat" class="txtInput">
+                                <option value="">::선택::</option>
+                            </select>
+                        </td>
+                    </tr-->
+                    <tr>
+                        <th scope="row">작성자</th>
+                        <td>
+                            <input type="text" class="txtInput" style="width:100%;" id="jb_name" value="<?=$check_name?>" name="jb_name" >
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">공개여부</th>
+                        <td>
+                            <span class="chkBox">
+                            <?
+                                if(isset($check_id) && $check_level>=9){
+                                echo "<label class='noti'><input type=\"checkbox\" value=\"Y\" id=\"jb_notice_check\" name=\"jb_notice_check\" class='chk'> 공지</label>";
+                                }
+                            ?>									
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">이메일</th>
+                        <td>
+                            <input type="text" class="txtInput" id="jb_email" name="jb_email" value="<?=$_SESSION['suseremail']?>" style="width:100%;">
+                        </td>
+                    </tr>
+                    <?php
+                        //회원일 경우 비밀번호를 입력할 필요가 없다.
+                        if(empty($check_id)) {
+                        ?>
+                        <tr>
+                        <th scope="row">비밀번호</th>
+                        <td><input type="text" class="i-input" title="비밀번호 입력" placeholder="비밀번호를 입력해 주세요." id="jb_password" name="jb_password" /></td>
+                        </tr>
+                        <?php
+                        } else {
+                        $password_key=md5($check_id);	
+                        $tm=explode(" ",microtime());
+                        $jb_password=$password_key . $tm[1];
+                        echo ("<input type=\"hidden\" name=\"jb_password\" value=\"${jb_password}\">");
+                        }
+                    ?>
+                    <tr>
+                        <th scope="row" class="viewLink">링크</th>
+                        <td>
+                            <input type="text" class="txtInput"  style="width:100%;" id="jb_homepage" name="jb_homepage">
+                        </td>
+                    </tr>
+                    <tr>
                         <th scope="row" class="viewFile"><span class="icon">첨부파일</span></th>
                         <td>
                             <ul>
@@ -56,9 +89,9 @@
                                 <? } ?>
                             </ul>
                         </td>
-                    </tr-->
+                    </tr>
                     <tr>
-                        <th scope="row" class="alignTop">답변</th>
+                        <th scope="row" class="alignTop">본문</th>
                         <td>
                             <!-- Text Editor 영역 -->
                             <textarea name="jb_content" id="jb_content" style="display:none"></textarea>

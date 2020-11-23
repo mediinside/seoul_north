@@ -11,8 +11,7 @@ $index_page = "notice.php";
 $query_page = "query.php";
 
 $jb_code = $_GET["jb_code"];
-if($jb_code == "10" or $jb_code == "20"){
-	$jb_mode = "mix" ;
+if($jb_code == "10" or $jb_code == "20"){	
 	$index = "1";
 }
 elseif($jb_code == "30"){
