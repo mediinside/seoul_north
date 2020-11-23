@@ -1,0 +1,97 @@
+<?php
+	include_once "../inc/head.php";
+?>
+
+<body>
+	<div id="wrap">
+		<?php include_once "../inc/header.php"?>
+		<section id="container" class="sub">
+			<div id="sub-bnnr">
+				<h2 class="text">정보</h2>
+				<img data-index="3" data-index2="2" src="/resource/images/sub-bnnr03.png" alt="">
+			</div>
+			<!-- //end .sub-bnnr -->
+
+			<?php include_once "../inc/location.php"?>
+
+			<div class="cont-tit">
+				<h3>서울특별시북부장애인 관련 현황</h3>
+			</div>
+			<div class="s-inner">
+				<h3 class="cont-sub-tit">장애인 통계자료</h3>
+				<div class="cont-box">
+					<h4 class="cont-label">장애인 통계자료</h4>
+					<div class="cont">
+						<div class="map_search_box">
+							<div class="search_txtm">
+								<div class="sleft">
+									<span>구분</span>
+									<select name="v_type" class="selectmap" title="통계자료 선택">
+										<option value="">장애인 현황 전체</option>
+										<option value="지체" selected="selected">지체</option>
+										<option value="시각">시각</option>
+										<option value="청각">청각</option>
+										<option value="언어">언어</option>
+										<option value="지적">지적</option>
+										<option value="뇌병변">뇌병변</option>
+										<option value="자폐성">자폐성</option>
+										<option value="정신">정신</option>
+										<option value="신장">신장</option>
+										<option value="심장">심장</option>
+										<option value="호흡기">호흡기</option>
+										<option value="간">간</option>
+										<option value="안면">안면</option>
+										<option value="장루.요루">장루, 요루</option>
+										<option value="뇌전증">뇌전증</option>
+									</select>
+								</div>
+								<div class="sleft">
+									<span>년도</span>
+									<select name="v_year" class="selectmap" title="년도 선택">
+										<option value="2019" selected="selected">2019년</option>
+									</select>
+								</div>
+								<div class="sleft">
+									<span>지역</span>
+									<select name="v_place" class="selectmap" title="지역 선택">
+										<option value="도봉구" selected="selected">도봉구</option>
+									</select>
+								</div>
+								<a href="#" class="cbtn_point" id="id_submit_btn">검색</a>
+							</div>
+						</div>
+						<p class="help-text"><b>2020년도 서울특별시 북부지역 장애인 현황 <span class="text-deepblue">(188,370명)</span></b></p>
+						<div id="seoul-map">
+							<div class="seoul-map">
+								<img src="/resource/images/seoul-map.png" alt="서울특별시북부장애인 관련 현황 지도">
+								<ul>
+									<li class="point-1" title="도봉구">1,111</li>
+									<li class="point-2" title="노원구">1,111</li>
+									<li class="point-3" title="중랑구">1,111</li>
+									<li class="point-4" title="동대문구">1,111</li>
+									<li class="point-5" title="광진구">1,111</li>
+									<li class="point-6" title="성동구">1,111</li>
+									<li class="point-7" title="중구">1,111</li>
+									<li class="point-8" title="용산구">1,111</li>
+									<li class="point-9" title="마포구">1,111</li>
+									<li class="point-10" title="서대문구">1,111</li>
+									<li class="point-11" title="종로구">1,111</li>
+									<li class="point-12" title="성북구">1,111</li>
+									<li class="point-13" title="은평구">1,111</li>
+									<li class="point-14" title="강북구">1,111</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- //end .s-inner -->
+		</section>
+		<!-- //end #container -->
+
+		<?php include_once "../inc/footer.php"?>
+	</div>
+	<!-- //end #wrap -->
+</body>
+
+</html>
