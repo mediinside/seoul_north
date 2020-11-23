@@ -12,15 +12,26 @@ $query_page = "query.php";
 
 $jb_code = $_GET["jb_code"];
 if($jb_code == "10" or $jb_code == "20"){	
-	$index = "1";
+	$index = "4";
+	$index2 = "1";
 }
 elseif($jb_code == "30"){
-	$index = "2";	
+	$index = "4";
+	$index2 = "2";	
 }
 elseif($jb_code == "40" or $jb_code == "50" or $jb_code == "60"){
-	$index = "3";	
+	$index = "4";
+	$index2 = "3";	
 }
-
+elseif($jb_code == "70"){
+	$index = "5";
+	$index2 = "1";	
+	$jb_mode = "twrite";
+}
+elseif($jb_code == "80"){
+	$index = "5";
+	$index2 = "2";	
+}
 ?>
 
 <body>
@@ -29,7 +40,7 @@ elseif($jb_code == "40" or $jb_code == "50" or $jb_code == "60"){
 		<section id="container" class="sub">
 			<div id="sub-bnnr">
 				<h2 class="text">소식·자료</h2>
-				<img data-index="4" data-index2="<?=$index?>" src="/resource/images/sub-bnnr04.png" alt="">
+				<img data-index="<?=$index?>" data-index2="<?=$index2?>" src="/resource/images/sub-bnnr04.png" alt="">
 			</div>
 			<!-- //end .sub-bnnr -->
 

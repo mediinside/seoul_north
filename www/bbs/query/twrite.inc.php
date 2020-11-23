@@ -94,12 +94,19 @@ if($jb_notice_check == "Y") {
 	$jb_order = 100;
 }
 
-
-if($jb_etc2_chk == "채용시까지"){
-    $jb_etc2 = "채용시까지" ;
+//장애유형
+if ($_POST['jb_etc4']) {
+	foreach ($_POST['jb_etc4'] as $k => $v) {
+		$jb_etc4 .= $v . ",";
+	}
 }
 
-
+//신청내용
+if ($_POST['jb_etc5']) {
+	foreach ($_POST['jb_etc5'] as $k => $v) {
+		$jb_etc5 .= $v . ",";
+	}
+}
 
 //$jb_email =   $jb_email1 ."@". $jb_email2 ;
 			
@@ -232,7 +239,7 @@ if($keys && $values)
 {
 	$args = "";
 	$args['keys'] = $keys;
-    $args['values'] = $values;
+	$args['values'] = $values;
 	$result_key = $C_JHBoard->BOARD_WRITE($args);		
 }
 //==================================================================== 자동 DB Insert 구문 생성 End

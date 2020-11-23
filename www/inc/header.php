@@ -117,14 +117,14 @@
 							<dl>
 								<dt><a href="#">상담</a></dt>
 								<dd>
-									<a href="/consulting/page01-1.html">상담신청</a>
+									<a href="/notice/notice.php?jb_code=70">상담신청</a>
 									<!-- <ul>
 										<li><a href="#">- 온라인 상담</a></li>
 										<li><a href="#">- 전화 상담</a></li>
 										<li><a href="#">- 실시간 상담</a></li>
 									</ul> -->
 								</dd>
-								<dd><a href="/notice/notice.php?jb_code=70">자주하는 질문</a></dd>
+								<dd><a href="/notice/notice.php?jb_code=80">자주하는 질문</a></dd>
 							</dl>
 						</div>
 					</div>

@@ -16,14 +16,38 @@
                 </colgroup>
                 <tbody>
                 <tr>
-                <th scope="row">질문</th>
-                <td><input type="text" class="txtInput" title="질문 입력" style="width:100%;" placeholder="제목을 입력해 주세요." id="jb_title" name="jb_title" value="<?=$jb_title;?>" /></td>
+                <th scope="row">제 목</th>
+                <td><input type="text" class="txtInput" title="제목 입력" style="width:100%;" placeholder="제목을 입력해 주세요." id="jb_title" name="jb_title" value="<?=$jb_title;?>" /></td>
                 </tr>
                 <tr>
                 <th scope="row">작성자</th>
                 <td><input type="text" class="txtInput" title="작성자 입력" style="width:100%;" placeholder="작성자를 입력해 주세요."id="jb_name" name="jb_name" value="<?=$jb_name?>" /></td>
-                </tr>                  
-                <!--<tr>
+                </tr>
+                <tr>
+                <th scope="row">공개여부</th>
+                <td>
+                    <!--label><input type="checkbox" class="chk" value="Y" id="jb_secret_check" name="jb_secret_check" <?php if($jb_secret_check == "Y") echo "checked";?> /> 비밀글</label-->
+                                <?
+                    //공지는 관리자만 할 수 있다.
+                    if(isset($check_id) && $check_level >= 9) {
+                    if($jb_order=="50")
+                        $notice_checked=" checked";
+                    else
+                        $notice_checked="";
+                    echo "<label class='noti'><input type=\"checkbox\" name=\"jb_notice_check\" value=\"Y\" class='chk' ${notice_checked}> 공지</label>";
+                    }
+                    ?>
+                </td>
+                </tr>
+                <tr>
+                    <th scope="row">이메일</th>
+                    <td><input type="text" class="txtInput" title="이메일 입력" style="width:100%;" placeholder="이메일을 입력해 주세요." id="jb_email" name="jb_email" value="<?=$jb_email?>" /></td>
+                </tr>
+                <tr>
+                    <th scope="row">링크</th>
+                    <td><input type="text" class="txtInput" title="링크 입력" placeholder="링크" style="width:100%;" id="jb_homepage" name="jb_homepage" value="<?=$jb_homepage?>" /></td>
+                </tr>                
+                <tr>
                     <th scope="row">첨부파일</th>
                     <td class="files">
                                     <?php
@@ -31,10 +55,10 @@
                         for($i=0; $i<1; $i++) {
                         ?>
                             <span class="inputFile">
-                             <input type="text" class="txt" placeholder="첨부파일" readonly /> 
+                            <!-- <input type="text" class="txt" placeholder="첨부파일" readonly /> -->
                             <span class="fileBtn">
                                 <input class="txtInput" type="file" title="파일선택" name="jb_file[]" />
-                                <span class="btnT btnFile">파일선택</span> 
+                                <!-- <span class="btnT btnFile">파일선택</span> -->
                             </span>
                             </span>
                             <?php
@@ -48,9 +72,9 @@
                         }
                         ?>
                     </td>
-                </tr>-->
+                </tr>
                 <tr>
-                <th scope="row">답변</th>
+                <th scope="row">본문</th>
                     <td>
                         <textarea name="jb_content" id="jb_content" style="display:none"></textarea>
                         <textarea name="ir1" id="ir1" style="width:100%; height:300px; min-width:280px; display:none;"><?=$jb_content;?></textarea>
