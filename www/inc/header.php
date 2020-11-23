@@ -102,11 +102,10 @@
 								<dd><a href="#">건강검진/진료/재활 등<br>의료서비스 제공</a></dd>
 							</dl>
 							<dl>
-								<dt><a href="#">정보</a></dt>
-								<dd><a href="#">내게 맞는 정보 찾기</a></dd>
+								<dt><a href="#none">정보</a></dt>
 								<dd><a href="#">나의 건강 체크</a></dd>
-								<dd><a href="#">서울특별시북부장애인<br>관련 현황</a></dd>
-								<dd><a href="#">관련 사이트</a></dd>
+								<dd><a href="/info/page02.html">서울특별시북부장애인<br> 관련 현황</a></dd>
+								<dd><a href="/info/page03-1.html">관련 사이트</a></dd>
 							</dl>
 							<dl>
 								<dt><a href="#none">소식·자료</a></dt>

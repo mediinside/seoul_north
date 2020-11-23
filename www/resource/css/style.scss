@@ -6,6 +6,10 @@
 // 	transition: all 0.2s;
 // }
 
+.text-deepblue {
+	color:#344aa0 !important;
+}
+
 .menu-button {
 	display: none;
 	position: relative;
@@ -1380,13 +1384,22 @@ footer {
 		margin:0 auto;
 		dd {
 			width: 100%;
+			min-height: 59px;
 			a {
-				display: block;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				height: 100%;
+				padding:15px 0;
+				box-sizing: border-box;
 				color:#111;
 				font-size: 2.2rem;
 				font-weight: 400;
+				line-height: 1.4;
 				text-align: center;
-				line-height: 59px;
+				br {
+					display: none;
+				}
 			}
 
 			&.on a {
@@ -2620,6 +2633,144 @@ footer {
 }
 
 
+/* 서울특별시북부장애인 관련 현황 */
+.map_search_box {
+	padding: 18px 0;
+	margin-bottom: 40px;
+	line-height: 0;
+	text-align: center;
+	background: #e3f0fa;
+	border-top: 1px solid #344aa0;
+	.search_txtm {
+		display: inline-block;
+		overflow: hidden;
+		.sleft {
+			float: left;
+			margin-right: 30px;
+			span {
+				margin-right: 15px;
+				float: left;
+				font-size: 18px;
+				line-height: 44px;
+				color: #000
+			}
+			.selectmap {
+				float: left;
+				padding: 0 40px 0 15px;
+				height: 44px;
+				font-size: 2.4rem;
+				font-weight: 400;
+				border: 1px solid #d6d6d6;
+				background: #fff url(/resource/images/map_selectb.gif) no-repeat center right;
+				-webkit-appearance: none;
+				-moz-appearance: none;
+				appearance: none;
+				letter-spacing: -1px;
+			}//end .selectmap
+		}//end .sleft
+		select::-ms-expand {
+			display: none;
+		}
+		.cbtn_point {
+			float: left;
+			display: block;
+			padding: 0 35px;
+			line-height: 44px;
+			color: #fff;
+			font-size: 2.4rem;
+			background-color: #344aa0;
+		}//end .cbtn_point
+	}//end .search_txtm
+}//end .map_search_box
+
+.seoul-map {
+	position: relative;
+	margin-top: 20px;
+	padding:50px 50px 100px;
+	text-align: center;
+	box-sizing: border-box;
+	background-color: #f5f5f5;
+	> ul {
+		position: absolute;
+		top: 50px;
+		left: 50px;
+		bottom: 50px;
+		right: 50px;
+		li {
+			position: absolute;
+			width: 180px;
+			height: 51px;
+			color: #101b35;
+			font-size: 2rem;
+			font-weight: 500;
+			line-height: 51px;
+			text-align: center;
+			border: solid 1px #344aa0;
+			background-color: #ffffff;
+			&:after {
+				content:'명';
+			}
+			&.point-1 {
+				top: 10px;
+				right: 5.1%;
+			}
+			&.point-2 {
+				top: 80px;
+				right: 2%;
+			}
+			&.point-3 {
+				top: 182px;
+				right: 0;
+			}
+			&.point-4 {
+				top: 242px;
+				right: 3.1%;
+			}
+			&.point-5 {
+				top: 322px;
+				right: 4%;
+			}
+			&.point-6 {
+				top: 386px;
+				right: 14%;
+			}
+			&.point-7 {
+				bottom: 0px;
+				left: 40%;
+			}
+			&.point-8 {
+				bottom: 50px;
+				left: 18%;
+			}
+			&.point-9 {
+				top: 342px;
+				left: 6.5%;
+			}
+			&.point-10 {
+				top: 272px;
+				left: 1.5%;
+			}
+			&.point-11 {
+				top: 207px;
+				left: 5.5%;
+			}
+			&.point-12 {
+				top: 147px;
+				left: 8%;
+			}
+			&.point-13 {
+				top: 65px;
+				left: 8%;
+			}
+			&.point-14 {
+				top: 5px;
+				left: 18%;
+			}
+		}//end li
+	}//end ul
+}//end .seoul-map
+
+
 /*
 	media
 */
@@ -2767,7 +2918,14 @@ footer {
 				bottom:35px;
 			}
 		}
-	}
+	}//end .areaList
+
+	.seoul-map {
+		>ul {
+			left:0px;
+			right:0px;
+		}
+	}//end .seoul-map
 }
 
 
@@ -2996,6 +3154,84 @@ footer {
 			font-size: 3rem;
 		}//end .cont-label
 	}//end .cont-box
+
+
+	.seoul-map {
+		> ul {
+			left:50px;
+			right:50px;
+			li {
+				&.point-1 {
+					top: 10px;
+					right: 8.1%;
+				}
+				&.point-2 {
+					top: 80px;
+					right: 5%;
+				}
+				&.point-3 {
+					top: 182px;
+					right: 2.2%;
+				}
+				&.point-4 {
+					top: 242px;
+					right: 6.1%;
+				}
+				&.point-5 {
+					top: 322px;
+					right: 7%;
+				}
+				&.point-6 {
+					top: 386px;
+					right: 16%;
+				}
+				&.point-7 {
+					bottom: 0px;
+					left: 40%;
+				}
+				&.point-8 {
+					bottom: 50px;
+					left: 20%;
+				}
+				&.point-9 {
+					top: 342px;
+					left: 8.3%;
+				}
+				&.point-10 {
+					top: 272px;
+					left: 4.5%;
+				}
+				&.point-11 {
+					top: 207px;
+					left: 8.2%;
+				}
+				&.point-12 {
+					top: 147px;
+					left: 12%;
+				}
+				&.point-13 {
+					top: 65px;
+					left: 8%;
+				}
+				&.point-14 {
+					top: 5px;
+					left: 18%;
+				}
+			}//end li
+		}//end ul
+	}//end .seoul-map
+}
+
+@media screen and (max-width:1100px) {
+	.seoul-map {
+		>ul {
+			left: 30px;
+			right: 30px;
+			li {
+				width: 160px;
+			}
+		}
+	}
 }
 
 @media screen and (max-width:1023px){
@@ -3551,6 +3787,53 @@ footer {
 			}
 		}//end li
 	}//end [id*="collaboCorp"]
+
+	#seoul-map {
+		overflow: hidden;
+		background-color: #f5f5f5;
+	}
+	.seoul-map {
+		transform: scale(0.9);
+		background-color: transper;
+		>ul {
+			left:-2%;
+			right:-2%;
+		}
+	}
+}
+
+@media screen and (max-width:900px) {
+	.map_search_box {
+		.search_txtm {
+			.sleft {
+				span {
+					display: none;
+				}
+			}
+		}
+	}
+
+	.seoul-map {
+		width: 668px;
+		margin:0 auto;
+		transform: scale(0.85);
+		>ul {
+			left: -9%;
+			right: -6%;
+			li {
+				width: 100px;
+				&.point-5 {
+					right: 0;
+				}
+				&.point-8 {
+					left: 25%;
+				}
+				&.point-11 {
+					left: 9.2%;
+				}
+			}
+		}
+	}
 }
 
 @media screen and (max-width:768px) {
@@ -3656,4 +3939,8 @@ footer {
 			}
 		}//end li
 	}//end [id*="collaboCorp"]
+
+	.seoul-map {
+		transform: scale(0.9);
+	}
 }
