@@ -1,10 +1,14 @@
 <?php
 	include_once  './_init.php';
-    include_once $GP -> INC_WWW . '/head.php';
+	include_once $GP -> INC_WWW . '/head.php';
+	include_once $GP -> INC_WWW . '/count_inc.php';
     include_once $GP -> HOME."main_lib/main_proc.php";
 
-    $Main_Notice = Main_Notice(10);//공지사항
-    $Main_counsel = Main_Notice(40);//언론보도
+    $Main_Notice = Main_Notice(10, 2);//공지사항 리스트
+	$Main_Notice2 = Main_Notice(20 , 8);//공지사항 썸네일
+	$Main_Notice3 = Main_Notice(30 , 3);//건강복지 소식
+
+	$Main_Slide = Main_Slide();//메인 슬라이드
 ?>
 <body>
 	<div id="wrap">
@@ -12,18 +16,7 @@
 		<section id="container">
 			<div id="main-slide" class="swiper-container">
 				<ul class="swiper-wrapper">
-					<li class="swiper-slide">
-						<a href="#">
-							<img src="/resource/images/main-slide01.png" alt="지역장애인의 건강한 삶을 위한 새로운 '길'" class="mo-hide">
-							<img src="/resource/images/main-slide-m01.png" alt="지역장애인의 건강한 삶을 위한 새로운 '길'" class="mo-show">
-						</a>
-					</li>
-					<li class="swiper-slide">
-						<a href="#">
-							<img src="/resource/images/main-slide02.png" alt="지역장애인의 건강한 삶을 위한 새로운 '길'" class="mo-hide">
-							<img src="/resource/images/main-slide-m02.png" alt="지역장애인의 건강한 삶을 위한 새로운 '길'" class="mo-show">
-						</a>
-					</li>
+					<?=$Main_Slide?>											
 				</ul>
 				<!-- Add Pagination -->
 				<div class="swiper-pagination"></div>
@@ -39,92 +32,14 @@
 					<p>센터의 다양한 활동과 <br class="mo-show">소식을 공유하여 소통합니다</p>
 				</div>
 				<div class="noti-list inner">
-					<div class="list">
-						<span class="label">공지사항</span>
-						<a href="#">지역장애인보건의료센터 홈페이지 오픈</a>
-					</div>
-					<div class="list">
-						<span class="label">공지사항</span>
-						<a href="#">지역장애인의 건강한 삶을 위한 활동 소식을 공유합니다.</a>
-					</div>
+					<?=$Main_Notice?>									
 				</div>
 				<!-- //end .noti-list -->
 				<div class="inner">
 					<!-- slide -->
 					<div id="main-center-list" class="swiper-container">
 						<ul class="swiper-wrapper">
-							<li class="swiper-slide">
-								<a href="#none">
-									<div class="dec">
-										<div class="img">
-											<img src='http://placehold.it/365x216'>
-										</div>
-										<span class="txt">
-											<b>
-												출산여성장애인<br>
-												양육교실
-											</b>
-										</span>
-									</div>
-								</a>
-								<a href="#none" class="dec-more">
-									<span>자세히보기</span>
-								</a>
-							</li>
-							<li class="swiper-slide">
-								<a href="#none">
-									<div class="dec">
-										<div class="img">
-											<img src='http://placehold.it/365x216'>
-										</div>
-										<span class="txt">
-											<b>
-												장애소아청소년
-												재활 승마 프로그램
-											</b>
-										</span>
-									</div>
-								</a>
-								<a href="#none" class="dec-more">
-									<span>자세히보기</span>
-								</a>
-							</li>
-							<li class="swiper-slide">
-								<a href="#none">
-									<div class="dec">
-										<div class="img">
-											<img src='http://placehold.it/365x216'>
-										</div>
-										<span class="txt">
-											<b>
-												장애인 대상 감염병 대응
-												매뉴얼 안내
-											</b>
-										</span>
-									</div>
-								</a>
-								<a href="#none" class="dec-more">
-									<span>자세히보기</span>
-								</a>
-							</li>
-							<li class="swiper-slide">
-								<a href="#none">
-									<div class="dec">
-										<div class="img">
-											<img src='http://placehold.it/365x216'>
-										</div>
-										<span class="txt">
-											<b>
-												보건소 지역사회중심재활사업
-												활성화
-											</b>
-										</span>
-									</div>
-								</a>
-								<a href="#none" class="dec-more">
-									<span>자세히보기</span>
-								</a>
-							</li>
+							<?=$Main_Notice2?>				
 						</ul>
 						<!-- <div class="swiper-button-next"></div>
 						<div class="swiper-button-prev"></div> -->
@@ -249,30 +164,7 @@
 							<h3>건강복지 소식</h3>
 						</div>
 						<ul>
-							<li>
-								<label>
-									<span>23</span>
-									<small>2020.10</small>
-								</label>
-								<a href="#">2020년 지역장애인보건의료센터 실무향상교육 수료</a>
-								<span class="new"><img src="/resource/images/new.png" alt="new"></span>
-							</li>
-							<li>
-								<label>
-									<span>23</span>
-									<small>2020.10</small>
-								</label>
-								<a href="#">2020년 지역장애인보건의료센터 실무향상교육 수료</a>
-								<span class="new"><img src="/resource/images/new.png" alt="new"></span>
-							</li>
-							<li>
-								<label>
-									<span>23</span>
-									<small>2020.10</small>
-								</label>
-								<a href="#">2020년 지역장애인보건의료센터 실무향상교육 수료</a>
-								<span class="new"><img src="/resource/images/new.png" alt="new"></span>
-							</li>
+							<?=$Main_Notice3?>	
 						</ul>
 					</div>
 					<!-- /end .left -->

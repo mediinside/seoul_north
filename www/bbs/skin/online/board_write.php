@@ -64,10 +64,10 @@
                                 //회원일 경우 비밀번호를 입력할 필요가 없다.
                                 if(empty($check_id)) {
                                 ?>
-                                <tr>
+                                <!--tr>
                                 <th scope="row">비밀번호</th>
                                 <td><input type="text" class="i-input" title="비밀번호 입력" placeholder="비밀번호를 입력해 주세요." id="jb_password" name="jb_password" /></td>
-                                </tr>
+                                </tr-->
                                 <?php
                                 } else {
                                 $password_key=md5($check_id);	

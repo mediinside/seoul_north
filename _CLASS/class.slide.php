@@ -16,6 +16,7 @@ CLASS Slide extends Dbconn
 	function Main_Slide_Show($args='') {
 		if (is_array($args)) foreach ($args as $k => $v) ${$k} = $v;
 		
+		/*		
 		if($ts_lang != '') {
 			$addQry .= " AND ts_lang = '$ts_lang' ";
 		}else{
@@ -27,6 +28,7 @@ CLASS Slide extends Dbconn
 		}else{
 			$addQry .= " AND ts_type = 'main' ";
 		}
+		*/
 		$qry = "
 			select * from tblSlide where ts_show ='Y' $addQry order by ts_regdate asc $limit
 		";

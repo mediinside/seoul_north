@@ -32,16 +32,16 @@
 				<div class="layerTable">
 					<table class="table table-bordered">
 						<tbody>		
-                           <tr>
+                           <!--tr>
 								<th><span>*</span>분류</th>
 								<td>
 									<?=$slide_select?>
 								</td>
-							</tr> 												          							
+							</tr--> 												          							
 							<tr>
 								<th><span>*</span>제목</th>
 								<td>
-                                <textarea name="ts_title" id="ts_title" style="width:98%; height:100px;  overflow:auto;" ><?=$ts_title?></textarea>
+									<input type="text" class="input_text" size="70" name="ts_title" id="ts_title" value="<?=$ts_title?>" />                              
 								</td>
                             </tr>
                             <tr>
@@ -75,7 +75,7 @@
 								<? } ?>
 							</td>
                         </tr>
-                        <tr >
+                        <tr>
 							<th><span>*</span>모바일 이미지</th>
 							<td>
 								<input type="file" name="ts_m_img" id="ts_m_img" size="30"><span id="size_m"></span>(720 X 574)

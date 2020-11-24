@@ -2992,7 +2992,6 @@ footer {
     margin-bottom: 35px;
     padding: 35px 0;
     font-size: 3rem;
-<<<<<<< HEAD
     line-height: 1.3; } }
   
     .btn-sm {
@@ -3022,42 +3021,4 @@ footer {
     .ft-c01 {
       color: #ffffff !important;
     }
-=======
-    line-height: 1.3; }
-
-  .areaList .centerBox {
-    width: 100%; }
-    .areaList .centerBox h6 {
-      font-size: 3rem; }
-      .areaList .centerBox h6 small {
-        margin-top: 10px;
-        font-size: 2.6rem; }
-    .areaList .centerBox p {
-      margin-top: 15px;
-      padding-left: 25px;
-      font-size: 2.8rem; }
-      .areaList .centerBox p.addr:before {
-        display: block;
-        margin-bottom: 6px;
-        margin-left: -25px; }
-      .areaList .centerBox p.tel:before {
-        display: block;
-        margin-bottom: 6px;
-        margin-left: -25px; }
-    .areaList .centerBox .link .btn {
-      height: 50px;
-      padding: 0 25px;
-      font-size: 2.8rem;
-      line-height: 48px; }
-
-  /* 협력기관 */
-  [id*="collaboCorp"] li {
-    width: calc(100%/2); }
-    [id*="collaboCorp"] li > a .name {
-      font-size: 2.6rem; }
-
-  .seoul-map {
-    transform: scale(0.9); } }
-
->>>>>>> 9b5642a23f0aef380c73033cd0d40b36606488ee
 /*# sourceMappingURL=style.css.map */

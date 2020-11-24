@@ -84,11 +84,10 @@
 						</colgroup>
 						<thead>
 							<tr>
-								<th>No</th>
-                                <th>분류</th>
+								<th>No</th>                               
 								<th>종류</th>
-                                <th>이미지</th>
-                                <th>모바일 이미지</th>
+                                <th>이미지</th>  
+								<th>모바일 이미지</th>                               
 								<th>제목</th>
 								<th>링크</th>
 								<!-- th>요약글</th -->
@@ -132,11 +131,10 @@
 										$edit_btn .= $C_Button -> getButtonDesign('type2','삭제',0,"slide_delete('" . $ts_idx. "')", 50,'');
 								?>
 									<tr>
-										<td><?=$data['page_info']['start_num']--?></td>										
-										<td><?=$GP -> SLIDE_LANG[$ts_lang] ?></td>
+										<td><?=$data['page_info']['start_num']--?></td>																			
                                         <td><?=$GP -> SLIDE_position[$ts_type] ?></td>
-                                        <td><?=$b_img ?></td>
-                                        <td><?=$m_img ?></td>
+                                        <td><?=$b_img ?></td>   
+										<td><?=$m_img ?></td>                                     
 										<td><?=$ts_title?></td>
 										<td><a herf="<?=$ts_link?>" target="_blank"><?=$ts_link?></a></td>	
 										<!-- td><?=$ts_descrition?></td -->									
