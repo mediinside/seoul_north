@@ -6,6 +6,10 @@
 // 	transition: all 0.2s;
 // }
 
+html,body {
+	min-width:768px;
+}
+
 .text-deepblue {
 	color:#344aa0 !important;
 }
@@ -355,7 +359,7 @@ header {
 	position: relative;
 	display: flex;
 	align-items: flex-end;
-	justify-content: center;
+	// justify-content: center;
 	flex-wrap: wrap;
 	width: 100%;
 	padding:20px 0 0 50px;
@@ -2770,6 +2774,53 @@ footer {
 	}//end ul
 }//end .seoul-map
 
+[id*="chart"]{
+	width: 600px;
+	margin:0 auto 30px;
+	.chart {
+		position: relative;
+		width: 100%;
+		padding-top: 100%;
+		[class*="wrapper"],
+		.donut {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			width: 100%;
+			height: 100%;
+			// padding:30px;
+			box-sizing: border-box;
+			.title {
+				position: absolute;
+				top: 50%;
+				left: 65%;
+				font-size: 22px;
+				text-align: center;
+				transform: translate(-50%,-50%);
+			}//end .title
+		}
+	}
+}
+
+.s-pad-box [id*="chart"] {
+	width: 500px;
+	[class*="wrapper"],
+	.donut {
+		.title {
+			top: 40%;
+			left: 50%;
+		}//end .title
+	}
+}
+
+
+canvas {
+	background: #fff;
+	height: 250px;
+}
+
 
 /*
 	media
@@ -3155,7 +3206,10 @@ footer {
 		}//end .cont-label
 	}//end .cont-box
 
-
+	#seoul-map {
+		overflow: hidden;
+		background-color: #f5f5f5;
+	}
 	.seoul-map {
 		> ul {
 			left:50px;
@@ -3787,11 +3841,6 @@ footer {
 			}
 		}//end li
 	}//end [id*="collaboCorp"]
-
-	#seoul-map {
-		overflow: hidden;
-		background-color: #f5f5f5;
-	}
 	.seoul-map {
 		transform: scale(0.9);
 		background-color: transper;

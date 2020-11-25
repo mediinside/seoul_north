@@ -1,7 +1,325 @@
 <?php
 	include_once "../inc/head.php";
 ?>
+<style>
+	@media screen and (max-width:1023px){
+		table tr th,
+		table tr td {font-size: 20px !important;}
+	}
+</style>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+<script>
+	$(document).ready(function () {
+		createChart('myChart', myChartData);
+		createChart('chart2', myChartData2);
+		createChart('myChart2', myChartData3);
 
+	});
+		Chart.plugins.register({
+			beforeRender: function (chart) {
+				if (chart.config.options.showAllTooltips) {
+					// create an array of tooltips
+					// we can't use the chart tooltip because there is only one tooltip per chart
+					chart.pluginTooltips = [];
+					chart.config.data.datasets.forEach(function (dataset, i) {
+						chart.getDatasetMeta(i).data.forEach(function (sector, j) {
+							chart.pluginTooltips.push(new Chart.Tooltip({
+								_chart: chart.chart,
+								_chartInstance: chart,
+								_data: chart.data,
+								_options: chart.options.tooltips,
+								_active: [sector]
+							}, chart));
+						});
+					});
+
+					// turn off normal tooltips
+					chart.options.tooltips.enabled = false;
+				}
+			},
+			afterDraw: function (chart, easing) {
+				if (chart.config.options.showAllTooltips) {
+					// we don't want the permanent tooltips to animate, so don't do anything till the animation runs atleast once
+					if (!chart.allTooltipsOnce) {
+						if (easing !== 1)
+							return;
+						chart.allTooltipsOnce = true;
+					}
+
+					// turn on tooltips
+					chart.options.tooltips.enabled = true;
+					Chart.helpers.each(chart.pluginTooltips, function (tooltip) {
+						tooltip.initialize();
+						tooltip.update();
+						// we don't actually need this since we are not animating tooltips
+						tooltip.pivot();
+						tooltip.transition(easing).draw();
+					});
+					chart.options.tooltips.enabled = false;
+				}
+			}
+		});
+
+		// var labels = data.map(value => Math.round((value / total) * 100) + '%');
+		const myChartData = {
+			type: 'doughnut',
+			data: {
+				labels: ["지체", "청각", "시각", "뇌병변", "지적", "기타"],
+				datasets: [{
+					label: "장애유형별 현황",
+					data: [47, 19, 71, 51, 22, 19],
+					backgroundColor: [
+						'#344aa0',
+						'#5f72be',
+						'#8c9ad1',
+						'#bcc4e2',
+						'#dbdee7',
+						'#c6c8cf'
+					],
+					borderWidth: 0
+				}]
+			},
+			options: {
+
+				title: {
+					display: false,
+					// position: 'center',
+					text: "장애유형별 현황"
+				},
+				animation: {
+					animateScale: true,
+					animateRotate: true
+				},
+				responsive: true,
+				maintainAspectRatio: false,
+
+				legend: {
+					position: 'bottom',
+					labels: {
+						boxWidth: 30,
+						padding: 30,
+						fontSize:18
+					}
+				},
+				scaleShowLabelBackdrop: true,
+				tooltips: {
+					displayColors:false,
+					backgroundColor:'#111',
+					callbacks: {
+						label: function (tooltipItem, data) {
+							//get the concerned dataset
+							var dataset = data.datasets[tooltipItem.datasetIndex];
+							//calculate the total of this data set
+							var total = dataset.data.reduce(function (previousValue, currentValue, currentIndex, array) {
+								return previousValue + currentValue;
+							});
+							//get the current items value
+							var currentValue = dataset.data[tooltipItem.index];
+							//calculate the precentage based on the total and current item, also this does a rough rounding to give a whole number
+							var percentage = Math.floor(((currentValue / total) * 100) + 0.5);
+
+							return percentage + "%";
+						}
+					}
+				},
+
+				showAllTooltips: true,
+			}
+		};
+
+		const myChartData2 = {
+			type: 'doughnut',
+			data: {
+				labels: ["노인", "청장년", "소아/청소년", "영유아"],
+				datasets: [{
+					label: "Test2",
+					data: [6, 19, 4, 51],
+					backgroundColor: [
+						'#344aa0',
+						'#5f72be',
+						'#8c9ad1',
+						'#bcc4e2',
+					],
+					borderWidth: 0
+				}]
+			},
+			options: {
+
+				title: {
+					display: false,
+					// position: 'center',
+					text: "장애유형별 현황"
+				},
+				animation: {
+					animateScale: true,
+					animateRotate: true
+				},
+				responsive: true,
+				maintainAspectRatio: false,
+
+				legend: {
+					position: 'left',
+					labels: {
+						boxWidth: 30,
+						padding: 30,
+						fontSize: 18
+					}
+				},
+				scaleShowLabelBackdrop: true,
+				tooltips: {
+					displayColors: false,
+					backgroundColor: '#111',
+					callbacks: {
+						label: function (tooltipItem, data) {
+							//get the concerned dataset
+							var dataset = data.datasets[tooltipItem.datasetIndex];
+							//calculate the total of this data set
+							var total = dataset.data.reduce(function (previousValue, currentValue, currentIndex, array) {
+								return previousValue + currentValue;
+							});
+							//get the current items value
+							var currentValue = dataset.data[tooltipItem.index];
+							//calculate the precentage based on the total and current item, also this does a rough rounding to give a whole number
+							var percentage = Math.floor(((currentValue / total) * 100) + 0.5);
+
+							return percentage + "%";
+						}
+					}
+				},
+
+				showAllTooltips: true,
+			}
+		};
+
+		// const myChartData3 = {
+		// 		type: 'bar',
+		// 		data: {
+		// 			labels: ['뇌전증', '안면', '지체', '시각', '청각', '지적', '간', '장루요루', '심장', '정신', '언어', '뇌병변', '신장', '호흡기', '자폐성'],
+		// 			datasets: [{
+		// 				label: '테스트 데이터셋',
+		// 				data: [
+		// 					10,
+		// 					3,
+		// 					30,
+		// 					23,
+		// 					10,
+		// 					5,
+		// 					15,
+		// 					20,
+		// 					13,
+		// 					5,
+		// 					9
+		// 				],
+		// 				borderColor: "rgba(255, 201, 14, 1)",
+		// 				backgroundColor: "rgba(255, 201, 14, 0.5)",
+		// 				fill: false,
+		// 			}]
+		// 		},
+		// 		options: {
+		// 			responsive: true,
+		// 			title: {
+		// 				display: true,
+		// 				text: '막대 차트 테스트'
+		// 			},
+		// 			tooltips: {
+		// 				mode: 'index',
+		// 				intersect: false,
+		// 				callbacks: {
+		// 					title: function (tooltipItems, data) {
+		// 						return data.labels[tooltipItems[0].datasetIndex];
+		// 					}
+		// 				}
+		// 			},
+		// 			hover: {
+		// 				mode: 'nearest',
+		// 				intersect: true
+		// 			},
+		// 			scales: {
+		// 				xAxes: [{
+		// 					display: true,
+		// 					scaleLabel: {
+		// 						display: true,
+		// 						labelString: ''
+		// 					},
+		// 					ticks: {
+		// 						autoSkip: false
+		// 					}
+		// 				}],
+		// 				yAxes: [{
+		// 					display: true,
+		// 					ticks: {
+		// 						suggestedMin: 0,
+		// 					},
+		// 					scaleLabel: {
+		// 						display: true,
+		// 						labelString: ''
+		// 					}
+		// 				}]
+		// 			}
+		// 		}
+		// 	};
+			const myChartData3 = {
+					type: 'bar',
+					data: {
+						labels: ['뇌전증', '안면', '지체', '시각', '청각', '지적', '간', '장루요루', '심장', '정신', '언어', '뇌병변', '신장', '호흡기', '자폐성'],
+						datasets: [
+							{
+								type: 'bar',
+								label: 'A',
+								// the 1st and last value are placeholders and never get displayed on the chart
+								data: [10, 10, 25, 18, 37, 10, 30, 60, 100, 20, 30],
+							},
+							{
+								type: 'line',
+								label: 'B',
+								// the 1st and last value are placeholders and never get displayed on the chart
+								// to get a straight line, the 1st and last values must match the same value as
+								// the next/prev respectively
+								data: [25, 25, 25, 25, 25, 25],
+								fill: false,
+								borderWidth: 1,
+								borderColor: '#f00',
+								borderDash: [5, 4],
+								lineTension: 0,
+								steppedLine: true
+							}
+						]
+					},
+					options: {
+						scales: {
+							yAxes: [{
+								ticks: {
+									beginAtZero: true
+								}
+							}],
+							xAxes: [{
+								ticks: {
+									min: 'Jan 21st',
+									max: 'Apr 21st',
+								}
+							}],
+						}
+					}
+				};
+
+		function createChart(chartId, chartData) {
+			const ctx = document.getElementById(chartId);
+			const myChart = new Chart(ctx, {
+				type: chartData.type,
+				data: chartData.data,
+				options: chartData.options,
+			});
+		};
+</script>
+<style>
+	.s-pad-box.flex {
+		align-items: flex-start;
+	}
+	@media screen and (max-width:1023px){
+		.s-pad-box.flex {flex-flow: column-reverse;flex-wrap: wrap;}
+		.tableType-01 {max-width: 100% !important;}
+	}
+</style>
 <body>
 	<div id="wrap">
 		<?php include_once "../inc/header.php"?>
@@ -82,8 +400,486 @@
 								</ul>
 							</div>
 						</div>
+						<br>
 					</div>
 				</div>
+
+				<!--  장애유형별 현황 -->
+				<div class="cont-box">
+					<h4 class="cont-label">
+						<span class="btn bg-deepblue" style="min-width:142px;">도봉구</span>
+					</h4>
+					<div class="cont">
+						<p class="help-text"><b>1. 장애유형별 현황</b></p>
+						<div class="s-pad-box flex" style="margin:20px auto;padding:0;overflow: hidden;">
+							<div class="tableType-01 green no-border" style="min-width:300px;max-width: 485px;">
+								<table>
+									<thead>
+										<tr>
+											<th>장애유형</th>
+											<th>명</th>
+											<th>%</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>지체</td>
+											<td>1,111</td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>청각</td>
+											<td></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>시각</td>
+											<td></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>뇌병변</td>
+											<td></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>지적</td>
+											<td></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td>정신</td>
+											<td></td>
+											<td></td>
+										</tr>
+									</tbody>
+									<tfoot>
+										<tr>
+											<td>계</td>
+											<td></td>
+											<td></td>
+										</tr>
+									</tfoot>
+								</table>
+							</div>
+							<div id="chart">
+								<div class="chart">
+									<div class="wrapper">
+										<div class="title">장애유형별<br>분포 현황(%)</div>
+										<canvas id="myChart"></canvas>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--  //end 장애유형별 현황 -->
+
+				<!-- 생애주기별 현황 -->
+				<div class="cont-box">
+					<h4 class="cont-label"></h4>
+					<div class="cont">
+						<p class="help-text"><b>2. 생애주기별 현황</b></p>
+						<div id="chart">
+							<div class="chart">
+								<div class="wrapper2">
+									<div class="title">생애주기별<br>장애인구 현황(%)</div>
+									<canvas id="chart2"></canvas>
+								</div>
+							</div>
+						</div>
+						<div class="tableType-01 green no-border" style="margin-top: -30px;">
+							<table>
+								<thead>
+									<tr>
+										<th>구분</th>
+										<th>영유아<br>(5세 이하)</th>
+										<th>소아/청소년<br>(6~19세)</th>
+										<th>청장년<br>(20~64세)</th>
+										<th>노인<br>(65세 이상)</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>강북구</td>
+										<td>1,111</td>
+										<td>1,111</td>
+										<td>1,111</td>
+										<td>1,111</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<!-- //end 생애주기별 현황 -->
+
+				<!-- 장애유형별/연령별 장애인구 -->
+				<div class="cont-box">
+					<h4 class="cont-label"></h4>
+					<div class="cont">
+						<p class="help-text"><b>3. 장애유형별/연령별 장애인구</b></p>
+						<div class="tableType-01 green" style="margin-top: 20px;">
+							<table>
+								<colgroup>
+									<col style="width: 110px;">
+									<col>
+									<col>
+									<col>
+									<col>
+									<col>
+									<col>
+									<col>
+									<col>
+									<col>
+									<col>
+								</colgroup>
+								<thead>
+									<tr>
+										<th>장애유형</th>
+										<th>0~9</th>
+										<th>10~19</th>
+										<th>20~29</th>
+										<th>30~39</th>
+										<th>40~49</th>
+										<th>50~59</th>
+										<th>60~69</th>
+										<th>70~79</th>
+										<th>80~89</th>
+										<th>90-</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<th>지체</th>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+									<tr>
+										<th>청각</th>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+									<tr>
+										<th>시각</th>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+									<tr>
+										<th>뇌병변</th>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+									<tr>
+										<th>지적</th>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+									<tr>
+										<th>정신</th>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+									<tr>
+										<th>신장</th>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+									<tr>
+										<th>자폐성</th>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+									<tr>
+										<th>언어</th>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+									<tr>
+										<th>장루요루</th>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+									<tr>
+										<th>호흡기</th>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+									<tr>
+										<th>간</th>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+									<tr>
+										<th>뇌전증</th>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+									<tr>
+										<th>심장</th>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+									<tr>
+										<th>안면</th>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+									<tr>
+										<th>계</th>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<!-- //end 장애유형별/연령별 장애인구 -->
+
+				<!-- 건강검진 수검률 (건강보험대상자)-->
+				<div class="cont-box">
+					<h4 class="cont-label"></h4>
+					<div class="cont">
+						<p class="help-text"><b>4. 건강검진 수검률 (건강보험대상자)</b></p>
+						<div class="s-pad-box flex" style="margin:20px auto;padding:0;overflow: hidden;">
+							<div id="chart2" style="width:600px;">
+								<div class="chart">
+									<div class="wrapper">
+										<canvas id="myChart2" style="min-height: 600px;"></canvas>
+									</div>
+								</div>
+							</div>
+							<div class="tableType-01 green no-border" style="min-width:300px;max-width: 385px;">
+								<table>
+									<colgroup>
+										<col style="width: 110px;">
+										<col>
+										<col>
+									</colgroup>
+									<thead>
+										<tr>
+											<th>장애유형</th>
+											<th>수검자(명)</th>
+											<th>수검률(%)</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<th>지체</th>
+											<td></td>
+											<td></td>
+										</tr>
+										<tr>
+											<th>청각</th>
+											<td></td>
+											<td></td>
+										</tr>
+										<tr>
+											<th>시각</th>
+											<td></td>
+											<td></td>
+										</tr>
+										<tr>
+											<th>뇌병변</th>
+											<td></td>
+											<td></td>
+										</tr>
+										<tr>
+											<th>지적</th>
+											<td></td>
+											<td></td>
+										</tr>
+										<tr>
+											<th>정신</th>
+											<td></td>
+											<td></td>
+										</tr>
+										<tr>
+											<th>신장</th>
+											<td></td>
+											<td></td>
+										</tr>
+										<tr>
+											<th>자폐성</th>
+											<td></td>
+											<td></td>
+										</tr>
+										<tr>
+											<th>언어</th>
+											<td></td>
+											<td></td>
+										</tr>
+										<tr>
+											<th>장루요루</th>
+											<td></td>
+											<td></td>
+										</tr>
+										<tr>
+											<th>호흡기</th>
+											<td></td>
+											<td></td>
+										</tr>
+										<tr>
+											<th>간</th>
+											<td></td>
+											<td></td>
+										</tr>
+										<tr>
+											<th>뇌전증</th>
+											<td></td>
+											<td></td>
+										</tr>
+										<tr>
+											<th>심장</th>
+											<td></td>
+											<td></td>
+										</tr>
+										<tr>
+											<th>안면</th>
+											<td></td>
+											<td></td>
+										</tr>
+										<tr>
+											<th>계</th>
+											<td></td>
+											<td></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- //end 건강검진 수검률 (건강보험대상자) -->
 			</div>
 			<!-- //end .s-inner -->
 		</section>

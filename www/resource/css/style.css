@@ -1,5 +1,8 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap");
+html, body {
+  min-width: 768px; }
+
 .text-deepblue {
   color: #344aa0 !important; }
 
@@ -285,7 +288,6 @@ header {
   position: relative;
   display: flex;
   align-items: flex-end;
-  justify-content: center;
   flex-wrap: wrap;
   width: 100%;
   padding: 20px 0 0 50px;
@@ -2232,6 +2234,43 @@ footer {
         top: 5px;
         left: 18%; }
 
+[id*="chart"] {
+  width: 600px;
+  margin: 0 auto 30px; }
+  [id*="chart"] .chart {
+    position: relative;
+    width: 100%;
+    padding-top: 100%; }
+    [id*="chart"] .chart [class*="wrapper"],
+    [id*="chart"] .chart .donut {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box; }
+      [id*="chart"] .chart [class*="wrapper"] .title,
+      [id*="chart"] .chart .donut .title {
+        position: absolute;
+        top: 50%;
+        left: 65%;
+        font-size: 22px;
+        text-align: center;
+        transform: translate(-50%, -50%); }
+
+.s-pad-box [id*="chart"] {
+  width: 500px; }
+  .s-pad-box [id*="chart"] [class*="wrapper"] .title,
+  .s-pad-box [id*="chart"] .donut .title {
+    top: 40%;
+    left: 50%; }
+
+canvas {
+  background: #fff;
+  height: 250px; }
+
 /*
 	media
 */
@@ -2486,6 +2525,10 @@ footer {
       width: 100%;
       margin-bottom: 15px;
       font-size: 3rem; }
+
+  #seoul-map {
+    overflow: hidden;
+    background-color: #f5f5f5; }
 
   .seoul-map > ul {
     left: 50px;
@@ -2934,10 +2977,6 @@ footer {
     [id*="collaboCorp"] li > a .name {
       font-size: 2.4rem; }
 
-  #seoul-map {
-    overflow: hidden;
-    background-color: #f5f5f5; }
-
   .seoul-map {
     transform: scale(0.9);
     background-color: transper; }
@@ -2992,37 +3031,6 @@ footer {
     margin-bottom: 35px;
     padding: 35px 0;
     font-size: 3rem;
-<<<<<<< HEAD
-    line-height: 1.3; } }
-  
-    .btn-sm {
-      display: inline-block;
-      height: 40px;
-      padding: 0 15px;
-      color: #333;
-      font-size: 16px;
-      font-weight: normal;
-      border: 1px solid #dfdfdf;
-      box-sizing: border-box;
-      outline: none;
-      cursor: pointer;
-      text-align: center;
-      text-indent: 0 !important;
-      text-decoration: none;
-      line-height: 38px;
-      white-space: nowrap;
-      vertical-align: middle;
-      -ms-touch-action: manipulation;
-      touch-action: manipulation;
-      border-color: #1e2c67;
-      background-color: #1e2c67;
-      transition: all 0.2s;
-    }
-
-    .ft-c01 {
-      color: #ffffff !important;
-    }
-=======
     line-height: 1.3; }
 
   .areaList .centerBox {
@@ -3059,5 +3067,4 @@ footer {
   .seoul-map {
     transform: scale(0.9); } }
 
->>>>>>> 9b5642a23f0aef380c73033cd0d40b36606488ee
 /*# sourceMappingURL=style.css.map */
