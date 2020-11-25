@@ -21,7 +21,7 @@ switch($_POST['mode']){
 		$insertFileCheck	= false;
 		if ($is_fileName) {
 			$args_f = "";
-			$args_f['forder'] 					= $GP -> UP_organization;
+			$args_f['forder'] 					= $GP -> UP_multi;
 			$args_f['files'] 						= $_FILES[$file_orName];
 			$args_f['max_file_size'] 		= 1024 * 5000;// 500kb 이하
 			$args_f['able_file'] 				= array();
@@ -46,7 +46,7 @@ switch($_POST['mode']){
 		$insertFileCheck	= false;
 		if ($is_fileName) {
 			$args_f = "";
-			$args_f['forder'] 					= $GP -> UP_organization;
+			$args_f['forder'] 					= $GP -> UP_multi;
 			$args_f['files'] 						= $_FILES[$file_orName];
 			$args_f['max_file_size'] 		= 1024 * 5000;// 500kb 이하
 			$args_f['able_file'] 				= array();
@@ -103,7 +103,7 @@ switch($_POST['mode']){
 			$args['type'] = $type;
 			$rst = $C_multi -> multi_ImgUpdate($args);
 	
-			@unlink($GP -> UP_organization . $file);
+			@unlink($GP -> UP_multi . $file);
 	
 			echo "true";
 			exit();
@@ -122,11 +122,11 @@ switch($_POST['mode']){
 			$tm_m_img = $result['tm_m_img'];
 			
 			if($tm_img != '') {			
-				@unlink($GP -> UP_organization.$tm_img);
+				@unlink($GP -> UP_multi.$tm_img);
 			}					
 			
 			if($tm_m_img != '') {			
-				@unlink($GP -> UP_organization.$tm_m_img);
+				@unlink($GP -> UP_multi.$tm_m_img);
 			}
 			$rst = $C_multi -> multi_Del($args);
 		}		
@@ -147,7 +147,7 @@ switch($_POST['mode']){
 		$insertFileCheck	= false;
 		if ($is_fileName) {
 			$args_f = "";
-			$args_f['forder'] 					= $GP -> UP_organization;
+			$args_f['forder'] 					= $GP -> UP_multi;
 			$args_f['files'] 						= $_FILES[$file_orName];
 			$args_f['max_file_size'] 		= 1024 * 5000;// 500kb 이하
 			$args_f['able_file'] 				= array();
@@ -172,7 +172,7 @@ switch($_POST['mode']){
 		$insertFileCheck	= false;
 		if ($is_fileName) {
 			$args_f = "";
-			$args_f['forder'] 					= $GP -> UP_organization;
+			$args_f['forder'] 					= $GP -> UP_multi;
 			$args_f['files'] 						= $_FILES[$file_orName];
 			$args_f['max_file_size'] 		= 1024 * 5000;// 500kb 이하
 			$args_f['able_file'] 				= array();

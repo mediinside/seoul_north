@@ -41,9 +41,10 @@ $GP -> MENU_SUB_ADMIN['doctor'] = array(
 
 $GP -> MENU_SUB_ADMIN['center'] = array(
 	"센터안내"   => array(
-        array("tab"=>"1",	"title"=>"center1", "name"=>"전국센터현황",		"link"=>  "/admin/center/center_list.php"),
-        array("tab"=>"2",	"title"=>"center2", "name"=>"업무협력 기관",	"link"=>  "/admin/center/organization_list.php"),
-        array("tab"=>"3",	"title"=>"center3", "name"=>"직원안내",			"link"=>  "/admin/center/staff_list.php"),
+		array("tab"=>"1",	"title"=>"center1", "name"=>"전국센터현황",		"link"=>  "/admin/center/center_list.php"),
+		array("tab"=>"2",	"title"=>"center2", "name"=>"MOU 기관",		"link"=>  "/admin/center/mou_list.php"),
+        array("tab"=>"3",	"title"=>"center3", "name"=>"협력 기관",	"link"=>  "/admin/center/organization_list.php"),
+        array("tab"=>"4",	"title"=>"center4", "name"=>"직원안내",			"link"=>  "/admin/center/staff_list.php"),
 	)
 );
 

@@ -1,5 +1,23 @@
 <?php
+
+	include_once $_SERVER['DOCUMENT_ROOT'] . '/_init.php';
+	include_once $GP -> INC_WWW . '/count_inc.php';
 	include_once "../inc/head.php";
+
+	include_once($GP->CLS."class.list.php");
+	include_once($GP -> CLS."/class.multi.php");
+
+	$C_ListClass 	= new ListClass;
+	$C_multi 		= new multi;
+	$C_Button 		= new Button;
+
+	$args = array();	
+	$args['tm_menu'] = "staff";	
+	$data = "";
+	$data = $C_multi->multi_List(array_merge($_GET,$_POST,$args));
+	$data_list 		= $data['data'];
+	$data_list_cnt 	= count($data_list);
+
 ?>
 <style>
 	table tbody tr td {word-break: normal !important;}
@@ -47,14 +65,27 @@
 									</tr>
 								</thead>
 								<tbody>
+								<?php
+									$dummy = 1;
+									for ($i = 0 ; $i < $data_list_cnt ; $i++) {
+										$tm_idx        = $data_list[$i]['tm_idx'];                                        
+                                        $tm_content1      = $data_list[$i]['tm_content1'];
+                                        $tm_content2      = $data_list[$i]['tm_content2'];
+                                        $tm_content3      = $data_list[$i]['tm_content3'];
+                                        $tm_content4      = $data_list[$i]['tm_content4'];
+                                        $tm_content5      = $data_list[$i]['tm_content5'];
+                                        $tm_content6      = $data_list[$i]['tm_content6'];
+                                        $tm_content7      = $data_list[$i]['tm_content7'];								
+								?>
 									<tr>
-										<td class="text-center">센터장</td>
-										<td class="text-center">이규범</td>
-										<td class="text-center">서울재활병원 부원장 재활의학과 전문의</td>
-										<td class="text-center">운영 총괄</td>
-										<td class="text-center">02-6020-3002</td>
+										<td class="text-center"><?=$tm_content1?></td>
+										<td class="text-center"><?=$tm_content2?></td>
+										<td class="text-center"><?=$tm_content3?></td>
+										<td class="text-center"><?=$tm_content4?></td>
+										<td class="text-center"><?=$tm_content5?></td>
 									</tr>
-									<tr>
+								<? } ?>
+									<!--tr>
 										<td class="text-center">전략기획실장</td>
 										<td class="text-center">김진희</td>
 										<td class="text-center">의료사회복지사</td>
@@ -102,7 +133,7 @@
 										<td class="text-center">사회복지사</td>
 										<td class="text-center">자원DB관리/ 장애인건강보건 사례관리 서비스/자조모임/기관협력</td>
 										<td class="text-center">02-6020-3124</td>
-									</tr>
+									</tr-->
 								</tbody>
 							</table>
 						</div>

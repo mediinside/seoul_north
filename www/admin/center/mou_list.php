@@ -15,7 +15,7 @@
 	$args = array();
     $args['show_row'] = 10;
     $args['pagetype'] = "admin";
-    $args['tm_menu'] = "organization";	
+    $args['tm_menu'] = "mou";	
 	$data = "";
 	$data = $C_multi->multi_List(array_merge($_GET,$_POST,$args));
 	
@@ -70,7 +70,7 @@
 			</div>
 		</div>
 		<div style="margin-top:5px; text-align:right;">
-		<button onClick="layerPop('ifm_reg','./organization_reg.php', '100%', 650)"; class="btnSearch ">기관 등록</button>
+		<button onClick="layerPop('ifm_reg','./mou_reg.php', '100%', 650)"; class="btnSearch ">기관 등록</button>
 		</div>
 		<div id="BoardHead" class="boxBoardHead">				
 				<div class="boxMemberBoard">
@@ -129,7 +129,7 @@
 											$m_img = "<img src='/images/no_image.jpg' width='100px' />";
 										}																		
 																				
-										$edit_btn = $C_Button -> getButtonDesign('type2','수정',0,"layerPop('ifm_reg','./organization_edit.php?tm_idx=" . $tm_idx. "', '100%', 650)", 50,'');	
+										$edit_btn = $C_Button -> getButtonDesign('type2','수정',0,"layerPop('ifm_reg','./mou_edit.php?tm_idx=" . $tm_idx. "', '100%', 650)", 50,'');	
 										$edit_btn .= $C_Button -> getButtonDesign('type2','삭제',0,"multi_delete('" . $tm_idx. "')", 50,'');
 							?>
 									<tr>

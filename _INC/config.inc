@@ -92,11 +92,17 @@ $GP -> UP_TREAT_URL			= $GP -> HTTP . '/common/treat/';
 $GP -> UP_SLIDE				= $GP -> HOME . 'common/slide/';
 $GP -> UP_SLIDE_URL			= $GP -> HTTP . '/common/slide/';
 
+##  멀티게시판
+$GP -> UP_multi				= $GP -> HOME . 'common/multi/';
+$GP -> UP_multi_URL			= $GP -> HTTP . '/common/multi/';
+
+##  MOU기관
+$GP -> UP_mou				= $GP -> HOME . 'common/mou/';
+$GP -> UP_mou_URL			= $GP -> HTTP . '/common/mou/';
 
 ##  협력기관
 $GP -> UP_organization				= $GP -> HOME . 'common/organization/';
 $GP -> UP_organization_URL			= $GP -> HTTP . '/common/organization/';
-
 
 ##  입사지원
 $GP -> UP_RECRUIT				= $GP -> HOME . 'common/recruit/';
@@ -255,10 +261,23 @@ $GP -> WITHDRAWAL_REASON	 = array(
 
 //진료과목
 $GP -> CENTER_TYPE = array(
-				'A' => '건강검진센터',
-				'B' => '소화기내시경센터',
-				'H' => '산부인과',
-
+				'2' => '서울특별시',
+				'6' => '경기도',
+				'7' => '인천광역시',
+				'8' => '부산광역시',
+				'3' => '강원도',
+				'4' => '대전광역시',													
+				'10' => '광주광역시',
+				'11' => '대구광역시',
+				'12' => '울산광역시',
+				'13' => '세종특별자치시',
+				'14' => '충청북도',
+				'15' => '충청남도',
+				'5'	 => '전라북도',		
+				'16' => '전라남도',
+				'17' => '경상북도',
+				'1' => '경상남도',
+				'9' => '제주특별자치도',
 			);
 
 //진료과
@@ -529,7 +548,6 @@ $GP -> COUNSEL_TPYE = array(
 				'A' => '메인',
 				'B' => '모바일',
 			);
-
 
 
 
