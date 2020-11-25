@@ -117,14 +117,14 @@
 										
 										$b_img = '';
 										if($tm_img !=  '') {
-											$b_img = "<img src='" . $GP -> UP_organization_URL . $tm_img . "' width='100px' />";
+											$b_img = "<img src='" . $GP -> UP_multi_URL . $tm_img . "' width='100px' />";
 										}else {
 											$b_img = "<img src='/images/no_image.jpg' width='100px' />";
 										}
 
 										$m_img = '';
 										if($tm_m_img !=  '') {
-											$m_img = "<img src='" . $GP -> UP_organization_URL . $tm_m_img . "' width='100px' />";
+											$m_img = "<img src='" . $GP -> UP_multi_URL . $tm_m_img . "' width='100px' />";
 										}else {
 											$m_img = "<img src='/images/no_image.jpg' width='100px' />";
 										}																		

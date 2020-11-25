@@ -60,8 +60,7 @@ CLASS ListClass
 		if (!$list_dsp_none || $sc_type) {
 			$data = $this -> DB -> execSqlList ($qry_get);
 		}
-
-
+	
 		if($excel_file)
 		{
 			$args = '';

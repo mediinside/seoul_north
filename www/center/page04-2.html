@@ -1,5 +1,22 @@
 <?php
+	include_once $_SERVER['DOCUMENT_ROOT'] . '/_init.php';
+	include_once $GP -> INC_WWW . '/count_inc.php';
 	include_once "../inc/head.php";
+
+	include_once($GP->CLS."class.list.php");
+	include_once($GP -> CLS."/class.multi.php");
+
+	$C_ListClass 	= new ListClass;
+	$C_multi 		= new multi;
+	$C_Button 		= new Button;
+
+	$args = array();	
+	$args['tm_menu'] = "organization";	
+	$data = "";
+	$data = $C_multi->multi_List(array_merge($_GET,$_POST,$args));
+	$data_list 		= $data['data'];
+	$data_list_cnt 	= count($data_list);
+
 ?>
 
 <body>
@@ -43,101 +60,31 @@
 					<h4 class="cont-label">협력기관</h4>
 					<div class="cont">
 						<ul id="collaboCorp">
+						<?php
+							$dummy = 1;
+							for ($i = 0 ; $i < $data_list_cnt ; $i++) {
+								$tm_idx        = $data_list[$i]['tm_idx'];                                        
+								$tm_content1      = $data_list[$i]['tm_content1'];
+								$tm_content2      = $data_list[$i]['tm_content2'];
+								$tm_content3      = $data_list[$i]['tm_content3'];
+								$tm_img        = $data_list[$i]['tm_img'];
+								$tm_m_img      = $data_list[$i]['tm_m_img'];    	
+								
+								$img_src = "";
+								if($tm_img != '') {
+									$img_src = "<img src='" . $GP -> UP_multi_URL . $tm_img . "' alt='' />";
+								}else{
+									$img_src = "<img src='/images/no_image.jpg' alt='' />";
+								}
+								
+						?>
 							<li>
-								<a href="#" target="_blank">
-									<span class="logo"><img src="/resource/images/siblings-logo01.png"
-											alt=""></span>
-									<span class="name">서울특별시북부센터</span>
+								<a href="<?=$tm_content2?>" target="_blank">
+									<span class="logo"><?=$img_src?></span>
+									<span class="name"><?=$tm_content1?></span>
 								</a>
 							</li>
-							<li>
-								<a href="#" target="_blank">
-									<span class="logo"><img src="/resource/images/siblings-logo02.png"
-											alt=""></span>
-									<span class="name">서울시수어통역지역지원본부</span>
-								</a>
-							</li>
-							<li>
-								<a href="#" target="_blank">
-									<span class="logo"><img src="/resource/images/siblings-logo03.png"
-											alt=""></span>
-									<span class="name">은평구청</span>
-								</a>
-							</li>
-							<li>
-								<a href="#" target="_blank">
-									<span class="logo"><img src="/resource/images/siblings-logo04.png"
-											alt=""></span>
-									<span class="name">경희대학교 의과대학</span>
-								</a>
-							</li>
-							<li>
-								<a href="#" target="_blank">
-									<span class="logo"><img src="/resource/images/siblings-logo05.png"
-											alt=""></span>
-									<span class="name">서울대학교 간호대학</span>
-								</a>
-							</li>
-							<li>
-								<a href="#" target="_blank">
-									<span class="logo"><img src="/resource/images/siblings-logo06.png"
-											alt=""></span>
-									<span class="name">국립재활병원</span>
-								</a>
-							</li>
-							<li>
-								<a href="#" target="_blank">
-									<span class="logo"><img src="/resource/images/siblings-logo07.png"
-											alt=""></span>
-									<span class="name">명지춘혜병원</span>
-								</a>
-							</li>
-							<li>
-								<a href="#" target="_blank">
-									<span class="logo"><img src="/resource/images/siblings-logo08.png"
-											alt=""></span>
-									<span class="name">청담병원</span>
-								</a>
-							</li>
-							<li>
-								<a href="#" target="_blank">
-									<span class="logo"><img src="/resource/images/siblings-logo09.png"
-											alt=""></span>
-									<span class="name">제니스병원</span>
-								</a>
-							</li>
-							<li>
-								<a href="#" target="_blank">
-									<span class="logo"><img src="/resource/images/siblings-logo10.png"
-											alt=""></span>
-									<span class="name">국립교통재활병원</span>
-								</a>
-							</li>
-							<li>
-								<a href="#" target="_blank">
-									<span class="logo"><img src="/resource/images/siblings-logo11.png"
-											alt=""></span>
-									<span class="name">린병원</span>
-								</a>
-							</li>
-							<li>
-								<a href="#" target="_blank">
-									<span class="logo"><img src="/resource/images/siblings-logo12.png" alt=""></span>
-									<span class="name">서울시복지재단</span>
-								</a>
-							</li>
-							<li>
-								<a href="#" target="_blank">
-									<span class="logo"><img src="/resource/images/siblings-logo13.png" alt=""></span>
-									<span class="name">은평구육아종합지원센터</span>
-								</a>
-							</li>
-							<li>
-								<a href="#" target="_blank">
-									<span class="logo"><img src="/resource/images/siblings-logo14.png" alt=""></span>
-									<span class="name">공공보건의료재단</span>
-								</a>
-							</li>
+						<? } ?>									
 						</ul>
 					</div>
 				</div>

@@ -3031,6 +3031,7 @@ canvas {
     margin-bottom: 35px;
     padding: 35px 0;
     font-size: 3rem;
+<<<<<<< HEAD
     line-height: 1.3; }
 
   .areaList .centerBox {
@@ -3068,3 +3069,35 @@ canvas {
     transform: scale(0.9); } }
 
 /*# sourceMappingURL=style.css.map */
+=======
+    line-height: 1.3; } }
+  
+    .btn-sm {
+      display: inline-block;
+      height: 40px;
+      padding: 0 15px;
+      color: #333;
+      font-size: 16px;
+      font-weight: normal;
+      border: 1px solid #dfdfdf;
+      box-sizing: border-box;
+      outline: none;
+      cursor: pointer;
+      text-align: center;
+      text-indent: 0 !important;
+      text-decoration: none;
+      line-height: 38px;
+      white-space: nowrap;
+      vertical-align: middle;
+      -ms-touch-action: manipulation;
+      touch-action: manipulation;
+      border-color: #1e2c67;
+      background-color: #1e2c67;
+      transition: all 0.2s;
+    }
+
+    .ft-c01 {
+      color: #ffffff !important;
+    }
+/*# sourceMappingURL=style.css.map */
+>>>>>>> 1ea2ee5f1880f6e91d89bb62d905869573ab0cf9

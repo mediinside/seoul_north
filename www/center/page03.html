@@ -1,5 +1,21 @@
 <?php
+	include_once $_SERVER['DOCUMENT_ROOT'] . '/_init.php';
+	include_once $GP -> INC_WWW . '/count_inc.php';
 	include_once "../inc/head.php";
+
+	include_once($GP->CLS."class.list.php");
+	include_once($GP -> CLS."/class.multi.php");
+
+	$C_ListClass 	= new ListClass;
+	$C_multi 		= new multi;
+
+	$args = array();	
+	$args['tm_menu'] = "center";	
+	$data = "";
+	$data = $C_multi->multi_List(array_merge($_GET,$_POST,$args));
+	$data_list 		= $data['data'];
+	$data_list_cnt 	= count($data_list);
+
 ?>
 
 <body>
@@ -54,129 +70,55 @@
 								<a href="#none" class="mapPoint09 pointBtn" data-num="9" title="제주 지역장애인보건의료센터">
 									<span class="numMap">09</span> <span class="numArea">제주특별자치도</span>
 								</a>
+								<!---a href="#none" class="mapPoint10 pointBtn" data-num="10" title="광주광역시 지역장애인보건의료센터">
+									<span class="numMap">10</span> <span class="numArea">광주광역시</span>
+								</a>
+								<a href="#none" class="mapPoint11 pointBtn" data-num="11" title="대구광역시 지역장애인보건의료센터">
+									<span class="numMap">11</span> <span class="numArea">대구광역시</span>
+								</a>
+								<a href="#none" class="mapPoint12 pointBtn" data-num="12" title="울산광역시 지역장애인보건의료센터">
+									<span class="numMap">12</span> <span class="numArea">울산광역시</span>
+								</a>
+								<a href="#none" class="mapPoint13 pointBtn" data-num="13" title="세종특별자치시 지역장애인보건의료센터">
+									<span class="numMap">13</span> <span class="numArea">세종특별자치시</span>
+								</a>
+								<a href="#none" class="mapPoint14 pointBtn" data-num="14" title="충청북도 지역장애인보건의료센터">
+									<span class="numMap">14</span> <span class="numArea">충청북도</span>
+								</a>
+								<a href="#none" class="mapPoint15 pointBtn" data-num="15" title="충청남도 지역장애인보건의료센터">
+									<span class="numMap">15</span> <span class="numArea">충청남도</span>
+								</a>
+								<a href="#none" class="mapPoint16 pointBtn" data-num="16" title="전라남도 지역장애인보건의료센터">
+									<span class="numMap">16</span> <span class="numArea">전라남도</span>
+								</a>
+								<a href="#none" class="mapPoint17 pointBtn" data-num="17" title="경상북도 지역장애인보건의료센터">
+									<span class="numMap">17</span> <span class="numArea">경상북도</span>
+								</a-->
 							</div>
 							<div class="areaList">
-								<div class="centerBox center1">
+							<?php
+								$dummy = 1;
+								for ($i = 0 ; $i < $data_list_cnt ; $i++) {
+									$tm_idx        = $data_list[$i]['tm_idx'];                                        
+									$tm_content1      = $data_list[$i]['tm_content1'];
+									$tm_content2      = $data_list[$i]['tm_content2'];
+									$tm_content3      = $data_list[$i]['tm_content3'];		
+									$tm_content4      = $data_list[$i]['tm_content4'];		
+									$tm_content5      = $data_list[$i]['tm_content5'];		
+									$tm_content6      = $data_list[$i]['tm_content6'];																						
+							?>
+								<div class="centerBox center<?=$tm_content6?>">
 									<h6>
-										경상남도 지역장애인보건의료센터
-										<small>양산부산대학교병원</small>
+										<?=$tm_content1?>
+										<small><?=$tm_content2?></small>
 									</h6>
-									<p class="addr">경상남도 양산시 물금읍 금오로 20</p>
-									<p class="tel">055-360-4126</p>
+									<p class="addr"><?=$tm_content3?></p>
+									<p class="tel"><?=$tm_content4?></p>
 									<div class="link">
-										<a class="btn bg-deepblue" href="http://www.경상남도지역장애인보건의료센터.org" target="_blank"	alt="새창">바로가기</a>
+										<a class="btn bg-deepblue" href="<?=$tm_content5?>" target="_blank"	alt="새창">바로가기</a>
 									</div>
 								</div>
-								<div class="centerBox center2">
-									<h6>
-										중앙장애인보건의료센터
-										<small>국립재활원</small>
-									</h6>
-									<p class="addr">서울특별시 강북구 삼각산로 58</p>
-									<p class="tel">02-901-1700</p>
-									<div class="link">
-										<a class="btn bg-deepblue" href="http://www.경상남도지역장애인보건의료센터.org" target="_blank" alt="새창">바로가기</a>
-									</div>
-								</div>
-								<div class="centerBox center2">
-									<h6>
-										서울특별시 북부 지역장애인보건의료센터
-										<small>서울재활병원</small>
-									</h6>
-									<p class="addr">서울특별시 은평구 갈현로11길 30, 1층</p>
-									<p class="tel">02-6020-3128</p>
-									<div class="link">
-										<a class="btn bg-deepblue" href="http://www.경상남도지역장애인보건의료센터.org" target="_blank" alt="새창">바로가기</a>
-									</div>
-								</div>
-								<div class="centerBox center2">
-									<h6>
-										서울특별시 남부 지역장애인보건의료센터
-										<small>서울대학교 보라매병원</small>
-									</h6>
-									<p class="addr">서울특별시 동작구 보라매로5길 15, 15층</p>
-									<p class="tel">02-870-2072</p>
-									<div class="link">
-										<a class="btn bg-deepblue" href="http://www.경상남도지역장애인보건의료센터.org" target="_blank" alt="새창">바로가기</a>
-									</div>
-								</div>
-								<div class="centerBox center3">
-									<h6>
-										강원도 지역장애인보건의료센터
-										<small>강원도재활병원</small>
-									</h6>
-									<p class="addr">강원도 춘천시 충열로142번길 24-16</p>
-									<p class="tel">033-248-7761</p>
-									<div class="link">
-										<a class="btn bg-deepblue" href="http://www.경상남도지역장애인보건의료센터.org" target="_blank" alt="새창">바로가기</a>
-									</div>
-								</div>
-								<div class="centerBox center4">
-									<h6>
-										대전광역시 지역장애인보건의료센터
-										<small>충남대학교병원</small>
-									</h6>
-									<p class="addr">대전광역시 중구 문화로 282</p>
-									<p class="tel">042-338-2223</p>
-									<div class="link">
-										<a class="btn bg-deepblue" href="http://www.경상남도지역장애인보건의료센터.org" target="_blank" alt="새창">바로가기</a>
-									</div>
-								</div>
-								<div class="centerBox center5">
-									<h6>
-										전라북도 지역장애인보건의료센터
-										<small>원광대학교병원</small>
-									</h6>
-									<p class="addr">전라북도 익산시 무왕로 895</p>
-									<p class="tel">063-859-0054</p>
-									<div class="link">
-										<a class="btn bg-deepblue" href="http://www.경상남도지역장애인보건의료센터.org" target="_blank" alt="새창">바로가기</a>
-									</div>
-								</div>
-								<div class="centerBox center6">
-									<h6>
-										경기도 지역장애인보건의료센터
-										<small>분당서울대학교병원</small>
-									</h6>
-									<p class="addr">경기도 성남시 분당구 구미로173번길 82</p>
-									<p class="tel"></p>
-									<div class="link">
-										<a class="btn bg-deepblue" href="http://www.경상남도지역장애인보건의료센터.org" target="_blank" alt="새창">바로가기</a>
-									</div>
-								</div>
-								<div class="centerBox center7">
-									<h6>
-										인천광역시 지역장애인보건의료센터
-										<small>인하대학교병원</small>
-									</h6>
-									<p class="addr">인천광역시 중구 인항로 27</p>
-									<p class="tel"></p>
-									<div class="link">
-										<a class="btn bg-deepblue" href="http://www.경상남도지역장애인보건의료센터.org" target="_blank" alt="새창">바로가기</a>
-									</div>
-								</div>
-								<div class="centerBox center8">
-									<h6>
-										부산광역시 지역장애인보건의료센터
-										<small>동아대학교병원</small>
-									</h6>
-									<p class="addr">부산광역시 서구 대신공원로 26</p>
-									<p class="tel"></p>
-									<div class="link">
-										<a class="btn bg-deepblue" href="http://www.경상남도지역장애인보건의료센터.org" target="_blank" alt="새창">바로가기</a>
-									</div>
-								</div>
-								<div class="centerBox center9">
-									<h6>
-										제주특별자치도 지역장애인보건의료센터
-										<small>제주대학교병원</small>
-									</h6>
-									<p class="addr">제주특별자치도 제주시 아란13길 15</p>
-									<p class="tel"></p>
-									<div class="link">
-										<a class="btn bg-deepblue" href="http://www.경상남도지역장애인보건의료센터.org" target="_blank" alt="새창">바로가기</a>
-									</div>
-								</div>
+							<? } ?>									
 							</div>
 							<script>
 							// <![CDATA[

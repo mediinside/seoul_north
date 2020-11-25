@@ -2,7 +2,7 @@
 	include_once("../../_init.php");
     include_once($GP -> INC_ADM_PATH."/head.php");	
     
-    $MULTI_select = $C_Func -> makeSelect_Normal('tm_select', $GP -> MULTI_TYPE, $tm_select, '', '::선택::');
+    $MULTI_select = $C_Func -> makeSelect_Normal('tm_content6', $GP -> CENTER_TYPE, $tm_select, '', '::선택::');
 ?>
 <body>
 <div class="Wrap_layer"><!--// 전체를 감싸는 Wrap -->
@@ -17,7 +17,13 @@
 			<div class="boxMemberInfoTable_layer">				
 				<div class="layerTable">
 					<table class="table table-bordered">
-						<tbody>                         												          														                       
+						<tbody>   
+							<tr>
+								<th><span>*</span>지역</th>
+								<td>
+									<?=$MULTI_select?>
+								</td>
+                            </tr>	                      												          														                       
 							<tr>
 								<th><span>*</span>센터명</th>
 								<td>
@@ -50,7 +56,7 @@
 								</td>
                             </tr>
                             <tr>
-								<th><span>*</span>번호</th>
+								<th><span>*</span>대표전화</th>
 								<td>
 									<input type="text" class="input_text" size="100" name="tm_content4" id="tm_content4"/>
 								</td>
