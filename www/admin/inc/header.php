@@ -102,7 +102,7 @@
 		</div>
 		<div id="BoardHead" class="boxBoardHead">
 				<ul>
-				<?
+				<?						
 					foreach ($GP -> MENU_SUB_ADMIN[$menuQuery] as $key => $val) {
 						foreach ($val as $key2 => $val2) {
 							$a2_class = "";
@@ -125,22 +125,19 @@
 								}
                             }     
                             
-                           // print_r($val2['title']) ;
-                           
+						   // print_r($val2['title']) ;
+						                            
 							if($val2['title']) {
-								if ($val['tab'] == '1' && $val['title'] == 'doctor1' &&  ($_SESSION['adminid'] == 'medi2'  || $_SESSION['adminid'] == 'anyspine') && $lang == "eng") {
-									echo '';
-                                }
-                                elseif($folderName == 'doctor' && $val2['tab'] <> "1" || $folderName == 'doctor1' || $folderName == 'doctor2' || $folderName == 'doctor3'){
-                                 ?>
-                                    <li><a href="<?=$val2['link']?>&tab=<?=$val2['tab']?>" class="<?=$a2_class?>"><?=$val2['name']?></a></li>
-                                 <?
-                                }
-                                else{
-				?>
-							<li><a href="<?=$val2['link']?>?tab=<?=$val2['tab']?>" class="<?=$a2_class?>"><?=$val2['name']?></a></li>
-				<?
+								if(strpos($val2['link'], "?")  == true){
+							?>
+								<li><a href="<?=$val2['link']?>&tab=<?=$val2['tab']?>" class="<?=$a2_class?>"><?=$val2['name']?></a></li>
+							<?
 								}
+								else{
+							?>
+								<li><a href="<?=$val2['link']?>?tab=<?=$val2['tab']?>" class="<?=$a2_class?>"><?=$val2['name']?></a></li>
+							<?
+								}																					
 							}
 						}
 					}

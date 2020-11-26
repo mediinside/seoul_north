@@ -70,7 +70,8 @@ switch($_POST['mode']){
 
 		$args = "";		
 		$args['tm_idx'] 					= $tm_idx;
-		$args['tm_title'] 				= addslashes($tm_title);		
+		$args['tm_title'] 				= addslashes($tm_title);	
+		$args['tm_type'] 				= $tm_type;	
 		$args['tm_content1'] 			= $C_Func->enc_contents($tm_content1);
 		$args['tm_content2'] 			= $C_Func->enc_contents($tm_content2);
 		$args['tm_content3'] 			= $C_Func->enc_contents($tm_content3);
@@ -197,6 +198,7 @@ switch($_POST['mode']){
 		
 		$args = "";
 		$args['tm_menu'] 				= $tm_menu;
+		$args['tm_type'] 				= $tm_type;
 		$args['tm_title'] 				= addslashes($tm_title);		
 		$args['tm_content1'] 			= $C_Func->enc_contents($tm_content1);
 		$args['tm_content2'] 			= $C_Func->enc_contents($tm_content2);

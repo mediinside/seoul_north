@@ -26,18 +26,16 @@
 		</div>
 		<form name="base_form" id="base_form" method="POST" action="?" enctype="multipart/form-data">
 		<input type="hidden" name="mode" id="mode" value="MULTI_MODI" />
-		<input type="hidden" name="tm_idx" id="tm_idx" value="<?=$_GET['tm_idx']?>" />        
+		<input type="hidden" name="tm_idx" id="tm_idx" value="<?=$_GET['tm_idx']?>" />       		
+		<input type="hidden" name="tm_type" id="tm_type" value="<?=$tm_type?>" /> 
+		<input type="hidden" name="before_image_main" id="before_image_main" value="<?=$tm_img?>" />
+        <input type="hidden" name="before_image_main_m" id="before_image_main_m" value="<?=$tm_m_img?>" />      
 		<div class="boxContentBody">			
 			<div class="boxMemberInfoTable_layer">				
 				<div class="layerTable">
 					<table class="table table-bordered">
-						<tbody>                                         
-                            <tr>
-								<th><span>*</span>분류</th>
-								<td>
-									<input type="text" class="input_text" size="150" name="tm_content1" id="tm_content1" value="<?=$tm_content1?>"/>
-								</td>
-                            </tr>	
+						<tbody>                                        
+                            
                             <tr>
 								<th><span>*</span>사이트</th>
 								<td>
@@ -49,7 +47,19 @@
 								<td>
 									<input type="text" class="input_text" size="150" name="tm_content3" id="tm_content3" value="<?=$tm_content3?>"/>
 								</td>
-                            </tr>                                                                    
+                            </tr>  
+							<tr>
+                                <th><span>*</span>이미지</th>
+                                <td>
+                                    <input type="file" name="tm_img" id="`tm_`img" size="30">
+                                    <?
+                                        if($tm_img != "") {
+                                            echo  "<br>" . $tm_img;
+                                    ?>
+                                        <a href="#" onClick="img_del('<?=$tm_img;?>','<?=$_GET['tm_idx']?>','W')">(X)</a>
+                                    <? } ?>
+                                </td>
+                            </tr>                                                                  
 							<tr>
 								<th><span>*</span>노출여부</th>
 								<td>

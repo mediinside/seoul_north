@@ -1,5 +1,44 @@
 <?php
+	include_once $_SERVER['DOCUMENT_ROOT'] . '/_init.php';
+	include_once $GP -> INC_WWW . '/count_inc.php';
 	include_once "../inc/head.php";
+
+	include_once($GP->CLS."class.list.php");
+	include_once($GP -> CLS."/class.disabled.php");
+
+	$C_ListClass 	= new ListClass;
+	$C_disabled 		= new disabled;	
+
+	$args = array();	
+	$args['d_year'] = $_GET["d_year"];	
+	$args['d_content'] = $_GET["d_content"];	
+	$args['d_district'] = $_GET["d_type"];	
+	$args['tm_type'] = "A";	
+	$data = "";
+	$data = $C_disabled->disabled_Show(array_merge($_GET,$_POST,$args));
+	$data_list 		= $data['data'];
+	$data_list_cnt 	= count($data);	
+
+	$arr_year = $C_disabled ->disabled_YEAR();
+
+	//echo "echo:" .  $_GET["d_content"] . "<br>" ;
+	//print_r($data_list_cnt) ;
+
+	//var_dump($data);	
+	//print_r($data[0]);
+	//print_r($data[0]['d_sum']);
+	for ($i = 0 ; $i < count($data) ; $i++) 
+	{		
+			$d_sum_total = $d_sum_total + $data[$i]['d_sum'] ;
+	}	
+
+	
+//	echo "echo:" . $$aa . "<br>" ;
+
+	//print_r(array_search('동작구', $data));	
+	
+	//print_r($data[0]['d_sum']);	
+
 ?>
 <style>
 	@media screen and (max-width:1023px){
@@ -10,6 +49,11 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
 <script>
 	$(document).ready(function () {
+		$('#id_submit_btn').click(function(){																 
+
+			$('#base_form').submit();
+			return false;
+		});
 		createChart('myChart', myChartData);
 		createChart('chart2', myChartData2);
 		createChart('myChart2', myChartData3);
@@ -341,62 +385,74 @@
 					<h4 class="cont-label">장애인 통계자료</h4>
 					<div class="cont">
 						<div class="map_search_box">
-							<div class="search_txtm">
+							<form name="base_form" id="base_form" method="GET">
+							<div class="search_txtm">							
 								<div class="sleft">
 									<span>구분</span>
-									<select name="v_type" class="selectmap" title="통계자료 선택">
-										<option value="">장애인 현황 전체</option>
-										<option value="지체" selected="selected">지체</option>
-										<option value="시각">시각</option>
-										<option value="청각">청각</option>
-										<option value="언어">언어</option>
-										<option value="지적">지적</option>
-										<option value="뇌병변">뇌병변</option>
-										<option value="자폐성">자폐성</option>
-										<option value="정신">정신</option>
-										<option value="신장">신장</option>
-										<option value="심장">심장</option>
-										<option value="호흡기">호흡기</option>
-										<option value="간">간</option>
-										<option value="안면">안면</option>
-										<option value="장루.요루">장루, 요루</option>
-										<option value="뇌전증">뇌전증</option>
+									<select name="d_content" class="selectmap" title="통계자료 선택">
+										<option value="" >장애인 현황 전체</option>
+										<option value="d_content1" <? if($_GET['d_content'] == "d_content1"){ echo "selected";}?> >지체</option>
+										<option value="d_content2" <? if($_GET['d_content'] == "d_content2"){ echo "selected";}?>>시각</option>
+										<option value="d_content3" <? if($_GET['d_content'] == "d_content3"){ echo "selected";}?>>청각</option>
+										<option value="d_content4" <? if($_GET['d_content'] == "d_content4"){ echo "selected";}?>>언어</option>
+										<option value="d_content5" <? if($_GET['d_content'] == "d_content5"){ echo "selected";}?>>지적</option>
+										<option value="d_content6" <? if($_GET['d_content'] == "d_content6"){ echo "selected";}?>>뇌병변</option>
+										<option value="d_content7" <? if($_GET['d_content'] == "d_content7"){ echo "selected";}?>>자폐성</option>
+										<option value="d_content8" <? if($_GET['d_content'] == "d_content8"){ echo "selected";}?>>정신</option>
+										<option value="d_content9" <? if($_GET['d_content'] == "d_content9"){ echo "selected";}?>>신장</option>
+										<option value="d_content10" <? if($_GET['d_content'] == "d_content10"){ echo "selected";}?>>심장</option>
+										<option value="d_content11" <? if($_GET['d_content'] == "d_content11"){ echo "selected";}?>>호흡기</option>
+										<option value="d_content12" <? if($_GET['d_content'] == "d_content12"){ echo "selected";}?>>간</option>
+										<option value="d_content13" <? if($_GET['d_content'] == "d_content13"){ echo "selected";}?>>안면</option>
+										<option value="d_content14" <? if($_GET['d_content'] == "d_content14"){ echo "selected";}?>>장루, 요루</option>
+										<option value="d_content15" <? if($_GET['d_content'] == "d_content15"){ echo "selected";}?>>뇌전증</option>
 									</select>
 								</div>
 								<div class="sleft">
 									<span>년도</span>
-									<select name="v_year" class="selectmap" title="년도 선택">
-										<option value="2019" selected="selected">2019년</option>
+									<select name="d_year" class="selectmap" title="년도 선택">
+									<option value="" selected="selected">전체</option>
+									<?
+										for($i=0; $i<count($arr_year); $i++) {
+											if($arr_year[$i]['d_year'] == $_GET['d_year']) {
+												echo "<option value='" . $arr_year[$i]['d_year']. "' selected>" . $arr_year[$i]['d_year'] . "</option>";
+											}else{
+												echo "<option value='" . $arr_year[$i]['d_year']. "'>" . $arr_year[$i]['d_year'] . "</option>";
+											}
+										}
+									?>
 									</select>
 								</div>
 								<div class="sleft">
 									<span>지역</span>
-									<select name="v_place" class="selectmap" title="지역 선택">
-										<option value="도봉구" selected="selected">도봉구</option>
+									<select name="d_district" class="selectmap" title="지역 선택">
+										<option value="" selected="selected">전체</option>
+										<option value="도봉구" >도봉구</option>
 									</select>
 								</div>
 								<a href="#" class="cbtn_point" id="id_submit_btn">검색</a>
 							</div>
 						</div>
-						<p class="help-text"><b>2020년도 서울특별시 북부지역 장애인 현황 <span class="text-deepblue">(188,370명)</span></b></p>
+						</form>
+						<p class="help-text"><b><?=($_GET['d_year'] == "")? ''  : $_GET['d_year']. "년도" ; ?> 서울특별시 북부지역 장애인 현황 <span class="text-deepblue">(<?=number_format($d_sum_total)?>명)</span></b></p>
 						<div id="seoul-map">
 							<div class="seoul-map">
-								<img src="/resource/images/seoul-map.png" alt="서울특별시북부장애인 관련 현황 지도">
+								<img src="/resource/images/seoul-map.png" alt="서울특별시북부장애인 관련 현황 지도">								
 								<ul>
-									<li class="point-1" title="도봉구">1,111</li>
-									<li class="point-2" title="노원구">1,111</li>
-									<li class="point-3" title="중랑구">1,111</li>
-									<li class="point-4" title="동대문구">1,111</li>
-									<li class="point-5" title="광진구">1,111</li>
-									<li class="point-6" title="성동구">1,111</li>
-									<li class="point-7" title="중구">1,111</li>
-									<li class="point-8" title="용산구">1,111</li>
-									<li class="point-9" title="마포구">1,111</li>
-									<li class="point-10" title="서대문구">1,111</li>
-									<li class="point-11" title="종로구">1,111</li>
-									<li class="point-12" title="성북구">1,111</li>
-									<li class="point-13" title="은평구">1,111</li>
-									<li class="point-14" title="강북구">1,111</li>
+								<li class="point-1" title="도봉구"><?for ($i = 0 ; $i < count($data) ; $i++) {if($data[$i]['d_district'] == "도봉구"){echo number_format($data[$i]['d_sum']) ;}}?></li>
+								<li class="point-2" title="노원구"><?for ($i = 0 ; $i < count($data) ; $i++) {if($data[$i]['d_district'] == "노원구"){echo number_format($data[$i]['d_sum']) ;}}?></li>
+								<li class="point-3" title="중랑구"><?for ($i = 0 ; $i < count($data) ; $i++) {if($data[$i]['d_district'] == "중랑구"){echo number_format($data[$i]['d_sum']) ;}}?></li>
+								<li class="point-4" title="동대문구"><?for ($i = 0 ; $i < count($data) ; $i++) {if($data[$i]['d_district'] == "동대문구"){echo number_format($data[$i]['d_sum']) ;}}?></li>
+								<li class="point-5" title="광진구"><?for ($i = 0 ; $i < count($data) ; $i++) {if($data[$i]['d_district'] == "광진구"){echo number_format($data[$i]['d_sum']) ;}}?></li>
+								<li class="point-6" title="성동구"><?for ($i = 0 ; $i < count($data) ; $i++) {if($data[$i]['d_district'] == "중구"){echo number_format($data[$i]['d_sum']) ;}}?></li>
+								<li class="point-7" title="중구"><?for ($i = 0 ; $i < count($data) ; $i++) {if($data[$i]['d_district'] == "도봉구"){echo number_format($data[$i]['d_sum']) ;}}?></li>
+								<li class="point-8" title="용산구"><?for ($i = 0 ; $i < count($data) ; $i++) {if($data[$i]['d_district'] == "용산구"){echo number_format($data[$i]['d_sum']) ;}}?></li>
+								<li class="point-9" title="마포구"><?for ($i = 0 ; $i < count($data) ; $i++) {if($data[$i]['d_district'] == "마포구"){echo number_format($data[$i]['d_sum']) ;}}?></li>
+								<li class="point-10" title="서대문구"><?for ($i = 0 ; $i < count($data) ; $i++) {if($data[$i]['d_district'] == "서대문구"){echo number_format($data[$i]['d_sum']) ;}}?></li>
+								<li class="point-11" title="종로구"><?for ($i = 0 ; $i < count($data) ; $i++) {if($data[$i]['d_district'] == "종로구"){echo number_format($data[$i]['d_sum']) ;}}?></li>
+								<li class="point-12" title="성북구"><?for ($i = 0 ; $i < count($data) ; $i++) {if($data[$i]['d_district'] == "성북구"){echo number_format($data[$i]['d_sum']) ;}}?></li>
+								<li class="point-13" title="은평구"><?for ($i = 0 ; $i < count($data) ; $i++) {if($data[$i]['d_district'] == "은평구"){echo number_format($data[$i]['d_sum']) ;}}?></li>
+								<li class="point-14" title="강북구"><?for ($i = 0 ; $i < count($data) ; $i++) {if($data[$i]['d_district'] == "강북구"){echo number_format($data[$i]['d_sum']) ;}}?></li>
 								</ul>
 							</div>
 						</div>

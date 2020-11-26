@@ -6,7 +6,7 @@ $GP -> MENU_ADMIN = array(
         array("tab"=>"2",			"folder"=>"bbs", 			"name"=>"게시판관리",			"link"=> "/admin/bbs/bbs_list.php?m_tab=2"),
         array("tab"=>"3",			"folder"=>"center", 		"name"=>"센터안내",			"link"=> "/admin/center/center_list.php?m_tab=3"),	        
         array("tab"=>"4",			"folder"=>"disabled", 		"name"=>"장애인 관련 현황",			        "link"=> "/admin/disabled/disabled_list.php?m_tab=4"),	
-        array("tab"=>"5",			"folder"=>"site", 		"name"=>"관련 사이트",			        "link"=> "/admin/site/site_list.php?m_tab=5"),	        
+        array("tab"=>"5",			"folder"=>"site", 		"name"=>"관련 사이트",			        "link"=> "/admin/site/site_list.php?tm_type=A&m_tab=5"),	        
        // array("tab"=>"3",			"folder"=>"member", 		"name"=>"회원관리",			"link"=> "/admin/member/mem_list.php?m_tab=3"),	        
 		array("tab"=>"13",			"folder"=>"slide", 			"name"=>"슬라이드관리",		"link"=> "/admin/slide/main_slide_list.php?m_tab=13"),
 		//array("tab"=>"14",			"folder"=>"online", 			"name"=>"예약관리",			"link"=> "/admin/online/reserve_list.php?m_tab=14"),		
@@ -50,7 +50,9 @@ $GP -> MENU_SUB_ADMIN['center'] = array(
 
 $GP -> MENU_SUB_ADMIN['site'] = array(
 	"관련 사이트"   => array(
-        array("tab"=>"1",	"title"=>"site", "name"=>"관련 사이트",			"link"=>  "/admin/site/site_list.php"),   
+		array("tab"=>"1",	"title"=>"site1", "name"=>"보건",			"link"=>  "/admin/site/site_list.php?tm_type=A"),   
+		array("tab"=>"2",	"title"=>"site2", "name"=>"복지",			"link"=>  "/admin/site/site_list.php?tm_type=B"),   
+		array("tab"=>"3",	"title"=>"site3", "name"=>"공공",			"link"=>  "/admin/site/site_list.php?tm_type=C"),   
 	)
 );
 

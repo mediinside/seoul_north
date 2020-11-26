@@ -8,22 +8,17 @@
 <div class="Wrap_layer"><!--// 전체를 감싸는 Wrap -->
 	<div class="boxContent_layer">
 		<div class="boxContentHeader">
-			<span class="boxTopNav"><strong>센터 등록</strong></span>
+			<span class="boxTopNav"><strong>사이트 등록</strong></span>
 		</div>
 		<form name="base_form" id="base_form" method="POST" action="?" enctype="multipart/form-data">
 		<input type="hidden" name="mode" id="mode" value="MULTI_REG" />
         <input type="hidden" name="tm_menu" id="tm_menu" value="site" />
+		<input type="hidden" name="tm_type" id="tm_type" value="<?=$_GET['tm_type']?>" />
 		<div class="boxContentBody">			
 			<div class="boxMemberInfoTable_layer">				
 				<div class="layerTable">
 					<table class="table table-bordered">
-						<tbody>                         												          														                       
-							<tr>
-								<th><span>*</span>분류</th>
-								<td>
-									<input type="text" class="input_text" size="100" name="tm_content1" id="tm_content1"/>
-								</td>
-                            </tr>	
+						<tbody>                        												          														                       							
                             <tr>
 								<th><span>*</span>사이트</th>
 								<td>
@@ -34,6 +29,12 @@
 								<th><span>*</span>URL</th>
 								<td>
 									<input type="text" class="input_text" size="100" name="tm_content3" id="tm_content3"/>
+								</td>
+                            </tr>   
+							<tr>
+								<th><span>*</span>이미지</th>
+								<td>								
+                                    <input type="file" name="tm_img" id="tm_img" size="30" class="input_text"><span id="size_pc"></span>
 								</td>
                             </tr>                                                                                                  
                             <tr>

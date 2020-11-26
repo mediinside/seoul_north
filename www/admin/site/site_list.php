@@ -30,7 +30,6 @@
 	
 	$data_list_cnt 	= count($data_list);
 
-
     $multi_select = $C_Func -> makeSelect_Normal('tm_select', $GP -> multi_TYPE, $tm_select, '', '::선택::');
 ?>
 <body>
@@ -69,8 +68,8 @@
 			</form>
 			</div>
 		</div>
-		<div style="margin-top:5px; text-align:right;">
-		<button onClick="layerPop('ifm_reg','./site_reg.php', '100%', 650)"; class="btnSearch ">사이트 등록</button>
+		<div style="margin-top:5px; text-align:right;">	
+		<button onClick="layerPop('ifm_reg','./site_reg.php?tm_type=<?=$_GET['tm_type']?>', '100%', 650)"; class="btnSearch">사이트 등록</button>
 		</div>
 		<div id="BoardHead" class="boxBoardHead">				
 				<div class="boxMemberBoard">
@@ -87,9 +86,9 @@
 						</colgroup>
 						<thead>
 							<tr>
-								<th>No</th>
-                                <th>분류</th>
+								<th>No</th>                              
                                 <th>사이트</th>
+								<th>이미지</th>
                                 <th>URL</th>	                                
 								<th>노출</th>
 								<th>등록일</th>
@@ -111,15 +110,25 @@
                                         $tm_content7      = $data_list[$i]['tm_content7'];
 										$tm_type       = $data_list[$i]['tm_type'];										
 										$tm_show       = $data_list[$i]['tm_show'];										
-										$tm_regdate    = $data_list[$i]['tm_regdate'];																			
+										$tm_regdate    = $data_list[$i]['tm_regdate'];	
+										$tm_img        = $data_list[$i]['tm_img'];
+										$tm_m_img      = $data_list[$i]['tm_m_img'];                                       
+										
+										$b_img = '';
+										if($tm_img !=  '') {
+											$b_img = "<img src='" . $GP -> UP_multi_URL . $tm_img . "' width='100px' />";
+										}else {
+											$b_img = "<img src='/images/no_image.jpg' width='100px' />";
+										}
+																		
 																				
 										$edit_btn = $C_Button -> getButtonDesign('type2','수정',0,"layerPop('ifm_reg','./site_edit.php?tm_idx=" . $tm_idx. "', '100%', 650)", 50,'');	
 										$edit_btn .= $C_Button -> getButtonDesign('type2','삭제',0,"multi_delete('" . $tm_idx. "')", 50,'');
 							?>
 									<tr>
-                                        <td><?=$data['page_info']['start_num']--?></td>																										
-                                        <td><?=$tm_content1?></td>	
-                                        <td><?=$tm_content2?></td>	
+                                        <td><?=$data['page_info']['start_num']--?></td>																								                                      
+                                        <td><?=$tm_content2?></td>
+										<td><?=$b_img?></td>	
                                         <td><?=$tm_content3?></td>								
 										<td><?=($tm_show == "Y") ? "노출" : "비노출"; ?></td>										
 										<td><?=$tm_regdate?></td>										

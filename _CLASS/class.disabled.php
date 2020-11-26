@@ -13,26 +13,28 @@ CLASS disabled extends Dbconn
 	// desc	 : 메인 슬라이드 리스트
 	// auth  : JH 2012-12-05 2012-11-06
 	// param
-	function Main_disabled_Show($args='') {
+	function disabled_Show($args='') {
 		if (is_array($args)) foreach ($args as $k => $v) ${$k} = $v;
 		
-		if($d_lang != '') {
-			$addQry .= " AND d_lang = '$d_lang' ";
+		if($d_content != '') {
+			$addsum .= " sum($d_content) as d_sum,  ";
 		}else{
-			$addQry .= " AND d_lang = 'kor' ";
+			$addsum .= " sum(d_content1+d_content2+d_content3+d_content4+d_content5+d_content6+d_content7+d_content8+d_content9+d_content10+d_content11+d_content12+d_content13+d_content14+d_content15) as d_sum,  ";
 		}
 		
-		if($d_type != '') {
-			$addQry .= " AND d_type = '$d_type' ";
+		if($d_year != '') {
+			$addQry .= " AND d_year = '$d_year' ";
 		}else{
-			$addQry .= " AND d_type = 'main' ";
+			$addQry .= " ";
 		}
+		$groupby = 'group by d_district' ;
+		
 		$qry = "
-			select * from tblDisabled where d_show ='Y' $addQry order by d_regdate asc $limit
+			select $addsum d_district from tblDisabled where 1 = 1 $addQry $groupby order by d_district asc $limit 
 		";
-		if ($_SERVER["REMOTE_ADDR"] == '210.90.202.198') {
-			// echo $qry;
-		}
+		
+		//	 echo $qry;
+		
 		$rst =  $this -> DB -> execSqlList($qry);
 		return $rst;
     }   
