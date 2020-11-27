@@ -15,29 +15,27 @@ CLASS inspectionrate extends Dbconn
 	// param
 	function Main_inspectionrate_Show($args='') {
 		if (is_array($args)) foreach ($args as $k => $v) ${$k} = $v;
-		
-		if($ir_lang != '') {
-			$addQry .= " AND ir_lang = '$ir_lang' ";
+
+		if($ir_year != '') {
+			$addQry .= " AND ir_year = '$ir_year' ";
 		}else{
-			$addQry .= " AND ir_lang = 'kor' ";
+			$addQry .= " ";
 		}
-		
-		if($ir_type != '') {
-			$addQry .= " AND ir_type = '$ir_type' ";
+
+		if($ir_district != '') {
+			$addQry .= " AND ir_district = '$ir_district' ";
 		}else{
-			$addQry .= " AND ir_type = 'main' ";
-		}
+			$addQry .= " ";
+		}		
+	
 		$qry = "
-			select * from tblInspectionRate where ir_show ='Y' $addQry order by ir_regdate asc $limit
+			select * from tblInspectionRate where 1 = 1 $addQry order by ir_regdate asc $limit
 		";
-		if ($_SERVER["REMOTE_ADDR"] == '210.90.202.198') {
-			// echo $qry;
-		}
+		//echo $qry;
 		$rst =  $this -> DB -> execSqlList($qry);
 		return $rst;
-    }   
-   
-		
+	}   
+			
 	// desc	 : 슬라이드 수정
 	// auth  : JH 2012-12-05 2012-11-06
 	// param

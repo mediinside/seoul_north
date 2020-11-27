@@ -4,41 +4,89 @@
 	include_once "../inc/head.php";
 
 	include_once($GP->CLS."class.list.php");
-	include_once($GP -> CLS."/class.disabled.php");
+	include_once($GP->CLS."/class.disabled.php");
+	include_once($GP->CLS."/class.inspectionrate.php");
 
 	$C_ListClass 	= new ListClass;
 	$C_disabled 		= new disabled;	
+	$C_inspectionrate 		= new inspectionrate;	
 
 	$args = array();	
 	$args['d_year'] = $_GET["d_year"];	
 	$args['d_content'] = $_GET["d_content"];	
-	$args['d_district'] = $_GET["d_type"];	
-	$args['tm_type'] = "A";	
+	$args['d_district'] = $_GET["d_district"];	
 	$data = "";
-	$data = $C_disabled->disabled_Show(array_merge($_GET,$_POST,$args));
+	$data = $C_disabled->disabled_Show(array_merge($_GET,$_POST,$args));	
 	$data_list 		= $data['data'];
 	$data_list_cnt 	= count($data);	
 
-	$arr_year = $C_disabled ->disabled_YEAR();
+	$arr_year = $C_disabled ->disabled_YEAR();	
 
-	//echo "echo:" .  $_GET["d_content"] . "<br>" ;
-	//print_r($data_list_cnt) ;
-
-	//var_dump($data);	
-	//print_r($data[0]);
-	//print_r($data[0]['d_sum']);
-	for ($i = 0 ; $i < count($data) ; $i++) 
-	{		
-			$d_sum_total = $d_sum_total + $data[$i]['d_sum'] ;
+	//장애유형별현황
+	for ($i = 0 ; $i < count($data) ; $i++) {
+		$d_sum_total = $d_sum_total + $data[$i]['d_sum'] ;
 	}	
+	$data2 = array(
+		array('지체', '청각', '시각', '뇌병변', '지적','정신','신장','자폐성','언어','장루, 요루','호흡기','간','뇌전증','심장','안면','계')
+	  , $C_disabled->disabled_Show2(array_merge($_GET,$_POST,$args))
+	   );
 
-	
-//	echo "echo:" . $$aa . "<br>" ;
+	$data3 = $C_disabled->disabled_Show2(array_merge($_GET,$_POST,$args)) ;	   
+	rsort($data3[0]);
 
+	for ($i = 0 ; $i < 12 ; $i+=2) {	
+		${"Percent".$i} = round($data3[0][$i] / $data3[0][0]*100,0);		
+	}
+	$Percent12 = floor(($data3[0][0]-($data3[0][2] + $data3[0][4] + $data3[0][6] + $data3[0][8]+ $data3[0][10]))/ $data3[0][0]*100);
+
+	//생애주기별 현황
+	$data_age = $C_disabled->disabled_Show3(array_merge($_GET,$_POST,$args)) ;	
+	for ($i = 0 ; $i < 4 ; $i++) {	
+		${"Percent_age".$i} = round($data_age[0][$i] / $data_age[0][4]*100,1);		
+	}
+
+	//건강검진 수검률 (건강보험대상자)
+	$args['ir_year'] = $_GET["d_year"];	
+	$args['ir_district'] = $_GET["d_district"];	
+	$ir_data = $C_inspectionrate->Main_inspectionrate_Show(array_merge($_GET,$_POST,$args));	
+
+	print_r($ir_data) ;
+
+	//$Percent_age = floor(($data_age[0][0]-($data_age[0][1] + $data_age[0][2] + $data_age[0][3] ))/ $data3[0][4]*100);
+
+   //echo "echo:" . max($data2[1][0]) . "<br>" ;
+   
+   //print_r($data3[1][0] );
+   //$Percent0 = round($data3[1][0][2] / $data3[1][0][0] * 100,0);	
+  // echo "echo:" . $data3[1][0][2] . "<br>" ;
+  // echo "echo:" . $data3[1][0][0] . "<br>" ;
+  // echo "echo:" . $Percent0 . "<br>" ;
+   
+
+  // $numbers=array(4,6,2,22,11);
+  // echo "echo:" . sort($numbers) . "<br>" ;
+  // print_r(sort($numbers)) ;
+
+  // $arr = array(4,6,2,22,11); 
+  // rsort($arr);
+ //  echo  '$arr : ';
+  // print_r($arr);
+ 
+   //echo "echo:" .  $_GET["d_content"] . "<br>" ;
+	//print_r($data_list_cnt) ;
+	//print_r($d_sum_total2);	
+
+	//print_r($data2[0]);	
+	//print_r($data2[0][0]);
+	//print_r($data[0]['d_sum']);
 	//print_r(array_search('동작구', $data));	
-	
 	//print_r($data[0]['d_sum']);	
+   //print_r($score[0][0]) ;
+   //print_r($score[1][0][0]) ;
+   //print_r($score[1]['d_content1']) ;
 
+
+	
 ?>
 <style>
 	@media screen and (max-width:1023px){
@@ -49,9 +97,10 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
 <script>
 	$(document).ready(function () {
-		$('#id_submit_btn').click(function(){																 
-
-			$('#base_form').submit();
+		var offset = $('#submit_position').offset(); //선택한 태그의 위치를 반환			
+		//$('html').animate({scrollTop : offset.top}, 400);		
+		$('#id_submit_btn').click(function(){													 
+			$('#base_form').submit();			
 			return false;
 		});
 		createChart('myChart', myChartData);
@@ -111,7 +160,7 @@
 				labels: ["지체", "청각", "시각", "뇌병변", "지적", "기타"],
 				datasets: [{
 					label: "장애유형별 현황",
-					data: [47, 19, 71, 51, 22, 19],
+					data: [<? echo($Percent2);?>, <? echo($Percent4);?>, <? echo($Percent6);?>, <? echo($Percent8);?>, <? echo($Percent10);?>, <? echo($Percent12);?>],
 					backgroundColor: [
 						'#344aa0',
 						'#5f72be',
@@ -177,7 +226,7 @@
 				labels: ["노인", "청장년", "소아/청소년", "영유아"],
 				datasets: [{
 					label: "Test2",
-					data: [6, 19, 4, 51],
+					data: [<? echo($Percent_age3);?>, <? echo($Percent_age2);?>, <? echo($Percent_age1);?>, <? echo($Percent_age0);?>],
 					backgroundColor: [
 						'#344aa0',
 						'#5f72be',
@@ -364,7 +413,7 @@
 		.tableType-01 {max-width: 100% !important;}
 	}
 </style>
-<body>
+<body onLoad=document.replyForm.replyBox.focus()>
 	<div id="wrap">
 		<?php include_once "../inc/header.php"?>
 		<section id="container" class="sub">
@@ -376,11 +425,11 @@
 
 			<?php include_once "../inc/location.php"?>
 
-			<div class="cont-tit">
+			<div class="cont-tit" id="submit_position">
 				<h3>서울특별시북부장애인 관련 현황</h3>
 			</div>
-			<div class="s-inner">
-				<h3 class="cont-sub-tit">장애인 통계자료</h3>
+			<div class="s-inner" >
+				<h3 class="cont-sub-tit" >장애인 통계자료</h3>
 				<div class="cont-box">
 					<h4 class="cont-label">장애인 통계자료</h4>
 					<div class="cont">
@@ -391,21 +440,21 @@
 									<span>구분</span>
 									<select name="d_content" class="selectmap" title="통계자료 선택">
 										<option value="" >장애인 현황 전체</option>
-										<option value="d_content1" <? if($_GET['d_content'] == "d_content1"){ echo "selected";}?> >지체</option>
-										<option value="d_content2" <? if($_GET['d_content'] == "d_content2"){ echo "selected";}?>>시각</option>
-										<option value="d_content3" <? if($_GET['d_content'] == "d_content3"){ echo "selected";}?>>청각</option>
-										<option value="d_content4" <? if($_GET['d_content'] == "d_content4"){ echo "selected";}?>>언어</option>
+										<option value="d_content1" <? if($_GET['d_content'] == "d_content1"){ echo "selected";}?>>지체</option>
+										<option value="d_content2" <? if($_GET['d_content'] == "d_content2"){ echo "selected";}?>>청각</option>
+										<option value="d_content3" <? if($_GET['d_content'] == "d_content3"){ echo "selected";}?>>시각</option>
+										<option value="d_content4" <? if($_GET['d_content'] == "d_content4"){ echo "selected";}?>>뇌병변</option>
 										<option value="d_content5" <? if($_GET['d_content'] == "d_content5"){ echo "selected";}?>>지적</option>
-										<option value="d_content6" <? if($_GET['d_content'] == "d_content6"){ echo "selected";}?>>뇌병변</option>
-										<option value="d_content7" <? if($_GET['d_content'] == "d_content7"){ echo "selected";}?>>자폐성</option>
-										<option value="d_content8" <? if($_GET['d_content'] == "d_content8"){ echo "selected";}?>>정신</option>
-										<option value="d_content9" <? if($_GET['d_content'] == "d_content9"){ echo "selected";}?>>신장</option>
-										<option value="d_content10" <? if($_GET['d_content'] == "d_content10"){ echo "selected";}?>>심장</option>
+										<option value="d_content6" <? if($_GET['d_content'] == "d_content6"){ echo "selected";}?>>정신</option>
+										<option value="d_content7" <? if($_GET['d_content'] == "d_content7"){ echo "selected";}?>>신장</option>
+										<option value="d_content8" <? if($_GET['d_content'] == "d_content8"){ echo "selected";}?>>자폐성</option>
+										<option value="d_content9" <? if($_GET['d_content'] == "d_content9"){ echo "selected";}?>>언어</option>
+										<option value="d_content10" <? if($_GET['d_content'] == "d_content10"){ echo "selected";}?>>장루, 요루</option>
 										<option value="d_content11" <? if($_GET['d_content'] == "d_content11"){ echo "selected";}?>>호흡기</option>
 										<option value="d_content12" <? if($_GET['d_content'] == "d_content12"){ echo "selected";}?>>간</option>
-										<option value="d_content13" <? if($_GET['d_content'] == "d_content13"){ echo "selected";}?>>안면</option>
-										<option value="d_content14" <? if($_GET['d_content'] == "d_content14"){ echo "selected";}?>>장루, 요루</option>
-										<option value="d_content15" <? if($_GET['d_content'] == "d_content15"){ echo "selected";}?>>뇌전증</option>
+										<option value="d_content13" <? if($_GET['d_content'] == "d_content13"){ echo "selected";}?>>뇌전증</option>
+										<option value="d_content14" <? if($_GET['d_content'] == "d_content14"){ echo "selected";}?>>심장</option>
+										<option value="d_content15" <? if($_GET['d_content'] == "d_content15"){ echo "selected";}?>>안면</option>
 									</select>
 								</div>
 								<div class="sleft">
@@ -427,7 +476,20 @@
 									<span>지역</span>
 									<select name="d_district" class="selectmap" title="지역 선택">
 										<option value="" selected="selected">전체</option>
-										<option value="도봉구" >도봉구</option>
+										<option value="도봉구" <? if($_GET['d_district'] == "도봉구"){ echo "selected";}?>>도봉구</option>
+										<option value="노원구" <? if($_GET['d_district'] == "노원구"){ echo "selected";}?>>노원구</option>
+										<option value="중랑구" <? if($_GET['d_district'] == "중랑구"){ echo "selected";}?>>중랑구</option>
+										<option value="동대문구" <? if($_GET['d_district'] == "동대문구"){ echo "selected";}?>>동대문구</option>
+										<option value="광진구" <? if($_GET['d_district'] == "광진구"){ echo "selected";}?>>광진구</option>
+										<option value="성동구" <? if($_GET['d_district'] == "성동구"){ echo "selected";}?>>성동구</option>
+										<option value="중구" <? if($_GET['d_district'] == "중구"){ echo "selected";}?>>중구</option>
+										<option value="용산구" <? if($_GET['d_district'] == "용산구"){ echo "selected";}?>>용산구</option>
+										<option value="마포구" <? if($_GET['d_district'] == "마포구"){ echo "selected";}?>>마포구</option>
+										<option value="서대문구" <? if($_GET['d_district'] == "서대문구"){ echo "selected";}?>>서대문구</option>
+										<option value="종로구" <? if($_GET['d_district'] == "종로구"){ echo "selected";}?>>종로구</option>
+										<option value="성북구" <? if($_GET['d_district'] == "성북구"){ echo "selected";}?>>성북구</option>
+										<option value="은평구" <? if($_GET['d_district'] == "은평구"){ echo "selected";}?>>은평구</option>
+										<option value="강북구" <? if($_GET['d_district'] == "강북구"){ echo "selected";}?>>강북구</option>										
 									</select>
 								</div>
 								<a href="#" class="cbtn_point" id="id_submit_btn">검색</a>
@@ -463,7 +525,7 @@
 				<!--  장애유형별 현황 -->
 				<div class="cont-box">
 					<h4 class="cont-label">
-						<span class="btn bg-deepblue" style="min-width:142px;">도봉구</span>
+						<span class="btn bg-deepblue" style="min-width:142px;"><?=$_GET['d_district']?></span>
 					</h4>
 					<div class="cont">
 						<p class="help-text"><b>1. 장애유형별 현황</b></p>
@@ -478,44 +540,18 @@
 										</tr>
 									</thead>
 									<tbody>
+									<?
+									for ($i = 0 ; $i < 16 ; $i++){	
+										$Percent = $data2[1][0][$i] / $data2[1][0]['d_sum'] * 100;								
+									?>
 										<tr>
-											<td>지체</td>
-											<td>1,111</td>
-											<td></td>
+											<td><?=$data2[0][$i]?></td>
+											<td><?=number_format($data2[1][0][$i])?></td>
+											<td><?=round($Percent,1)?>%</td>
 										</tr>
-										<tr>
-											<td>청각</td>
-											<td></td>
-											<td></td>
-										</tr>
-										<tr>
-											<td>시각</td>
-											<td></td>
-											<td></td>
-										</tr>
-										<tr>
-											<td>뇌병변</td>
-											<td></td>
-											<td></td>
-										</tr>
-										<tr>
-											<td>지적</td>
-											<td></td>
-											<td></td>
-										</tr>
-										<tr>
-											<td>정신</td>
-											<td></td>
-											<td></td>
-										</tr>
+									<?}?>										
 									</tbody>
-									<tfoot>
-										<tr>
-											<td>계</td>
-											<td></td>
-											<td></td>
-										</tr>
-									</tfoot>
+									
 								</table>
 							</div>
 							<div id="chart">
@@ -557,11 +593,11 @@
 								</thead>
 								<tbody>
 									<tr>
-										<td>강북구</td>
-										<td>1,111</td>
-										<td>1,111</td>
-										<td>1,111</td>
-										<td>1,111</td>
+										<td><?=$_GET['d_district']?></td>
+										<td><?=number_format($data_age[0]['d_sum1'])?></td>
+										<td><?=number_format($data_age[0]['d_sum2'])?></td>
+										<td><?=number_format($data_age[0]['d_sum3'])?></td>
+										<td><?=number_format($data_age[0]['d_sum4'])?>1</td>
 									</tr>
 								</tbody>
 							</table>
@@ -606,214 +642,26 @@
 									</tr>
 								</thead>
 								<tbody>
+									<?
+									for ($i = 0 ; $i < 15 ; $i++){	
+										$j = $i + 1;										
+										$args['d_content'] = "d_content".$j;	
+										$data_old = $C_disabled->disabled_Show4(array_merge($_GET,$_POST,$args)) ;																					
+									?>
 									<tr>
-										<th>지체</th>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
+										<th><?=$data2[0][$i]?></th>
+										<td><?=number_format($data_old[0][0])?></td>
+										<td><?=number_format($data_old[0][1])?></td>
+										<td><?=number_format($data_old[0][2])?></td>
+										<td><?=number_format($data_old[0][3])?></td>
+										<td><?=number_format($data_old[0][4])?></td>
+										<td><?=number_format($data_old[0][5])?></td>
+										<td><?=number_format($data_old[0][6])?></td>
+										<td><?=number_format($data_old[0][7])?></td>
+										<td><?=number_format($data_old[0][8])?></td>
+										<td><?=number_format($data_old[0][9])?></td>
 									</tr>
-									<tr>
-										<th>청각</th>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-									</tr>
-									<tr>
-										<th>시각</th>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-									</tr>
-									<tr>
-										<th>뇌병변</th>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-									</tr>
-									<tr>
-										<th>지적</th>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-									</tr>
-									<tr>
-										<th>정신</th>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-									</tr>
-									<tr>
-										<th>신장</th>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-									</tr>
-									<tr>
-										<th>자폐성</th>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-									</tr>
-									<tr>
-										<th>언어</th>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-									</tr>
-									<tr>
-										<th>장루요루</th>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-									</tr>
-									<tr>
-										<th>호흡기</th>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-									</tr>
-									<tr>
-										<th>간</th>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-									</tr>
-									<tr>
-										<th>뇌전증</th>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-									</tr>
-									<tr>
-										<th>심장</th>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-									</tr>
-									<tr>
-										<th>안면</th>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-									</tr>
-									<tr>
-										<th>계</th>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-									</tr>
+									<?}?>									
 								</tbody>
 							</table>
 						</div>
@@ -849,86 +697,16 @@
 										</tr>
 									</thead>
 									<tbody>
+									<?
+									for ($i = 0 ; $i < 16 ; $i++){																	
+									?>
 										<tr>
-											<th>지체</th>
-											<td></td>
-											<td></td>
+											<th><?=$data2[0][$i]?></th>
+											<td><?=number_format($ir_data[0][0])?></td>
+											<td><?=number_format($ir_data[0][15])?></td>
 										</tr>
-										<tr>
-											<th>청각</th>
-											<td></td>
-											<td></td>
-										</tr>
-										<tr>
-											<th>시각</th>
-											<td></td>
-											<td></td>
-										</tr>
-										<tr>
-											<th>뇌병변</th>
-											<td></td>
-											<td></td>
-										</tr>
-										<tr>
-											<th>지적</th>
-											<td></td>
-											<td></td>
-										</tr>
-										<tr>
-											<th>정신</th>
-											<td></td>
-											<td></td>
-										</tr>
-										<tr>
-											<th>신장</th>
-											<td></td>
-											<td></td>
-										</tr>
-										<tr>
-											<th>자폐성</th>
-											<td></td>
-											<td></td>
-										</tr>
-										<tr>
-											<th>언어</th>
-											<td></td>
-											<td></td>
-										</tr>
-										<tr>
-											<th>장루요루</th>
-											<td></td>
-											<td></td>
-										</tr>
-										<tr>
-											<th>호흡기</th>
-											<td></td>
-											<td></td>
-										</tr>
-										<tr>
-											<th>간</th>
-											<td></td>
-											<td></td>
-										</tr>
-										<tr>
-											<th>뇌전증</th>
-											<td></td>
-											<td></td>
-										</tr>
-										<tr>
-											<th>심장</th>
-											<td></td>
-											<td></td>
-										</tr>
-										<tr>
-											<th>안면</th>
-											<td></td>
-											<td></td>
-										</tr>
-										<tr>
-											<th>계</th>
-											<td></td>
-											<td></td>
-										</tr>
+									<?}?>										
+										
 									</tbody>
 								</table>
 							</div>

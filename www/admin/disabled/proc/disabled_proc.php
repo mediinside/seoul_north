@@ -133,7 +133,19 @@ switch($_POST['mode']){
 		echo "true";
 		exit();
 	
-    break;   
+	break;   
+	
+	case 'disabled_year_DEL' :
+		if (is_array($_POST)) foreach ($_POST as $k => $v) ${$k} = $v;		
+		
+		$args = "";
+		$args['d_year'] 	= $d_year;		
+        $rst = $C_disabled ->disabled_year_Del($args);
+        
+		echo "true";
+		exit();
+	
+	break;
 	
 	case 'disabled_REG':
 		if (is_array($_POST)) foreach ($_POST as $k => $v) ${$k} = $v;

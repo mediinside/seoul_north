@@ -108,20 +108,20 @@
 								<th>구</th>								
 								<th>나이</th>
 								<th>지체</th>
-								<th>시각</th>
 								<th>청각</th>
-								<th>언어</th>
-								<th>지적</th>
+								<th>시각</th>
 								<th>뇌병변</th>
+								<th>지적</th>
+								<th>정신</th>								
+								<th>신장</th>								
 								<th>자폐성</th>
-								<th>정신</th>
-								<th>신장</th>
-								<th>심장</th>
-								<th>호흡기</th>
-								<th>간</th>
-								<th>안면</th>
+								<th>언어</th>
 								<th>장루.요루</th>
-								<th>뇌전증</th>																					
+								<th>호흡기</th>															
+								<th>간</th>
+								<th>뇌전증</th>	
+								<th>심장</th>	
+								<th>안면</th>																																			
 								<th>수정/삭제</th>
 							</tr>
 						</thead>
