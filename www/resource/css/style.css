@@ -1355,7 +1355,7 @@ footer {
     .tableType-01.green th {
       background-color: #fafafa; }
     .tableType-01.green td {
-      padding: 25px; }
+      padding: 25px 15px; }
   .tableType-01.no-border th {
     font-size: 2rem;
     border: none !important;
@@ -2657,12 +2657,14 @@ canvas {
   .bigdot-list li {
     margin: 10px 0;
     padding-left: 24px;
+    padding-right: 24px;
     font-size: 3rem;
     line-height: 1.3; }
     .bigdot-list li:before {
       top: 18px; }
     .bigdot-list li .btn-xs {
-      margin-top: 15px !important; }
+      width: 100%;
+      margin: 15px 0 !important; }
 
   .dash-list dt {
     font-size: 3.2rem; }

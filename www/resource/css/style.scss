@@ -1682,7 +1682,7 @@ footer {
 			background-color: #fafafa;
 		}
 		td {
-			padding:25px;
+			padding:25px 15px;
 		}
 	}
 	&.no-border {
@@ -3391,13 +3391,15 @@ canvas {
 		li {
 			margin: 10px 0;
 			padding-left: 24px;
+			padding-right: 24px;
 			font-size: 3rem;
 			line-height: 1.3;
 			&:before {
 				top: 18px;
 			}
 			.btn-xs {
-				margin-top: 15px !important;
+				width: 100%;
+				margin: 15px 0 !important;
 			}
 		}
 	}
